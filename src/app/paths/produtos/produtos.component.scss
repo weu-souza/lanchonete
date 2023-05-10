@@ -1,0 +1,14 @@
+$color-bg: #EDE9D5;
+$color-button:#E7AB9A;
+$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+
+.card-container{
+  width: 18rem;
+  background: $color-bg;
+  .btn-card{
+    background: $color-button;
+  }
+  .btn-card:hover{
+    background: $color-hover;
+  }
+}
