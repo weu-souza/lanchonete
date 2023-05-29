@@ -1,13 +1,14 @@
 <nav class="navbar navbar-expand-lg nav-bg">
   <div class="container-fluid">
-    <button (click)="aparecerMenu()" class="navbar-toggler botao" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button (click)="aparecerMenu()" class="navbar-toggler botao " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="btn-mobile">
+      <i class="fa-solid fa-bars p-1"></i>
     </button>
 
-    <div class="navbar-toggler border-0">
+
+    <div class="navbar-toggler border-0 w-50">
       <form class="d-flex " role="search">
-        <input class="form-control fo me-2" type="search" placeholder="digite o produto aqui..." aria-label="Search">
-        <button class="btn botao" type="submit">Enviar</button>
+        <input class="form-control fo me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
+        <button class="btn botao " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
     </div>
 
@@ -24,23 +25,23 @@
           <a class="nav-link" routerLink="promocoes">promoções</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="contato">Contato</a>
+          <a class="nav-link" routerLink="adicionar-produto">Adicionar produto</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="adicionar-ingredientes">Adicionar ingrediente</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" routerLink="historico-vendas">Historico de vendas</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="adicionar-ingredientes">Adicionar ingrediente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="adicionar-promocao">Adicionar promoção</a>
-        </li>
+
+
 
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
-        <button class="btn botao" type="submit">Enviar</button>
+        <button class="btn botao" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
 
     </div>
@@ -54,24 +55,21 @@
   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
     <li class="nav-item ">
-      <a class="nav-link mx-2 nav-first"  routerLink="produtos">Produtos</a>
+      <a class="nav-link mx-2 nav-first"  routerLink="produtos-categorias">Produtos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link mx-2" routerLink="promocoes">promoções</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="contato">Contato</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="historico-vendas">Historico de vendas</a>
+      <a class="nav-link mx-2" routerLink="adicionar-produto">Adicionar produto</a>
     </li>
     <li class="nav-item">
       <a class="nav-link mx-2" routerLink="adicionar-ingredientes">Adicionar ingrediente</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="adicionar-promocao">Adicionar promoção</a>
+      <a class="nav-link mx-2" routerLink="historico-vendas">Historico de vendas</a>
     </li>
+
 
   </ul>
 </div>

@@ -1,0 +1,19 @@
+$color-2: #CD1818;
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  i {
+    font-size: 200px;
+    color: $color-2;
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    font-size: 44px;
+  }
+}
+
+

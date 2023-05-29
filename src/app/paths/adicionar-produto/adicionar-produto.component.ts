@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-adicionar-ingrediente',
-  templateUrl: './adicionar-ingrediente.component.html',
-  styleUrls: ['./adicionar-ingrediente.component.scss']
+  selector: 'app-contato',
+  templateUrl: './adicionar-produto.component.html',
+  styleUrls: ['./adicionar-produto.component.scss']
 })
-export class AdicionarIngredienteComponent implements OnInit {
-
+export class AdicionarProdutoComponent implements OnInit {
   span: HTMLElement;
 
   texto() {
@@ -14,7 +13,7 @@ export class AdicionarIngredienteComponent implements OnInit {
   }
 
   imagem(event) {
-    this.span = document.getElementById('span_imagem');
+    this.span = document.getElementById('span_imagem') as HTMLElement;
     const inputTarget = event.target;
     const file = inputTarget.files[0];
 
@@ -39,17 +38,9 @@ export class AdicionarIngredienteComponent implements OnInit {
   }
 
   constructor() {
-
   }
 
   ngOnInit(): void {
   }
 
-  addProduto() {
-    console.log('produto adicionada');
-  }
-
-  addPromocao() {
-    console.log('promoção adicionada');
-  }
 }

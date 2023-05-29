@@ -7,10 +7,18 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  mudar: boolean;
+  mudar = false;
+
 
   aparecerMenu() {
-    this.mudar = !this.mudar;
+    const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
+    if (!this.mudar) {
+      btn.innerHTML = '<i class="fa-solid fa-xmark p-1" ></i>';
+      this.mudar = true;
+    } else {
+      btn.innerHTML = '<i class="fa-solid fa-bars p-1"></i>';
+      this.mudar = false;
+    }
   }
 
 

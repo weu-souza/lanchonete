@@ -1,21 +1,41 @@
 $color-bg: #EDE9D5;
 $color-button: #E7AB9A;
-$color-2:#DF7857;
-$color-3:#617143;
+$color-2: #DF7857;
+$color-3: #617143;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$font-roboto: 'roboto', serif;
+$font-babe: 'Rajdhani', sans-serif ;
+$font-700:  700 ;
+@mixin botao() {
 
-$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
 
-.nav-bg{
+}
+
+
+
+.nav-bg {
+
   background: $color-bg;
-  .botao{
-    background: $color-button;
+
+  .botao {
+    @include botao;
+
   }
-  .botao:hover{
+
+
+  .botao:hover {
+
     background: $color-hover;
   }
-  .nav_menu-principal{
-    a {
 
+  .nav_menu-principal {
+    a {
+      color: $color-3;
+      font-family: $font-babe;
+      font-size: 1.25rem;
       position: relative;
     }
 
@@ -30,25 +50,30 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
       position: absolute;
     }
 
-    a:hover:after,.header-menu a.ativo::after {
+    a:hover:after, .header-menu a.ativo::after {
       width: 100%;
     }
 
   }
 
 }
-.nav-mobile{
+
+.nav-mobile {
   width: 140px;
 
-  .nav-first{
+  .nav-first {
     border-top: 1px solid $color-2;
   }
-a{
-  border-bottom: 1px solid $color-2;
 
-  padding: 10px;
-}
-  a:hover{
+  a {
+    color: $color-3;
+    font-family: $font-babe;
+    border-bottom: 1px solid $color-2;
+
+    padding: 10px;
+  }
+
+  a:hover {
     background: $color-hover;
   }
 }

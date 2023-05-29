@@ -1,1 +1,37 @@
-<p>adicionar-ingrediente works!</p>
+
+<section class="contato-bg p-5 rounded d-grid">
+  <!--    nome do produto -->
+  <div class="mb-3 d-grid mx-auto mb-5">
+    <label for="produto" class="form-label">nome do produto</label>
+    <input type="text" class="form-control  border-0" id="produto" placeholder="nome do produto">
+  </div>
+
+  <div class="mb-3 d-grid mx-auto mb-5">
+    <!--    preço do produto -->
+    <label for="preco" class="form-label">preço </label>
+    <input type="number" class="form-control  border-0" id="preco" placeholder="R$ 00,00">
+  </div>
+<!--ingredientes do produto-->
+  <div class="mb-3 d-grid mx-auto mb-5">
+    <label for="texto" class="form-label ">ingredientes</label>
+    <textarea class="form-control border-0" id="texto" rows="5" placeholder="digite sua mensagem..."></textarea>
+  </div>
+<!--imagem-->
+  <div class="mb-3 mx-auto">
+    <label for="formFile" class="form-label" ><span class="p-2 rounded img-label" id="span_imagem" [innerHtml]="texto()" ></span></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)">
+
+  </div>
+<!--botão de enviar-->
+  <div class="d-flex mx-auto">
+    <div class="col-auto ">
+      <button type="submit" class="btn  mb-3" (click)="addProduto()">Adicionar Produto</button>
+    </div>
+    <div class="col-auto ms-5">
+      <button type="submit" class="btn  mb-3" (click)="addPromocao()">Adicionar Promoção</button>
+    </div>
+  </div>
+
+
+</section>
+

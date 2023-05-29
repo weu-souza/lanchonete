@@ -1,12 +1,26 @@
 $color-bg: #EDE9D5;
 $color-button:#E7AB9A;
 $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$color-3:#617143;
 
+$font-roboto:'roboto', serif;
+$font-babe:'Rajdhani', sans-serif;
+$font-700:  700 ;
+@mixin botao() {
+
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+
+}
 .card-container{
   width: 18rem;
+
   background: $color-bg;
+  color: $color-3;
+  font-family: $font-roboto;
   .btn-card{
-    background: $color-button;
+    @include botao
   }
   .btn-card:hover{
     background: $color-hover;

@@ -1,0 +1,39 @@
+$color-bg: #EDE9D5;
+$color-button: #E7AB9A;
+$color-2: #DF7857;
+$color-3: #617143;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$font-roboto: 'roboto', serif;
+$font-babe: 'Rajdhani', sans-serif ;
+footer{
+  background: $color-bg;
+  font-family: $font-roboto;
+  .footer__container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+    padding: 20px;
+  }
+  .footer__title {
+    font-size: 22px;
+    font-weight: bold;
+    color: $color-2;
+    margin-bottom: 5px;
+    $font-family: $font-babe;
+  }
+
+  .footer__about-text {
+    width: 400px;
+    text-align: justify;
+  }
+
+
+   i {
+    color: $color-2;
+  }
+
+   li {
+    margin: 10px 0;
+  }
+
+}

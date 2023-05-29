@@ -9,10 +9,10 @@ import { LoginComponent } from './paths/login/login.component';
 import { PedidosComponent } from './paths/pedidos/pedidos.component';
 import { RegistroComponent } from './paths/registro/registro.component';
 import { PromocoesComponent } from './paths/promocoes/promocoes.component';
-import { ContatoComponent } from './paths/contato/contato.component';
+import { AdicionarProdutoComponent } from './paths/adicionar-produto/adicionar-produto.component';
 import { HistoricoVendasComponent } from './paths/historico-vendas/historico-vendas.component';
 import { AdicionarIngredienteComponent } from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
-import { AdicionarPromocaoComponent } from './paths/adicionar-promocao/adicionar-promocao.component';
+import { NaoEncontradaComponent } from './paths/nao-encontrada/nao-encontrada.component';
 
 
 
@@ -26,10 +26,10 @@ import { AdicionarPromocaoComponent } from './paths/adicionar-promocao/adicionar
     PedidosComponent,
     RegistroComponent,
     PromocoesComponent,
-    ContatoComponent,
+    AdicionarProdutoComponent,
     HistoricoVendasComponent,
     AdicionarIngredienteComponent,
-    AdicionarPromocaoComponent
+    NaoEncontradaComponent
   ],
   imports: [
     BrowserModule,

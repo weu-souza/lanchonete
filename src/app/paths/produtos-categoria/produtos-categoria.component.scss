@@ -1,9 +1,13 @@
 $color-bg: #EDE9D5;
+$color-3:#617143;
+$font-roboto:roboto, serif;
 .card-container{
-  width: 25rem;
+  width: 22.199rem;
   background: $color-bg;
+
   h5{
-    color: #000;
+    color:  $color-3;
+    font-family: $font-roboto;
   }
 }
 

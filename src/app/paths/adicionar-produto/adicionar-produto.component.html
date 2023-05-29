@@ -1,0 +1,20 @@
+<section class="contato-bg p-5 rounded d-grid">
+  <div class="mb-3 d-grid mx-auto mb-5">
+<!--    nome do produto -->
+    <label for="email" class="form-label">nome do produto</label>
+    <input type="text" class="form-control  border-0" id="email" placeholder="nome do produto">
+  </div>
+
+  <!--imagem-->
+  <div class="mb-3 mx-auto">
+    <label for="formFile" class="form-label" ><span class="p-2 rounded img-label" id="span_imagem" [innerHtml]="texto()" ></span></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)">
+
+  </div>
+  <!--botão de enviar-->
+  <div class="col-auto mx-auto">
+    <button type="submit" class="btn  mb-3">enviar</button>
+  </div>
+
+</section>
+

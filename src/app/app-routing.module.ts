@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ProdutosCategoriaModule} from './paths/produtos-categoria/produtos-categoria.module';
 import {PromocoesComponent} from './paths/promocoes/promocoes.component';
-import {ContatoComponent} from './paths/contato/contato.component';
+import {AdicionarProdutoComponent} from './paths/adicionar-produto/adicionar-produto.component';
 import {HistoricoVendasComponent} from './paths/historico-vendas/historico-vendas.component';
 import {AdicionarIngredienteComponent} from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
-import {AdicionarPromocaoComponent} from './paths/adicionar-promocao/adicionar-promocao.component';
+import {NaoEncontradaComponent} from './paths/nao-encontrada/nao-encontrada.component';
 
 
 const routes: Routes = [{path: 'produtos', loadChildren: () => import('./paths/produtos/produtos.module').then(m => m.ProdutosModule)},
@@ -15,10 +14,10 @@ const routes: Routes = [{path: 'produtos', loadChildren: () => import('./paths/p
   },
   {path: '', redirectTo: 'produtos-categorias', pathMatch: 'full'},
   {path: 'promocoes', component: PromocoesComponent},
-  {path: 'contato', component: ContatoComponent},
+  {path: 'adicionar-produto', component: AdicionarProdutoComponent},
   {path: 'historico-vendas', component: HistoricoVendasComponent},
   {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent},
-  {path: 'adicionar-promocao', component: AdicionarPromocaoComponent},
+  {path: '**', component: NaoEncontradaComponent}
 
 ];
 
