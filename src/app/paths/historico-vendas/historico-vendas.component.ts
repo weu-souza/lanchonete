@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./historico-vendas.component.scss']
 })
 export class HistoricoVendasComponent implements OnInit {
+  total = 20;
+  preco = 20;
 
   constructor() { }
 

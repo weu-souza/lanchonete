@@ -13,6 +13,7 @@ import { AdicionarProdutoComponent } from './paths/adicionar-produto/adicionar-p
 import { HistoricoVendasComponent } from './paths/historico-vendas/historico-vendas.component';
 import { AdicionarIngredienteComponent } from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
 import { NaoEncontradaComponent } from './paths/nao-encontrada/nao-encontrada.component';
+import { ComprarComponent } from './paths/comprar/comprar.component';
 
 
 
@@ -29,7 +30,8 @@ import { NaoEncontradaComponent } from './paths/nao-encontrada/nao-encontrada.co
     AdicionarProdutoComponent,
     HistoricoVendasComponent,
     AdicionarIngredienteComponent,
-    NaoEncontradaComponent
+    NaoEncontradaComponent,
+    ComprarComponent
   ],
   imports: [
     BrowserModule,

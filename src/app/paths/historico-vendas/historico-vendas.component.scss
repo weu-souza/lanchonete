@@ -1,0 +1,39 @@
+$color-bg: #EDE9D5;
+$color-button:#E7AB9A;
+$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$color-3:#617143;
+
+$font-roboto:'roboto', serif;
+$font-babe:'Rajdhani', sans-serif;
+$font-700:  700 ;
+.tabela{
+  thead{
+    background: $color-button;
+    color: #fff;
+    font-family: $font-roboto;
+
+  }
+  tbody{
+    th{
+      background: $color-bg;
+      font-family: $font-roboto;
+    }
+    font-family: $font-babe;
+
+  }
+
+  tfoot{
+    th{
+      background: $color-button;
+      color: #fff;
+      font-family: $font-roboto;
+    }
+    font-family: $font-babe;
+
+  }
+  td:hover{
+    background: #f8f8f8;
+  }
+}
+
+

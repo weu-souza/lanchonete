@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-produtos',
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.scss']
+  selector: 'app-comprar',
+  templateUrl: './comprar.component.html',
+  styleUrls: ['./comprar.component.scss']
 })
-export class ProdutosComponent implements OnInit {
+export class ComprarComponent implements OnInit {
 
   constructor(private route: Router) {
   }
@@ -14,8 +14,12 @@ export class ProdutosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  removeProdutoCarrinho() {
+
+  }
+
   comprar() {
     // vou mudar pra buscar pelo id quando for fazer o http
-    this.route.navigate(['comprar']);
+    this.route.navigate(['/']);
   }
 }

@@ -5,6 +5,8 @@ import {AdicionarProdutoComponent} from './paths/adicionar-produto/adicionar-pro
 import {HistoricoVendasComponent} from './paths/historico-vendas/historico-vendas.component';
 import {AdicionarIngredienteComponent} from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
 import {NaoEncontradaComponent} from './paths/nao-encontrada/nao-encontrada.component';
+import {ComprarComponent} from './paths/comprar/comprar.component';
+import {LoginComponent} from './paths/login/login.component';
 
 
 const routes: Routes = [{path: 'produtos', loadChildren: () => import('./paths/produtos/produtos.module').then(m => m.ProdutosModule)},
@@ -17,7 +19,10 @@ const routes: Routes = [{path: 'produtos', loadChildren: () => import('./paths/p
   {path: 'adicionar-produto', component: AdicionarProdutoComponent},
   {path: 'historico-vendas', component: HistoricoVendasComponent},
   {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent},
-  {path: '**', component: NaoEncontradaComponent}
+  {path: 'comprar', component: ComprarComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: NaoEncontradaComponent},
+
 
 ];
 
