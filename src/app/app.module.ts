@@ -14,6 +14,9 @@ import { HistoricoVendasComponent } from './paths/historico-vendas/historico-ven
 import { AdicionarIngredienteComponent } from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
 import { NaoEncontradaComponent } from './paths/nao-encontrada/nao-encontrada.component';
 import { ComprarComponent } from './paths/comprar/comprar.component';
+import {AuthService} from './paths/login/auth.service';
+import {FormsModule} from '@angular/forms';
+import { NaoLogadoComponent } from './paths/nao-logado/nao-logado.component';
 
 
 
@@ -31,13 +34,15 @@ import { ComprarComponent } from './paths/comprar/comprar.component';
     HistoricoVendasComponent,
     AdicionarIngredienteComponent,
     NaoEncontradaComponent,
-    ComprarComponent
+    ComprarComponent,
+    NaoLogadoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

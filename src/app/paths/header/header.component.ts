@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../login/auth.service';
+import {Usuario} from '../login/usuario';
+import {AuthGuard} from '../login/auth.guard';
 
 
 @Component({
@@ -8,7 +12,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   mudar = false;
-
+  eAdm = true;
 
   aparecerMenu() {
     const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
@@ -22,10 +26,15 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  constructor() {
+  constructor(private route: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
   }
 
+  sair() {
+    alert('saindo...');
+    this.authService.logout();
+    this.route.navigate(['login']);
+  }
 }

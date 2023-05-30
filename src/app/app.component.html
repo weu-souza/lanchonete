@@ -1,11 +1,15 @@
-<section class="bg-container">
-  <app-header></app-header>
-  <div class="container-app  my-5 justify-content-around me-lg-auto ms-lg-5 me-md-auto ms-md-2 me-sm-auto me-sm-2 w-100">
+<ng-template #naologado class="d-grid"><app-nao-logado></app-nao-logado></ng-template>
+<section class="bg-container d-grid">
+  <app-header *ngIf="mostrarMenu else naologado "></app-header>
+
+
+  <div
+    class="container-app  my-5 justify-content-around me-lg-auto ms-lg-5 me-md-auto ms-md-2 me-sm-auto me-sm-2 w-100">
     <router-outlet></router-outlet>
   </div>
 
-  <div class="footer-container">
-    <app-footer ></app-footer>
+  <div *ngIf="mostrarMenu" class="footer-container">
+    <app-footer></app-footer>
   </div>
 </section>
 

@@ -76,6 +76,16 @@ $font-700:  700 ;
   a:hover {
     background: $color-hover;
   }
+  .sair-mobile{
+    color: $color-3;
+    font-family: $font-babe;
+    border-bottom: 1px solid $color-2;
+
+    padding: 10px;
+  }
+  .sair-mobile:hover {
+    background: $color-hover;
+  }
 }
 
 

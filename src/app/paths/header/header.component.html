@@ -28,25 +28,25 @@
           <a class="nav-link" routerLink="comprar">Carrinho</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="adicionar-produto">Adicionar produto</a>
+          <a class="nav-link" routerLink="adicionar-produto" *ngIf="eAdm">Adicionar produto</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="adicionar-ingredientes">Adicionar ingrediente</a>
+          <a class="nav-link" routerLink="adicionar-ingredientes" *ngIf="eAdm">Adicionar ingrediente</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="historico-vendas">Historico de vendas</a>
+          <a class="nav-link" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
         </li>
 
-
+        <form class="d-flex ms-5" role="search">
+          <input class="form-control me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
+          <button class="btn botao" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
 
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
-        <button class="btn botao" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
 
+      <button class="btn botao ms-4" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i></button>
     </div>
 
 
@@ -67,17 +67,18 @@
       <a class="nav-link" routerLink="comprar">Carrinho</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="adicionar-produto">Adicionar produto</a>
+      <a class="nav-link mx-2" routerLink="adicionar-produto" *ngIf="eAdm">Adicionar produto</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="adicionar-ingredientes">Adicionar ingrediente</a>
+      <a class="nav-link mx-2" routerLink="adicionar-ingredientes" *ngIf="eAdm">Adicionar ingrediente</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link mx-2" routerLink="historico-vendas">Historico de vendas</a>
+      <a class="nav-link mx-2" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
     </li>
 
-
+    <button class="btn  sair-mobile" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i></button>
   </ul>
+
 </div>
 
 

@@ -7,20 +7,28 @@ import {AdicionarIngredienteComponent} from './paths/adicionar-ingrediente/adici
 import {NaoEncontradaComponent} from './paths/nao-encontrada/nao-encontrada.component';
 import {ComprarComponent} from './paths/comprar/comprar.component';
 import {LoginComponent} from './paths/login/login.component';
+import {RegistroComponent} from './paths/registro/registro.component';
+import {AuthGuard} from './paths/login/auth.guard';
 
 
-const routes: Routes = [{path: 'produtos', loadChildren: () => import('./paths/produtos/produtos.module').then(m => m.ProdutosModule)},
+const routes: Routes = [{
+  path: 'produtos',
+  loadChildren: () => import('./paths/produtos/produtos.module').then(m => m.ProdutosModule),
+  canActivate: [AuthGuard]
+},
   {
     path: 'produtos-categorias',
-    loadChildren: () => import('./paths/produtos-categoria/produtos-categoria.module').then(m => m.ProdutosCategoriaModule)
+    loadChildren: () => import('./paths/produtos-categoria/produtos-categoria.module').then(m => m.ProdutosCategoriaModule),
+    canActivate: [AuthGuard]
   },
-  {path: '', redirectTo: 'produtos-categorias', pathMatch: 'full'},
-  {path: 'promocoes', component: PromocoesComponent},
-  {path: 'adicionar-produto', component: AdicionarProdutoComponent},
-  {path: 'historico-vendas', component: HistoricoVendasComponent},
-  {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent},
-  {path: 'comprar', component: ComprarComponent},
+  {path: '', redirectTo: 'produtos-categorias', pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: 'promocoes', component: PromocoesComponent, canActivate: [AuthGuard]},
+  {path: 'adicionar-produto', component: AdicionarProdutoComponent, canActivate: [AuthGuard]},
+  {path: 'historico-vendas', component: HistoricoVendasComponent, canActivate: [AuthGuard]},
+  {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent, canActivate: [AuthGuard]},
+  {path: 'comprar', component: ComprarComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
+  {path: 'registrar', component: RegistroComponent},
   {path: '**', component: NaoEncontradaComponent},
 
 
