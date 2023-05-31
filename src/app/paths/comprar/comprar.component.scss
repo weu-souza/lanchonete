@@ -22,7 +22,6 @@ section {
   }
 
   li {
-    display: flex;
     width: 95%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 8px;
@@ -30,6 +29,7 @@ section {
     margin: 10px 0;
     height: 100px;
     font-family: $font-babe;
+    font-size: 18px;
     color: $color-3;
 
     background: $color-bg;

@@ -12,7 +12,8 @@ import {AuthGuard} from '../login/auth.guard';
 })
 export class HeaderComponent implements OnInit {
   mudar = false;
-  eAdm = true;
+  eAdm = this.authService.estaAutenticadoAdm();
+
 
   aparecerMenu() {
     const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
@@ -30,7 +31,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.mostrarMenu.subscribe(
+      mostrar => this.eAdm = mostrar
+    );
   }
+
 
   sair() {
     alert('saindo...');

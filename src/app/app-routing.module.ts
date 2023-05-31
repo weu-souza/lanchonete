@@ -9,6 +9,7 @@ import {ComprarComponent} from './paths/comprar/comprar.component';
 import {LoginComponent} from './paths/login/login.component';
 import {RegistroComponent} from './paths/registro/registro.component';
 import {AuthGuard} from './paths/login/auth.guard';
+import {GuardAdmGuard} from './paths/login/guard-adm.guard';
 
 
 const routes: Routes = [{
@@ -23,9 +24,9 @@ const routes: Routes = [{
   },
   {path: '', redirectTo: 'produtos-categorias', pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'promocoes', component: PromocoesComponent, canActivate: [AuthGuard]},
-  {path: 'adicionar-produto', component: AdicionarProdutoComponent, canActivate: [AuthGuard]},
-  {path: 'historico-vendas', component: HistoricoVendasComponent, canActivate: [AuthGuard]},
-  {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent, canActivate: [AuthGuard]},
+  {path: 'adicionar-produto', component: AdicionarProdutoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
+  {path: 'historico-vendas', component: HistoricoVendasComponent, canActivate: [GuardAdmGuard, AuthGuard]},
+  {path: 'adicionar-ingredientes', component: AdicionarIngredienteComponent, canActivate: [GuardAdmGuard, AuthGuard]},
   {path: 'comprar', component: ComprarComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'registrar', component: RegistroComponent},

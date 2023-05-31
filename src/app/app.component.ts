@@ -7,7 +7,7 @@ import {AuthService} from './paths/login/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  mostrarMenu = false;
+  mostrarMenu = this.authService.estaAutenticado();
   title = 'lanchonete';
 
   constructor(private authService: AuthService) {

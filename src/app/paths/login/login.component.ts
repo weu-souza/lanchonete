@@ -11,6 +11,7 @@ import {Usuario} from './usuario';
 export class LoginComponent implements OnInit {
   usuario: Usuario = new Usuario();
 
+
   constructor(private route: Router, private authService: AuthService) {
   }
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   logar() {
     // apos fazer o http vou mudar
-    if (this.authService.login(this.usuario)) {
+    if (this.authService.login(this.usuario) && this.authService.login(this.usuario)) {
       this.route.navigate(['/']);
       return;
     }
