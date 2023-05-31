@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoginComponent} from '../login/login.component';
+import {AuthService} from '../login/auth.service';
 
 @Component({
   selector: 'app-nao-logado',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaoLogadoComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(loginService: AuthService) {
+  }
 
   ngOnInit(): void {
   }
-
 }

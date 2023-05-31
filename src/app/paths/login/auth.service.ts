@@ -17,6 +17,7 @@ export class AuthService {
   estaAutenticado(): boolean {
     return !!sessionStorage.getItem('access-token');
   }
+
   estaAutenticadoAdm(): boolean {
     return !!sessionStorage.getItem('access-tokenAdm');
   }
@@ -28,8 +29,7 @@ export class AuthService {
       this.eAdm.emit(this.estaAutenticadoAdm());
       this.mostrarMenu.emit(this.estaAutenticadoAdm());
       return true;
-    }
-    else if (usuario.email === 'weu@email.com' && usuario.senha === '123') {
+    } else if (usuario.email === 'weu@email.com' && usuario.senha === '123') {
       sessionStorage.setItem('access-token', this.accessToken);
       this.mostrarMenu.emit(this.estaAutenticado());
       return true;

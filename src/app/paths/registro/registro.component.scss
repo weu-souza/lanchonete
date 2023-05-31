@@ -1,0 +1,40 @@
+$color-button: #E7AB9A;
+$color-bg: #EDE9D5;
+$color-2: #DF7857;
+$color-3: #617143;
+$font-roboto: 'roboto', serif;
+$font-babe: 'Rajdhani', sans-serif ;
+$font-700:  700 ;
+$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+
+@mixin botao() {
+
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+  font-family: $font-roboto;
+}
+
+.registro-bg{
+
+  button{
+    @include botao
+  }
+  button:hover{
+    background: $color-hover;
+  }
+  input::placeholder{
+    font-family: $font-roboto;
+
+  }
+
+  textarea::placeholder{
+    font-family: $font-roboto;
+
+  }
+  label{
+    font-family: $font-roboto;
+  }
+
+
+}

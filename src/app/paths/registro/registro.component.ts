@@ -12,4 +12,7 @@ export class RegistroComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registrar() {
+    console.log('registrado');
+  }
 }
