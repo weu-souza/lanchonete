@@ -11,15 +11,16 @@
     <tbody class="tbody-table">
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>hamburguer</td>
-      <td>{{preco | currency:"BRL"}}</td>
+      <td class="tabela">Mark</td>
+      <td class="tabela">hamburguer</td>
+      <td class="tabela">{{preco | currency:"BRL"}}</td>
+      <td class="border-0"><button class="btn remove-button " (click)="remover()"><i class="fa-solid fa-xmark"></i></button></td>
     </tr>
     </tbody>
     <tfoot>
     <tr>
       <th scope="col">total</th>
-      <td rowspan="3">{{total | currency:"BRL"}}</td>
+      <td rowspan="3" class="tabela ">{{total | currency:"BRL"}}</td>
     </tr>
 
     </tfoot>

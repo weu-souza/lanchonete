@@ -6,6 +6,13 @@ $color-3:#617143;
 $font-roboto:'roboto', serif;
 $font-babe:'Rajdhani', sans-serif;
 $font-700:  700 ;
+@mixin botao() {
+
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+
+}
 .tabela{
   thead{
     background: $color-button;
@@ -19,7 +26,9 @@ $font-700:  700 ;
       font-family: $font-roboto;
     }
     font-family: $font-babe;
-
+    .remove-button{@include botao()}
+    .remove-button:hover{
+      background: $color-hover;}
   }
 
   tfoot{
@@ -31,7 +40,7 @@ $font-700:  700 ;
     font-family: $font-babe;
 
   }
-  td:hover{
+  .tabela:hover{
     background: #f8f8f8;
   }
 }

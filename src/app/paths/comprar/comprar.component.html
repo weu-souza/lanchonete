@@ -1,18 +1,19 @@
 <section>
   <h2 class="cart-title ms-4">Comprar</h2>
   <div>
-    <ul >
+    <ul>
       <li class="justify-content-between align-items-center d-flex ">
 
         <img [src]="$any('assets/img/hamburguer.jpg')">
           <p>hamburguer</p>
-          <p>preço</p>
+          <p>R$ 20,00</p>
 
 
         <button class="remove-button" (click)="removeProdutoCarrinho()"><i class="fa-solid fa-xmark"></i></button>
       </li>
+
     </ul>
-    <h2 class="cart-total ms-4">Total: total</h2>
+    <h2 class="cart-total ms-4">Total:R$ 20,00</h2>
     <button class="buy-button btn ms-5" (click)="comprar()">Comprar</button>
   </div>
 </section>

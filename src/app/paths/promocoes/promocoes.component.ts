@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../login/auth.service';
 
 @Component({
   selector: 'app-promocoes',
@@ -7,8 +8,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./promocoes.component.scss']
 })
 export class PromocoesComponent implements OnInit {
+  eAdm = this.authService.estaAutenticadoAdm();
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
   }
@@ -16,5 +19,13 @@ export class PromocoesComponent implements OnInit {
   comprar() {
     // vou mudar pra buscar pelo id quando for fazer o http
     this.route.navigate(['comprar']);
+  }
+
+  remover() {
+
+  }
+
+  atualizar() {
+
   }
 }

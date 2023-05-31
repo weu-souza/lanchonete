@@ -14,4 +14,7 @@ export class HistoricoVendasComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  remover() {
+
+  }
 }

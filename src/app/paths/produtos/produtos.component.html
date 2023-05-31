@@ -8,7 +8,12 @@
         <h5 class="card-title">Hamburguer</h5>
         <p class="card-text">ingredientes</p>
         <p class="card-text">25 R$</p>
-        <a class="btn btn-card" (click)="comprar()">Comprar</a>
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-card" (click)="comprar()">Comprar</a>
+          <button class="btn remove-button" (click)="remover()" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn remove-button" (click)="atualizar()" *ngIf="eAdm"><i class="fa-solid fa-pen-to-square"></i></button>
+        </div>
+
       </div>
 
     </div>

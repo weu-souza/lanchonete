@@ -25,4 +25,10 @@ $font-700:  700 ;
   .btn-card:hover{
     background: $color-hover;
   }
+  .remove-button{
+    @include botao
+  }
+  .remove-button:hover{
+    background: $color-hover;
+  }
 }

@@ -52,4 +52,12 @@ export class AdicionarIngredienteComponent implements OnInit {
   addPromocao() {
     console.log('promoção adicionada');
   }
+
+  atualizarPromocao() {
+
+  }
+
+  atualizarProduto() {
+
+  }
 }
