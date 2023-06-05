@@ -1,47 +1,93 @@
-
-<section class="contato-bg p-5 rounded d-grid">
+<form class="contato-bg p-5 rounded d-grid" [formGroup]="formAddProduto">
   <!--    nome do produto -->
   <div class="mb-3 d-grid mx-auto mb-5">
     <label for="produto" class="form-label">nome do produto</label>
-    <input type="text" class="form-control  border-0" id="produto" placeholder="nome do produto">
+    <input type="text" class="form-control  border-0" id="produto" placeholder="nome do produto" formControlName="nome"
+           [class.valid]="formAddProduto.controls['nome'].valid"
+           [class.invalid]="formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">
+    <div *ngIf="formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">
+      <small class="error-message" *ngIf="formAddProduto.controls['nome'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+
+    </div>
   </div>
 
   <div class="mb-3 d-grid mx-auto mb-5">
     <!--    preço do produto -->
     <label for="preco" class="form-label">preço </label>
-    <input type="number" class="form-control  border-0" id="preco" placeholder="R$ 00,00">
+    <input type="number" class="form-control  border-0" id="preco" placeholder="R$ 00,00" formControlName="preco"
+           [class.valid]="formAddProduto.controls['preco'].valid"
+           [class.invalid]="formAddProduto.controls['preco'].invalid &&
+           (formAddProduto.controls['preco'].touched || formAddProduto.controls['preco'].dirty)">
+
+    <div *ngIf="formAddProduto.controls['preco'].invalid &&
+           (formAddProduto.controls['preco'].touched || formAddProduto.controls['preco'].dirty)">
+
+      <small class="error-message" *ngIf="formAddProduto.controls['preco'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+      <small class="error-message" *ngIf="formAddProduto.controls['preco'].hasError('min')">
+        Esse campo precisa ser maior que 00,00.
+      </small>
+    </div>
   </div>
-<!--ingredientes do produto-->
+
+  <!--ingredientes do produto-->
   <div class="mb-3 d-grid mx-auto mb-5">
     <label for="texto" class="form-label ">ingredientes</label>
-    <textarea class="form-control border-0" id="texto" rows="5" placeholder="digite sua mensagem..."></textarea>
+    <textarea class="form-control " id="texto" placeholder="digite o ingrediente..." formControlName="ingredientes"
+              [class.valid]="formAddProduto.controls['ingredientes'].valid"
+              [class.invalid]="formAddProduto.controls['ingredientes'].invalid &&
+           (formAddProduto.controls['ingredientes'].touched || formAddProduto.controls['ingredientes'].dirty)"></textarea>
+
+    <div *ngIf="formAddProduto.controls['ingredientes'].invalid &&
+           (formAddProduto.controls['ingredientes'].touched || formAddProduto.controls['ingredientes'].dirty)">
+      <small class="error-message" *ngIf="formAddProduto.controls['nome'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+
+    </div>
   </div>
-<!--imagem-->
+  <!--imagem-->
   <div class="mb-3 mx-auto">
-    <label for="formFile" class="form-label" ><span class="p-2 rounded img-label" id="span_imagem" [innerHtml]="texto()" ></span></label>
-    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)">
+    <label for="formFile" class="form-label"><span class="p-2 rounded img-label" id="span_imagem"
+                                                   [innerHtml]="texto()"></span></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)"
+           formControlName="imagem"
+           [class.valid]="formAddProduto.controls['imagem'].valid"
+           [class.invalid]="formAddProduto.controls['imagem'].invalid &&
+           (formAddProduto.controls['imagem'].touched || formAddProduto.controls['imagem'].dirty)">
 
   </div>
-<!--botão de enviar-->
+  <!--botão de enviar-->
   <div class="d-flex mx-auto">
     <div class="col-auto ">
-      <button type="submit" class="btn  mb-3" (click)="addProduto()">Adicionar Produto</button>
+      <button type="submit" class="btn  mb-3" (click)="addProduto()" [disabled]="formAddProduto.invalid">Adicionar
+        Produto
+      </button>
     </div>
     <div class="col-auto ms-5">
-      <button type="submit" class="btn  mb-3" (click)="addPromocao()">Adicionar Promoção</button>
+      <button type="submit" class="btn  mb-3" (click)="addPromocao()" [disabled]="formAddProduto.invalid">Adicionar
+        Promoção
+      </button>
     </div>
 
   </div>
   <div class="d-flex mx-auto">
     <div class="col-auto">
-      <button type="submit" class="btn  mb-3" (click)="atualizarProduto()">Atualizar Produto</button>
+      <button type="submit" class="btn  mb-3" (click)="atualizarProduto()" [disabled]="formAddProduto.invalid">Atualizar
+        Produto
+      </button>
     </div>
     <div class="col-auto ms-5">
-      <button type="submit" class="btn  mb-3" (click)="addPromocao()">Atualizar Promoção</button>
+      <button type="submit" class="btn  mb-3" (click)="addPromocao()" [disabled]="formAddProduto.invalid">Atualizar
+        Promoção
+      </button>
     </div>
   </div>
 
-
-
-</section>
+</form>
 

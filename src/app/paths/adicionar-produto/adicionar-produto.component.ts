@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Produto} from './produto';
+import {ProdutoService} from './produto.service';
 
 @Component({
   selector: 'app-contato',
@@ -7,6 +10,22 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AdicionarProdutoComponent implements OnInit {
   span: HTMLElement;
+  formAddProduto: FormGroup;
+  produto: Produto = new Produto();
+
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  }
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  createForm() {
+    this.formAddProduto = this.fb.group({
+      nome: [this.produto.nome, [Validators.required]],
+      imagem: [this.produto.imagem, [Validators.required]]
+    });
+  }
 
   texto() {
     return 'escolha uma imagem';
@@ -16,7 +35,6 @@ export class AdicionarProdutoComponent implements OnInit {
     this.span = document.getElementById('span_imagem') as HTMLElement;
     const inputTarget = event.target;
     const file = inputTarget.files[0];
-
     if (file) {
       const reader = new FileReader();
 
@@ -29,18 +47,22 @@ export class AdicionarProdutoComponent implements OnInit {
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.span.appendChild(img);
+        this.formAddProduto.value.imagem = String(readerTarget.result);
       });
       reader.readAsDataURL(file);
+
     } else {
       this.span.innerHTML = this.texto();
     }
 
   }
 
-  constructor() {
+  enviar() {
+
+    console.log('enviar', this.formAddProduto.value);
   }
 
-  ngOnInit(): void {
+  atualizar() {
+    console.log('atualizar', this.formAddProduto.value);
   }
-
 }

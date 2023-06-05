@@ -18,8 +18,15 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
 .contato-bg{
   //background: $color-bg;
+  input:focus{
+    outline: none;
+    box-shadow: none;
+  }
   button{
     @include botao
+  }
+  .error-message {
+    color: red;
   }
   button:hover{
     background: $color-hover;

@@ -19,13 +19,6 @@ table {
 a{
   text-decoration: none;
 }
-
-textarea:focus, input:focus, select:focus,input,select {
-  box-shadow: 0 0 0 0;
-  outline: 0;
-  border: none;
-
-}
 input[type=number],input[type=number]:focus {
   -moz-appearance:textfield;
 }

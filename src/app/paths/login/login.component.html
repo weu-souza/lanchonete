@@ -1,23 +1,40 @@
-  <section class="login-bg p-5 rounded d-grid">
-    <div class="mb-3 d-grid mx-auto mb-3">
-      <!--    email -->
-      <label  for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-      <input [(ngModel)]="usuario.email" type="email" class="form-control" id="staticEmail" placeholder="email@email.com">
-    </div>
-    <div class="mb-3 d-grid mx-auto mb-4">
-      <!--   senha -->
-      <label  for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
-      <input [(ngModel)]="usuario.senha" type="password" class="form-control" id="inputPassword" placeholder="digite sua senha">
-    </div>
+<form class="login-bg p-5 rounded d-grid" [formGroup]="formLogin" (ngSubmit)="logar()">
+  <div class="mb-3 d-grid mx-auto mb-3">
+    <!--    email -->
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <input type="email" class="form-control" id="staticEmail"
+           placeholder="email@email.com"
+           formControlName="email"
+           [class.valid]="formLogin.controls['email'].valid"
+           [class.invalid]="formLogin.controls['email'].invalid &&
+(formLogin.controls['email'].touched || formLogin.controls['email'].dirty)">
+    <div
+      *ngIf="formLogin.controls['email'].invalid && (formLogin.controls['email'].touched || formLogin.controls['email'].dirty)">
+      <small class="error-message" *ngIf="formLogin.controls['email'].hasError('email')">
+        Email invalido!
+      </small>
 
-    <div class="d-flex mx-auto">
-      <div class="col-auto ">
-        <button type="submit" class="btn  mb-3" (click)="logar()">login</button>
-      </div>
-      <div class="col-auto ms-3">
-        <button type="submit" class="btn  mb-3" (click)="registrar()">registrar</button>
-      </div>
     </div>
+  </div>
 
-  </section>
+  <div class="mb-3 d-grid mx-auto mb-4">
+    <!--   senha -->
+    <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
+    <input type="password" class="form-control" id="inputPassword"
+           placeholder="digite sua senha"
+           formControlName="senha" [class.valid]="formLogin.controls['senha'].valid"
+           [class.invalid]="formLogin.controls['senha'].invalid &&
+(formLogin.controls['email'].touched || formLogin.controls['senha'].dirty)">
+  </div>
+
+  <div class="d-flex mx-auto">
+    <div class="col-auto ">
+      <input type="submit" class="btn  mb-3 botao" [disabled]="formLogin.invalid" value="login">
+    </div>
+    <div class="col-auto ms-3">
+      <button type="submit" class="btn  mb-3" (click)="registrar()">registrar</button>
+    </div>
+  </div>
+</form>
+
 

@@ -1,12 +1,13 @@
 $color-bg: #EDE9D5;
+$color-2: #DF7857;
 $font-roboto: 'roboto', serif;
 .login-container{
   background: $color-bg;
   h1{
     font-family: $font-roboto;
     font-weight: 700;
-    color: #000;
     font-size: 40px;
+    color: $color-2;
   }
 
 }

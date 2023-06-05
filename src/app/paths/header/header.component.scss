@@ -4,8 +4,8 @@ $color-2: #DF7857;
 $color-3: #617143;
 $color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 $font-roboto: 'roboto', serif;
-$font-babe: 'Rajdhani', sans-serif ;
-$font-700:  700 ;
+$font-babe: 'Rajdhani', sans-serif;
+$font-700: 700;
 @mixin botao() {
 
   color: #fff;
@@ -13,7 +13,6 @@ $font-700:  700 ;
   font-weight: $font-700;
 
 }
-
 
 
 .nav-bg {
@@ -24,6 +23,10 @@ $font-700:  700 ;
 
   }
 
+  input:focus, .botao:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
   .botao:hover {
 
@@ -75,13 +78,15 @@ $font-700:  700 ;
   a:hover {
     background: $color-hover;
   }
-  .sair-mobile{
+
+  .sair-mobile {
     color: $color-3;
     font-family: $font-babe;
     border-bottom: 1px solid $color-2;
 
     padding: 10px;
   }
+
   .sair-mobile:hover {
     background: $color-hover;
   }

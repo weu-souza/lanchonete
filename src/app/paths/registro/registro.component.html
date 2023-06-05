@@ -1,9 +1,24 @@
 <div class="registro-bg">
-  <section class="d-flex flex-wrap py-5 ">
+  <form class="d-flex flex-wrap py-5 " [formGroup]="formRegistro">
     <!--  email-->
     <div class="mb-3 mx-auto ">
       <label for="exampleFormControlInput1" class="form-label">Email </label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+
+             formControlName="email"
+             [class.valid]="formRegistro.controls['email'].valid"
+             [class.invalid]="formRegistro.controls['email'].invalid &&
+(formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty)">
+      <div
+        *ngIf="formRegistro.controls['email'].invalid && (formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty)">
+        <small class="error-message" *ngIf="formRegistro.controls['email'].hasError('email')">
+          Email invalido!
+        </small>
+        <small class="error-message" *ngIf="formRegistro.controls['email'].hasError('required')">
+          Esse campo precisa ser preenchido.
+        </small>
+
+      </div>
     </div>
 
     <div class="row g-3 align-items-center mx-auto">
@@ -12,7 +27,17 @@
       </div>
       <div class="col-auto">
         <label for="inputPassword6" class="col-form-label">Password</label>
-        <input type="password" id="inputPassword6" class="form-control">
+        <input type="password" id="inputPassword6" class="form-control" formControlName="senha"
+               [class.valid]="formRegistro.controls['senha'].valid"
+               [class.invalid]="formRegistro.controls['senha'].invalid &&
+(formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
+        <div *ngIf="formRegistro.controls['senha'].invalid &&
+           (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
+          <small class="error-message" *ngIf="formRegistro.controls['senha'].hasError('required')">
+            Esse campo precisa ser preenchido.
+          </small>
+
+        </div>
       </div>
     </div>
     <div class="row g-3 align-items-center mx-auto">
@@ -21,15 +46,30 @@
       </div>
       <div class="col-auto">
         <label for="nome" class="col-form-label">nome</label>
-        <input type="text" id="nome" class="form-control">
+        <input type="text" id="nome" class="form-control" formControlName="nome"
+               [class.valid]="formRegistro.controls['nome'].valid"
+               [class.invalid]="formRegistro.controls['nome'].invalid &&
+           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
+        <div *ngIf="formRegistro.controls['nome'].invalid &&
+           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
+          <small class="error-message" *ngIf="formRegistro.controls['nome'].hasError('minlength')">
+            Esse campo precisa de no minimo 4 caracteres.
+          </small>
+          <small class="error-message" *ngIf="formRegistro.controls['nome'].hasError('required')">
+            Esse campo precisa ser preenchido.
+          </small>
+
+        </div>
+
       </div>
     </div>
 
 
-  </section>
+  </form>
   <div class="d-flex my-5">
     <div class="col-auto mx-auto">
-      <button type="submit" class="btn  mb-3" (click)="registrar()">registrar</button>
+      <button type="submit" class="btn  mb-3" (click)="registrar()" *ngIf="mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
+      <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
     </div>
   </div>
 </div>

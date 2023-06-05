@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg nav-bg">
   <div class="container-fluid">
-    <button (click)="aparecerMenu()" class="navbar-toggler botao " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="btn-mobile">
+    <button (click)="aparecerMenu()" class="navbar-toggler botao " type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation" id="btn-mobile">
       <i class="fa-solid fa-bars p-1"></i>
     </button>
 
@@ -12,14 +14,14 @@
       </form>
     </div>
 
-<!--    menu   -->
+    <!--    menu   -->
     <div class="collapse navbar-collapse nav_menu-principal" id="navbarSupportedContent">
       <img src="assets/img/16-hamburguer.svg" alt="foto de hamburgue gostoso" width="100" height="100">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
         <li class="nav-item">
-          <a class="nav-link"  routerLink="produtos-categorias">Produtos</a>
+          <a class="nav-link" routerLink="produtos-categorias">Produtos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="promocoes">Promoções</a>
@@ -38,6 +40,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
+        </li>
 
         <form class="d-flex ms-5" role="search">
           <input class="form-control me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
@@ -46,7 +51,8 @@
 
       </ul>
 
-      <button class="btn botao ms-4" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i></button>
+      <button class="btn botao ms-4" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
+      </button>
     </div>
 
 
@@ -58,7 +64,7 @@
   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
     <li class="nav-item ">
-      <a class="nav-link mx-2 nav-first"  routerLink="produtos-categorias">Produtos</a>
+      <a class="nav-link mx-2 nav-first" routerLink="produtos-categorias">Produtos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link mx-2" routerLink="promocoes">Promoções</a>
@@ -76,7 +82,12 @@
       <a class="nav-link mx-2" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
     </li>
 
-    <button class="btn  sair-mobile" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i></button>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
+    </li>
+
+    <button class="btn  sair-mobile" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
+    </button>
   </ul>
 
 </div>
