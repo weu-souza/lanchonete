@@ -1,22 +1,27 @@
 import {Injectable} from '@angular/core';
-import {Produto} from './produto';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Produto, Produtos} from './produto';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
-  private dataSource = new BehaviorSubject(new Produto());
-  data = this.dataSource.asObservable();
+  produtos: Produto[] = Produtos;
 
   constructor() {
 
   }
 
-  updateDataSelection(produtos: Produto) {
-this.dataSource.next(produtos);
+  postProduto(produtos: Produto) {
+    return this.produtos.push(produtos);
+  }
+
+  excluirProduto(id: number) {
+    return this.produtos.filter(produto => produto.id !== id);
+  }
+
+  getDataSelection(): Observable<Produto[]> {
+    return of(this.produtos);
   }
 
 }

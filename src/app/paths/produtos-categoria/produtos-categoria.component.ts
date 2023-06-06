@@ -11,16 +11,19 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProdutosCategoriaComponent implements OnInit {
   eAdm = this.authService.estaAutenticadoAdm();
-  produto: Produto[];
+  produto: Produto = new Produto();
+  produtos: Produto[];
 
   constructor(private authService: AuthService, private produtoService: ProdutoService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.produtoService.getDataSelection().subscribe(produto => this.produtos = produto);
   }
 
-  remover() {
-
+  remover(id: number) {
+    this.produtos = this.produtos.filter(produtos => produtos.id !== id);
+    this.produtoService.excluirProduto(this.produto.id);
   }
 
   atualizar() {

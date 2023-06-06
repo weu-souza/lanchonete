@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Produto} from '../adicionar-produto/produto';
+import {ProdutoService} from '../adicionar-produto/produto.service';
 
 @Component({
   selector: 'app-adicionar-ingrediente',
@@ -12,8 +13,9 @@ export class AdicionarIngredienteComponent implements OnInit {
   span: HTMLElement;
   formAddProduto: FormGroup;
   produto: Produto = new Produto();
+  produtos: Produto[];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
 
   }
 
@@ -51,6 +53,7 @@ export class AdicionarIngredienteComponent implements OnInit {
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.span.appendChild(img);
+        this.formAddProduto.value.imagem = String(readerTarget.result);
       });
       reader.readAsDataURL(file);
     } else {
@@ -61,10 +64,12 @@ export class AdicionarIngredienteComponent implements OnInit {
 
 
   addProduto() {
+    this.produtoService.postProduto(this.formAddProduto.value);
     console.log('produto adicionada');
   }
 
   addPromocao() {
+    this.produtoService.postProduto(this.formAddProduto.value);
     console.log('promoção adicionada');
   }
 

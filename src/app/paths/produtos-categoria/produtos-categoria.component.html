@@ -1,21 +1,21 @@
-  <div class=" row row-cols-1 row-cols-md-2 g-4 ">
-<!--inserir as variaveis aqui-->
+<div class=" row row-cols-1 row-cols-md-2 g-4 ">
+  <!--inserir as variaveis aqui-->
 
-    <div class="card card-container p-2 me-5" *ngFor=" let produtos of produto ">
-      <a routerLink="/produtos">
-        <img [src]="produtos.imagem" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{produtos.nome}}</h5>
-        </div>
-      </a>
-      <div class="d-flex justify-content-end">
-        <button class="btn remove-button" (click)="remover()" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
-        <button class="btn remove-button ms-4" (click)="atualizar()" *ngIf="eAdm"><i class="fa-solid fa-pen-to-square"></i></button>
+  <div class="card card-container p-2 me-5" *ngFor="let produtos of produtos">
+    <a routerLink="/produtos">
+      <img [src]="produtos.imagem" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{produtos.nome}}</h5>
       </div>
+    </a>
+    <div class="d-flex justify-content-end">
+      <button class="btn remove-button" (click)="remover(produtos.id)" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
+      <button class="btn remove-button ms-4" (click)="atualizar()" *ngIf="eAdm"><i
+        class="fa-solid fa-pen-to-square"></i></button>
     </div>
-
-
-
   </div>
+
+
+</div>
 
 

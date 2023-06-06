@@ -1,24 +1,22 @@
-<section >
+<section>
 
   <div class="row row-cols-1 row-cols-md-2 g-4 ">
-<!--inserir as variaveis aqui-->
-    <div class="card card-container p-2 ms-5">
-      <img src="assets/img/hamburguer.jpg" class="card-img-top" alt="...">
+    <!--inserir as variaveis aqui-->
+    <div class="card card-container p-2 ms-5" *ngFor="let produto of produtos">
+      <img [src]="produto.imagem" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title ">Hamburguer</h5>
-        <p class="card-text">Detalhes</p>
-        <p class="card-text">25 R$</p>
+        <h5 class="card-title ">{{produto.nome}}</h5>
+        <p class="card-text">{{produto.ingrediente}}</p>
+        <p class="card-text">{{produto.preco | currency: "BRL"}}</p>
         <div class="d-flex justify-content-between">
           <a class="btn btn-card" (click)="comprar()">Comprar</a>
-          <button class="btn remove-button" (click)="remover()" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
-          <button class="btn remove-button" (click)="atualizar()" *ngIf="eAdm"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="btn remove-button" (click)="remover(produto.id)" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
+          <button class="btn remove-button" (click)="atualizar()" *ngIf="eAdm"><i class="fa-solid fa-pen-to-square"></i>
+          </button>
         </div>
       </div>
 
     </div>
-
-
-
 
 
   </div>

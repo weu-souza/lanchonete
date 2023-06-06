@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Produto} from './produto';
 import {ProdutoService} from './produto.service';
+import {isNumber} from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-contato',
@@ -58,8 +59,8 @@ export class AdicionarProdutoComponent implements OnInit {
   }
 
   enviar() {
+    this.produtoService.postProduto(this.formAddProduto.value);
 
-    console.log('enviar', this.formAddProduto.value);
   }
 
   atualizar() {
