@@ -18,7 +18,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const routes = [{ path: '', component: _produtos_categoria_component__WEBPACK_IMPORTED_MODULE_2__["ProdutosCategoriaComponent"] }];
+const routes = [{ path: '', component: _produtos_categoria_component__WEBPACK_IMPORTED_MODULE_2__["ProdutosCategoriaComponent"] },
+];
 let ProdutosCategoriaRoutingModule = /** @class */ (() => {
     class ProdutosCategoriaRoutingModule {
     }
@@ -50,9 +51,9 @@ let ProdutosCategoriaRoutingModule = /** @class */ (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProdutosCategoriaComponent", function() { return ProdutosCategoriaComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _adicionar_produto_produto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../adicionar-produto/produto */ "./src/app/paths/adicionar-produto/produto.ts");
-/* harmony import */ var _login_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../login/auth.service */ "./src/app/paths/login/auth.service.ts");
-/* harmony import */ var _adicionar_produto_produto_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../adicionar-produto/produto.service */ "./src/app/paths/adicionar-produto/produto.service.ts");
+/* harmony import */ var _classe_produto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../classe/produto */ "./src/app/paths/classe/produto.ts");
+/* harmony import */ var _service_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../service/auth.service */ "./src/app/paths/service/auth.service.ts");
+/* harmony import */ var _service_produto_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../service/produto.service */ "./src/app/paths/service/produto.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
@@ -110,20 +111,20 @@ let ProdutosCategoriaComponent = /** @class */ (() => {
             this.produtoService = produtoService;
             this.route = route;
             this.eAdm = this.authService.estaAutenticadoAdm();
-            this.produto = new _adicionar_produto_produto__WEBPACK_IMPORTED_MODULE_1__["Produto"]();
+            this.produto = new _classe_produto__WEBPACK_IMPORTED_MODULE_1__["Produto"]();
         }
         ngOnInit() {
-            this.produtoService.getDataSelection().subscribe(produto => this.produtos = produto);
+            this.produtoService.getProdutosLista().subscribe(produto => this.produtos = produto);
         }
         remover(id) {
             this.produtos = this.produtos.filter(produtos => produtos.id !== id);
-            this.produtoService.excluirProduto(this.produto.id);
+            this.produtoService.excluirProdutoLista(this.produto.id);
         }
         atualizar() {
         }
     }
-    ProdutosCategoriaComponent.ɵfac = function ProdutosCategoriaComponent_Factory(t) { return new (t || ProdutosCategoriaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_login_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_adicionar_produto_produto_service__WEBPACK_IMPORTED_MODULE_3__["ProdutoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"])); };
-    ProdutosCategoriaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProdutosCategoriaComponent, selectors: [["app-produtos-categoria"]], decls: 2, vars: 1, consts: [[1, "row", "row-cols-1", "row-cols-md-2", "g-4"], ["class", "card card-container p-2 me-5", 4, "ngFor", "ngForOf"], [1, "card", "card-container", "p-2", "me-5"], ["routerLink", "/produtos"], ["alt", "...", 1, "card-img-top", 3, "src"], [1, "card-body"], [1, "card-title"], [1, "d-flex", "justify-content-end"], ["class", "btn remove-button", 3, "click", 4, "ngIf"], ["class", "btn remove-button ms-4", 3, "click", 4, "ngIf"], [1, "btn", "remove-button", 3, "click"], [1, "fa-solid", "fa-xmark"], [1, "btn", "remove-button", "ms-4", 3, "click"], [1, "fa-solid", "fa-pen-to-square"]], template: function ProdutosCategoriaComponent_Template(rf, ctx) { if (rf & 1) {
+    ProdutosCategoriaComponent.ɵfac = function ProdutosCategoriaComponent_Factory(t) { return new (t || ProdutosCategoriaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_produto_service__WEBPACK_IMPORTED_MODULE_3__["ProdutoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"])); };
+    ProdutosCategoriaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ProdutosCategoriaComponent, selectors: [["app-produtos-categoria"]], decls: 2, vars: 1, consts: [[1, "d-flex", "row", "row-cols-1", "row-cols-md-2", "g-4", "p-5", "p-md-4", "w-100"], ["class", "card card-container p-2 me-lg-5 me-md-3 ", 4, "ngFor", "ngForOf"], [1, "card", "card-container", "p-2", "me-lg-5", "me-md-3"], ["routerLink", "/produtos"], ["alt", "...", 1, "card-img-top", 3, "src"], [1, "card-body"], [1, "card-title"], [1, "d-flex", "justify-content-end"], ["class", "btn remove-button", 3, "click", 4, "ngIf"], ["class", "btn remove-button ms-4", 3, "click", 4, "ngIf"], [1, "btn", "remove-button", 3, "click"], [1, "fa-solid", "fa-xmark"], [1, "btn", "remove-button", "ms-4", 3, "click"], [1, "fa-solid", "fa-pen-to-square"]], template: function ProdutosCategoriaComponent_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ProdutosCategoriaComponent_div_1_Template, 9, 4, "div", 1);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -141,7 +142,7 @@ let ProdutosCategoriaComponent = /** @class */ (() => {
                 templateUrl: './produtos-categoria.component.html',
                 styleUrls: ['./produtos-categoria.component.scss']
             }]
-    }], function () { return [{ type: _login_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }, { type: _adicionar_produto_produto_service__WEBPACK_IMPORTED_MODULE_3__["ProdutoService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }]; }, null); })();
+    }], function () { return [{ type: _service_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }, { type: _service_produto_service__WEBPACK_IMPORTED_MODULE_3__["ProdutoService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] }]; }, null); })();
 
 
 /***/ }),
