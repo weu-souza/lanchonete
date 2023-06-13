@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../login/auth.service';
-import {ProdutoService} from '../adicionar-produto/produto.service';
-import {Produto} from '../adicionar-produto/produto';
+import {AuthService} from '../service/auth.service';
+import {ProdutoService} from '../service/produto.service';
+import {Ingrediente, Promocao,} from '../classe/produto';
 
 @Component({
   selector: 'app-promocoes',
@@ -11,14 +11,14 @@ import {Produto} from '../adicionar-produto/produto';
 })
 export class PromocoesComponent implements OnInit {
   eAdm = this.authService.estaAutenticadoAdm();
-  produtos: Produto[] = [];
-  produto: Produto = new Produto();
+  produtos: Promocao[] = [];
+  produto: Promocao = new Promocao();
 
   constructor(private route: Router, private authService: AuthService, private produtoService: ProdutoService) {
   }
 
   ngOnInit(): void {
-    this.produtoService.getDataSelection().subscribe(produto => this.produtos = produto);
+    this.produtoService.getPromocoes().subscribe(produto => this.produtos = produto);
   }
 
   comprar() {
@@ -28,7 +28,7 @@ export class PromocoesComponent implements OnInit {
 
   remover(id: number) {
     this.produtos = this.produtos.filter(produtos => produtos.id !== id);
-    this.produtoService.excluirProduto(this.produto.id);
+    this.produtoService.excluirPromocoes(this.produto.id);
   }
 
   atualizar() {

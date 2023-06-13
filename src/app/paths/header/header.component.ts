@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../login/auth.service';
-import {Usuario} from '../login/usuario';
-import {AuthGuard} from '../login/auth.guard';
+import {AuthService} from '../service/auth.service';
+import {Usuario} from '../classe/usuario';
+import {AuthGuard} from '../guard/auth.guard';
 
 
 @Component({
@@ -42,4 +42,13 @@ export class HeaderComponent implements OnInit {
     this.authService.logout();
     this.route.navigate(['login']);
   }
+
+  sumirMenu() {
+    const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
+    if (this.mudar) {
+      btn.innerHTML = '<i class="fa-solid fa-bars p-1"></i>';
+      this.mudar = false;
+    }
+  }
+
 }

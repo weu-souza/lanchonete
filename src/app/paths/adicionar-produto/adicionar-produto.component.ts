@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Produto} from './produto';
-import {ProdutoService} from './produto.service';
+import {Produto} from '../classe/produto';
+import {ProdutoService} from '../service/produto.service';
 import {isNumber} from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
@@ -59,7 +59,7 @@ export class AdicionarProdutoComponent implements OnInit {
   }
 
   enviar() {
-    this.produtoService.postProduto(this.formAddProduto.value);
+    this.produtoService.postProdutoLista(this.formAddProduto.value);
 
   }
 

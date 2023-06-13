@@ -1,7 +1,12 @@
 <div class="registro-bg">
-  <form class="d-flex flex-wrap py-5 " [formGroup]="formRegistro">
+
+
+  <form class="d-grid py-5 " [formGroup]="formRegistro">
+    <div class="mx-auto d-grid mb-5 h1-bg">
+      <h1 class="h1-registro mb-3 mx-auto"> Registro </h1>
+    </div>
     <!--  email-->
-    <div class="mb-3 mx-auto ">
+    <div class="mb-3 div-input mx-auto">
       <label for="exampleFormControlInput1" class="form-label">Email </label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
 
@@ -20,14 +25,14 @@
 
       </div>
     </div>
-
-    <div class="row g-3 align-items-center mx-auto">
+    <!--senha-->
+    <div class=" mx-auto  div-input">
       <div class="col-auto">
-        <!--senha-->
+
       </div>
       <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label">Password</label>
-        <input type="password" id="inputPassword6" class="form-control" formControlName="senha"
+        <label for="inputPassword6" class="col-form-label">Senha</label>
+        <input type="password" id="inputPassword6" class="form-control" formControlName="senha" placeholder="insira sua senha..."
                [class.valid]="formRegistro.controls['senha'].valid"
                [class.invalid]="formRegistro.controls['senha'].invalid &&
 (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
@@ -40,13 +45,14 @@
         </div>
       </div>
     </div>
-    <div class="row g-3 align-items-center mx-auto">
+    <!--nome-->
+    <div class=" g-3  mx-auto div-input " >
       <div class="col-auto">
-        <!--nome-->
+
       </div>
       <div class="col-auto">
         <label for="nome" class="col-form-label">nome</label>
-        <input type="text" id="nome" class="form-control" formControlName="nome"
+        <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="insira seu nome..."
                [class.valid]="formRegistro.controls['nome'].valid"
                [class.invalid]="formRegistro.controls['nome'].invalid &&
            (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
@@ -68,8 +74,11 @@
   </form>
   <div class="d-flex my-5">
     <div class="col-auto mx-auto">
+      <button type="submit" class="btn  mb-3 me-4" routerLink="/login">Voltar ao login</button>
       <button type="submit" class="btn  mb-3" (click)="registrar()" *ngIf="mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
       <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
+      <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
+
     </div>
   </div>
 </div>

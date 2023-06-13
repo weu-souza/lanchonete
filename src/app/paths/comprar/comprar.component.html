@@ -1,19 +1,24 @@
 <section>
-  <h2 class="cart-title ms-4">Comprar</h2>
-  <div>
+  <div class="mx-auto d-flex mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">Carrinho</h1>
+  </div>
+
+  <div *ngIf="itensCarrinho.length >0 else semProduto" class="d-flex row div-carrinho ">
     <ul>
-      <li class="justify-content-between align-items-center d-flex ">
+      <li class="justify-content-between align-items-center d-flex" *ngFor="let carrinho of itensCarrinho">
 
-        <img [src]="$any('assets/img/hamburguer.jpg')">
-          <p>hamburguer</p>
-          <p>R$ 20,00</p>
+        <img [src]="carrinho.imagem">
+        <p>{{carrinho.nome}}</p>
+        <p>{{carrinho.preco|currency: "BRL"}}</p>
 
 
-        <button class="remove-button" (click)="removeProdutoCarrinho()"><i class="fa-solid fa-xmark"></i></button>
+        <button class="remove-button" (click)="removeProdutoCarrinho(carrinho.id)"><i class="fa-solid fa-xmark"></i>
+        </button>
       </li>
 
     </ul>
-    <h2 class="cart-total ms-4">Total:R$ 20,00</h2>
-    <button class="buy-button btn ms-5" (click)="comprar()">Comprar</button>
+    <h2 class="cart-total ms-4">Total:{{total}}</h2>
+    <button class="buy-button btn w-auto " (click)="comprar()">Comprar</button>
   </div>
+  <ng-template #semProduto>Nenhum produto foi adicionado ao carrinho</ng-template>
 </section>

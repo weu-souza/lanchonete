@@ -16,6 +16,20 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 
 .login-bg{
+
+
+    .h1-bg {
+      border-bottom: 1px solid #ccc;
+      width: 50%;
+
+      .h1-login {
+        color: $color-2;
+        font-family: $font-roboto;
+
+
+    }
+  }
+
   button,.botao{
     @include botao
   }
@@ -39,9 +53,16 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     font-family: $font-roboto;
 
   }
-  label{
+  label {
     font-family: $font-roboto;
+    color: $color-2;
   }
 
+  .div-input{
+    width: 25%;
+    @media (max-width: 500px) {
+      width: 50%;
+    }
+  }
 
 }

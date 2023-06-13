@@ -1,6 +1,9 @@
 <form class="contato-bg p-5 rounded d-grid" [formGroup]="formAddProduto">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">Adicionar itens</h1>
+  </div>
   <!--    nome do produto -->
-  <div class="mb-3 d-grid mx-auto mb-5">
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <label for="produto" class="form-label">nome do produto</label>
     <input type="text" class="form-control  border-0" id="produto" placeholder="nome do produto" formControlName="nome"
            [class.valid]="formAddProduto.controls['nome'].valid"
@@ -15,7 +18,7 @@
     </div>
   </div>
 
-  <div class="mb-3 d-grid mx-auto mb-5">
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <!--    preço do produto -->
     <label for="preco" class="form-label">preço </label>
     <input type="number" class="form-control  border-0" id="preco" placeholder="R$ 00,00" formControlName="preco"
@@ -36,7 +39,7 @@
   </div>
 
   <!--ingredientes do produto-->
-  <div class="mb-3 d-grid mx-auto mb-5">
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <label for="texto" class="form-label ">ingredientes</label>
     <textarea class="form-control " id="texto" placeholder="digite o ingrediente..." formControlName="ingredientes"
               [class.valid]="formAddProduto.controls['ingredientes'].valid"
@@ -52,7 +55,7 @@
     </div>
   </div>
   <!--imagem-->
-  <div class="mb-3 mx-auto">
+  <div class="mb-3 mx-auto ">
     <label for="formFile" class="form-label"><span class="p-2 rounded img-label" id="span_imagem"
                                                    [innerHtml]="texto()"></span></label>
     <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)"

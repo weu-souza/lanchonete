@@ -8,8 +8,8 @@ import {NaoEncontradaComponent} from './paths/nao-encontrada/nao-encontrada.comp
 import {ComprarComponent} from './paths/comprar/comprar.component';
 import {LoginComponent} from './paths/login/login.component';
 import {RegistroComponent} from './paths/registro/registro.component';
-import {AuthGuard} from './paths/login/auth.guard';
-import {GuardAdmGuard} from './paths/login/guard-adm.guard';
+import {AuthGuard} from './paths/guard/auth.guard';
+import {GuardAdmGuard} from './paths/guard/guard-adm.guard';
 
 
 const routes: Routes = [{

@@ -13,6 +13,20 @@ $font-700: 700;
 }
 
 section {
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+
+    .h1-registro {
+      color: $color-2;
+      font-family: $font-roboto;
+
+    }
+  }
+  .div-carrinho{
+    margin-left: 20%;
+    margin-right:20% ;
+  }
   .cart-title {
     font-size: 44px;
     color: #000;
@@ -22,7 +36,6 @@ section {
   }
 
   li {
-    width: 75%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 8px;
     overflow: hidden;

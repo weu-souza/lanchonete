@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../login/auth.service';
-import {Produto} from '../adicionar-produto/produto';
-import {ProdutoService} from '../adicionar-produto/produto.service';
+import {AuthService} from '../service/auth.service';
+import {Ingrediente, Produto} from '../classe/produto';
+import {ProdutoService} from '../service/produto.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -18,12 +18,12 @@ export class ProdutosCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produtoService.getDataSelection().subscribe(produto => this.produtos = produto);
+    this.produtoService.getProdutosLista().subscribe(produto => this.produtos = produto);
   }
 
   remover(id: number) {
     this.produtos = this.produtos.filter(produtos => produtos.id !== id);
-    this.produtoService.excluirProduto(this.produto.id);
+    this.produtoService.excluirProdutoLista(this.produto.id);
   }
 
   atualizar() {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginComponent} from '../login/login.component';
-import {AuthService} from '../login/auth.service';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-nao-logado',

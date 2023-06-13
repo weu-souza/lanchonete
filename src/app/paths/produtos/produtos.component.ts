@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../login/auth.service';
-import {Produto, Produtos} from '../adicionar-produto/produto';
-import {ProdutoService} from '../adicionar-produto/produto.service';
+import {AuthService} from '../service/auth.service';
+import {Ingrediente} from '../classe/produto';
+import {ProdutoService} from '../service/produto.service';
+import {CarrinhoService} from '../service/carrinho.service';
 
 @Component({
   selector: 'app-produtos',
@@ -11,29 +12,37 @@ import {ProdutoService} from '../adicionar-produto/produto.service';
 })
 export class ProdutosComponent implements OnInit {
   eAdm = this.authService.estaAutenticadoAdm();
-  produtos: Produto[] = [];
-  produto: Produto = new Produto();
+  produtos: Ingrediente[] = [];
+  produto: Ingrediente ;
+  carrinho: Ingrediente | null;
 
-  constructor(private route: Router, private authService: AuthService, private produtoService: ProdutoService) {
+  constructor(
+    private route: Router,
+    private authService: AuthService,
+    private produtoService: ProdutoService,
+    private carrinhoS: CarrinhoService) {
   }
 
   ngOnInit(): void {
-    this.produtoService.getDataSelection().subscribe(produto => this.produtos = produto);
+    this.produtoService.obtemIngrediente().subscribe(produto => this.produtos = produto);
+
   }
 
   comprar() {
     // vou mudar pra buscar pelo id quando for fazer o http
-    this.route.navigate(['comprar']);
+    const produto: Ingrediente = {
+     ...this.carrinho,
+    };
+    this.carrinhoS.adicionarAoCarrinho(produto);
   }
 
   remover(id: number) {
     this.produtos = this.produtos.filter(produtos => produtos.id !== id);
-    this.produtoService.excluirProduto(this.produto.id);
+    this.produtoService.excluirIngredientes(this.produto.id);
 
   }
 
   atualizar() {
 
   }
-
 }

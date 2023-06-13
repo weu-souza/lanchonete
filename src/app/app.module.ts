@@ -14,7 +14,7 @@ import {HistoricoVendasComponent} from './paths/historico-vendas/historico-venda
 import {AdicionarIngredienteComponent} from './paths/adicionar-ingrediente/adicionar-ingrediente.component';
 import {NaoEncontradaComponent} from './paths/nao-encontrada/nao-encontrada.component';
 import {ComprarComponent} from './paths/comprar/comprar.component';
-import {AuthService} from './paths/login/auth.service';
+import {AuthService} from './paths/service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NaoLogadoComponent} from './paths/nao-logado/nao-logado.component';
 import {HttpClientModule} from '@angular/common/http';

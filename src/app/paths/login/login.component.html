@@ -1,5 +1,8 @@
 <form class="login-bg p-5 rounded d-grid" [formGroup]="formLogin" (ngSubmit)="logar()">
-  <div class="mb-3 d-grid mx-auto mb-3">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-login mb-3 mx-auto">Login</h1>
+  </div>
+  <div class="mb-3 d-grid mx-auto mb-3 div-input">
     <!--    email -->
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <input type="email" class="form-control" id="staticEmail"
@@ -17,7 +20,7 @@
     </div>
   </div>
 
-  <div class="mb-3 d-grid mx-auto mb-4">
+  <div class="mb-3 d-grid mx-auto mb-4 div-input">
     <!--   senha -->
     <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
     <input type="password" class="form-control" id="inputPassword"
@@ -27,7 +30,7 @@
 (formLogin.controls['email'].touched || formLogin.controls['senha'].dirty)">
   </div>
 
-  <div class="d-flex mx-auto">
+  <div class="d-flex mx-auto my-5">
     <div class="col-auto ">
       <input type="submit" class="btn  mb-3 botao" [disabled]="formLogin.invalid" value="login">
     </div>

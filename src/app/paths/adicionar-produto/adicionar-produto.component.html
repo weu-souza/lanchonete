@@ -1,8 +1,12 @@
 <form class="contato-bg p-5 rounded d-grid" [formGroup]="formAddProduto">
-  <div class="mb-3 d-grid mx-auto mb-5">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">Adicionar Lista de produtos</h1>
+  </div>
+
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <!--    nome do produto -->
     <label for="email" class="form-label">nome do produto</label>
-    <input type="text" class="form-control  border-0" id="email" placeholder="nome do produto" formControlName="nome"
+    <input type="text" class="form-control  border-0 " id="email" placeholder="Digite um nome..." formControlName="nome"
            [class.valid]="formAddProduto.controls['nome'].valid"
            [class.invalid]="formAddProduto.controls['nome'].invalid &&
            (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">

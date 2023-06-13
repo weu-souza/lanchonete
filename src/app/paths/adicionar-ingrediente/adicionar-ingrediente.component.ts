@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Produto} from '../adicionar-produto/produto';
-import {ProdutoService} from '../adicionar-produto/produto.service';
+import {Ingrediente, Produto} from '../classe/produto';
+import {ProdutoService} from '../service/produto.service';
 
 @Component({
   selector: 'app-adicionar-ingrediente',
@@ -12,8 +12,9 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   span: HTMLElement;
   formAddProduto: FormGroup;
-  produto: Produto = new Produto();
+  produto: Ingrediente;
   produtos: Produto[];
+
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
 
@@ -69,7 +70,7 @@ export class AdicionarIngredienteComponent implements OnInit {
   }
 
   addPromocao() {
-    this.produtoService.postProduto(this.formAddProduto.value);
+    this.produtoService.postPromocoes(this.formAddProduto.value);
     console.log('promoção adicionada');
   }
 

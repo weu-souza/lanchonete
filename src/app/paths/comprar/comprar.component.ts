@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Ingrediente} from '../classe/produto';
+import {CarrinhoService} from '../service/carrinho.service';
 
 @Component({
   selector: 'app-comprar',
@@ -7,19 +9,30 @@ import {Router} from '@angular/router';
   styleUrls: ['./comprar.component.scss']
 })
 export class ComprarComponent implements OnInit {
+  itensCarrinho: Ingrediente[];
+  total = 0;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private carrinhoService: CarrinhoService) {
   }
 
   ngOnInit(): void {
+    this.itensCarrinho = this.carrinhoService.obtemCarrinho();
   }
 
-  removeProdutoCarrinho() {
+  calculaTotal() {
+    this.total = this.itensCarrinho.reduce((prev, curr) => prev + (curr.preco * this.itensCarrinho.length), 0);
+  }
 
+  removeProdutoCarrinho(id: number) {
+    this.itensCarrinho = this.itensCarrinho.filter(item => item.id !== id);
+    this.carrinhoService.removerCarrinho(id);
+    this.calculaTotal();
   }
 
   comprar() {
-    // vou mudar pra buscar pelo id quando for fazer o http
-    this.route.navigate(['/']);
+    alert('parabéns, você finalizou a sua compra!');
+    this.carrinhoService.limparCarrinho();
+    this.route.navigate(['produtos']);
   }
+
 }

@@ -4,16 +4,19 @@ $color-2: #DF7857;
 $color-3: #617143;
 $color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 $font-roboto: 'roboto', serif;
-$font-babe: 'Rajdhani', sans-serif ;
-footer{
+$font-babe: 'Rajdhani', sans-serif;
+$max-widith: 600px;
+footer {
   background: $color-bg;
   font-family: $font-roboto;
+
   .footer__container {
     display: flex;
     justify-content: space-evenly;
     flex-flow: row wrap;
     padding: 20px;
   }
+
   .footer__title {
     font-size: 22px;
     font-weight: bold;
@@ -24,16 +27,27 @@ footer{
 
   .footer__about-text {
     width: 400px;
-    text-align: justify;
+
+    text-align:justify;
   }
 
 
-   i {
+  i {
     color: $color-2;
   }
 
-   li {
+  li {
     margin: 10px 0;
+  }
+
+}
+
+@media(max-width: 800px) {
+  footer {
+    .footer__about-text {
+      width: 200px;
+
+    }
   }
 
 }

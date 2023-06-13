@@ -1,5 +1,6 @@
 $color-bg: #EDE9D5;
 $color-button:#E7AB9A;
+$color-2: #DF7857;
 $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 $color-3:#617143;
 
@@ -14,6 +15,16 @@ $font-700:  700 ;
 
 }
 .tabela{
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+
+    .h1-registro {
+      color: $color-2;
+      font-family: $font-roboto;
+
+    }
+  }
   thead{
     background: $color-button;
     color: #fff;

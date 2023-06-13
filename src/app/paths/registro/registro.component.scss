@@ -3,9 +3,9 @@ $color-bg: #EDE9D5;
 $color-2: #DF7857;
 $color-3: #617143;
 $font-roboto: 'roboto', serif;
-$font-babe: 'Rajdhani', sans-serif ;
-$font-700:  700 ;
-$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$font-babe: 'Rajdhani', sans-serif;
+$font-700: 700;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
 @mixin botao() {
 
@@ -15,33 +15,49 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
   font-family: $font-roboto;
 }
 
-.registro-bg{
+.registro-bg {
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 50%;
 
-  button{
+    .h1-registro {
+      color: $color-2;
+      font-family: $font-roboto;
+
+    }
+  }
+
+  button {
     @include botao
   }
+
   .error-message {
     color: red;
   }
-  input:focus{
+
+  input:focus {
     outline: none;
     box-shadow: none;
   }
-  button:hover{
+
+  button:hover {
     background: $color-hover;
   }
-  input::placeholder{
-    font-family: $font-roboto;
 
-  }
-
-  textarea::placeholder{
-    font-family: $font-roboto;
-
-  }
-  label{
+  input::placeholder {
     font-family: $font-roboto;
   }
 
+
+  label {
+    font-family: $font-roboto;
+    color: $color-2;
+  }
+.div-input{
+  width: 25%;
+  @media (max-width: 500px) {
+width: 50%;
+  }
+}
 
 }
