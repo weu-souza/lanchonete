@@ -17,7 +17,12 @@ $font-700: 700;
 
 .nav-bg {
   background: $color-bg;
-
+p{
+ font-family: $font-babe;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #000;
+}
   .botao {
     @include botao;
 

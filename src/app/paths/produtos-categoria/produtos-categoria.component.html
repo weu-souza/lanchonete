@@ -2,7 +2,7 @@
   <!--inserir as variaveis aqui-->
 
   <div class="card card-container p-2 me-lg-5 me-md-3 " *ngFor="let produtos of produtos">
-    <a routerLink="/produtos">
+    <a (click)="irParaProdutos(produtos.id)">
       <img [src]="produtos.imagem" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{produtos.nome}}</h5>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
-import {Usuario} from '../classe/usuario';
+import {Usuario} from '../models/usuario';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -23,17 +23,21 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.formLogin = this.fb.group({
-      email: [this.usuario.email, [Validators.email, Validators.required]],
-      senha: [this.usuario.senha, [Validators.required]]
+      email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required]]
     });
   }
 
   logar() {
     // apos fazer o http vou mudar
-    if (this.authService.login(this.formLogin.value) && this.authService.login(this.formLogin.value)) {
-      this.route.navigate(['/']);
-      return;
+    if (this.formLogin.dirty && this.formLogin.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
+      if (this.authService.login(this.usuario) ) {
+        this.route.navigate(['/']);
+        return;
+      }
     }
+
     alert('usuario incorreto!');
     this.usuario.email = '';
     this.usuario.senha = '';

@@ -7,13 +7,6 @@
     </button>
 
 
-    <div class="navbar-toggler border-0 w-50">
-      <form class="d-flex " role="search">
-        <input class="form-control fo me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
-        <button class="btn botao " type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-    </div>
-
     <!--    menu   -->
     <div class="collapse navbar-collapse nav_menu-principal" id="navbarSupportedContent"   (click)="sumirMenu()">
       <img src="assets/img/16-hamburguer.svg" alt="foto de hamburgue gostoso" width="100" height="100">
@@ -44,16 +37,18 @@
           <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
         </li>
 
-        <form class="d-flex ms-5" role="search">
-          <input class="form-control me-2 " type="search" placeholder="digite o produto aqui..." aria-label="Search">
-          <button class="btn botao" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-
       </ul>
 
-      <button class="btn botao ms-4" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
-      </button>
+
     </div>
+    <div class="align-content-between d-flex">
+      <p class="mx-4 my-auto">Bem vindo {{nome()}}</p>
+      <button class="btn botao " (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
+      </button>
+
+    </div>
+
+
 
 
   </div>
@@ -85,9 +80,6 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
     </li>
-
-    <button class="btn  sair-mobile" (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
-    </button>
   </ul>
 
 </div>

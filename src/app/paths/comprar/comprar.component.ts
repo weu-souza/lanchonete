@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Ingrediente} from '../classe/produto';
+import {Ingrediente} from '../models/produto';
 import {CarrinhoService} from '../service/carrinho.service';
 
 @Component({
@@ -32,7 +32,7 @@ export class ComprarComponent implements OnInit {
   comprar() {
     alert('parabéns, você finalizou a sua compra!');
     this.carrinhoService.limparCarrinho();
-    this.route.navigate(['produtos']);
+    this.route.navigate(['/']);
   }
 
 }

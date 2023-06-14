@@ -10,13 +10,13 @@ import {LoginComponent} from './paths/login/login.component';
 import {RegistroComponent} from './paths/registro/registro.component';
 import {AuthGuard} from './paths/guard/auth.guard';
 import {GuardAdmGuard} from './paths/guard/guard-adm.guard';
+import {ProdutossComponent} from './paths/produtos/produtoss.component';
 
 
 const routes: Routes = [{
-  path: 'produtos',
-  loadChildren: () => import('./paths/produtos/produtos.module').then(m => m.ProdutosModule),
-  canActivate: [AuthGuard]
+  path: 'produtos-categorias/produtos/:id', component: ProdutossComponent, canActivate: [AuthGuard]
 },
+
   {
     path: 'produtos-categorias',
     loadChildren: () => import('./paths/produtos-categoria/produtos-categoria.module').then(m => m.ProdutosCategoriaModule),

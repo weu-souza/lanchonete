@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
-import {Usuario} from '../classe/usuario';
-import {AuthGuard} from '../guard/auth.guard';
+
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Usuario} from '../models/usuario';
 
 
 @Component({
@@ -13,7 +14,8 @@ import {AuthGuard} from '../guard/auth.guard';
 export class HeaderComponent implements OnInit {
   mudar = false;
   eAdm = this.authService.estaAutenticadoAdm();
-
+  formBuscarProduto: FormGroup;
+  usuario: Usuario;
 
   aparecerMenu() {
     const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
@@ -26,14 +28,28 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // mudar apos o http
+  nome() {
+    if (this.eAdm) {
+      return 'Adm';
+    }
+    return 'weu';
+  }
 
-  constructor(private route: Router, private authService: AuthService) {
+  constructor(private route: Router, private authService: AuthService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.authService.mostrarMenu.subscribe(
       mostrar => this.eAdm = mostrar
     );
+    this.createForm();
+  }
+
+  createForm() {
+    this.formBuscarProduto = this.fb.group({
+      nome: ['', [Validators.required]],
+    });
   }
 
 

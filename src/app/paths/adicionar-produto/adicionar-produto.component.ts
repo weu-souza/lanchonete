@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Produto} from '../classe/produto';
+import {Produto} from '../models/produto';
 import {ProdutoService} from '../service/produto.service';
-import {isNumber} from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-contato',
@@ -13,6 +12,7 @@ export class AdicionarProdutoComponent implements OnInit {
   span: HTMLElement;
   formAddProduto: FormGroup;
   produto: Produto = new Produto();
+  fotoSrc = '';
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
   }
@@ -23,43 +23,40 @@ export class AdicionarProdutoComponent implements OnInit {
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: [this.produto.nome, [Validators.required]],
-      imagem: [this.produto.imagem, [Validators.required]]
+      nome: ['', [Validators.required]],
+      imagem: ['', [Validators.required]]
     });
   }
 
-  texto() {
-    return 'escolha uma imagem';
-  }
-
   imagem(event) {
-    this.span = document.getElementById('span_imagem') as HTMLElement;
+    this.span = document.getElementById('span_imagem');
     const inputTarget = event.target;
     const file = inputTarget.files[0];
+
     if (file) {
       const reader = new FileReader();
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        const img = document.createElement('img');
-        img.src = String(readerTarget.result);
-        img.classList.add('img');
-        this.span.innerHTML = '';
+        this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
-        this.span.appendChild(img);
-        this.formAddProduto.value.imagem = String(readerTarget.result);
+        this.fotoSrc = String(readerTarget.result);
+
       });
       reader.readAsDataURL(file);
-
-    } else {
-      this.span.innerHTML = this.texto();
     }
 
   }
 
   enviar() {
-    this.produtoService.postProdutoLista(this.formAddProduto.value);
+    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
+      this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+      this.produtoService.postProdutoLista(this.produto);
+    } else {
+      alert('preencha o formulario!');
+    }
+
 
   }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Ingrediente, Produto} from '../classe/produto';
+import {Ingrediente, Produto, Promocao} from '../models/produto';
 import {ProdutoService} from '../service/produto.service';
 
 @Component({
@@ -12,9 +12,10 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   span: HTMLElement;
   formAddProduto: FormGroup;
-  produto: Ingrediente;
+  produto: Ingrediente = new Ingrediente();
+  promocao: Promocao;
   produtos: Produto[];
-
+  fotoSrc = '';
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
 
@@ -26,15 +27,11 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: [this.produto.nome, [Validators.required]],
-      imagem: [this.produto.imagem, [Validators.required]],
-      preco: [this.produto.preco, [Validators.required, Validators.min(1)]],
-      ingredientes: [this.produto.ingrediente, [Validators.required]]
+      nome: ['', [Validators.required]],
+      imagem: ['', [Validators.required]],
+      preco: ['', [Validators.required, Validators.min(1)]],
+      ingredientes: ['', [Validators.required]]
     });
-  }
-
-  texto() {
-    return 'escolha uma imagem';
   }
 
   imagem(event) {
@@ -47,31 +44,38 @@ export class AdicionarIngredienteComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        const img = document.createElement('img');
-        img.src = String(readerTarget.result);
-        img.classList.add('img');
-        this.span.innerHTML = '';
+        this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
-        this.span.appendChild(img);
-        this.formAddProduto.value.imagem = String(readerTarget.result);
+        this.fotoSrc = String(readerTarget.result);
+
       });
       reader.readAsDataURL(file);
-    } else {
-      this.span.innerHTML = this.texto();
     }
 
   }
 
 
   addProduto() {
-    this.produtoService.postProduto(this.formAddProduto.value);
-    console.log('produto adicionada');
+    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
+      this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+      this.produtoService.postProduto(this.produto);
+      console.log('produto adicionada', this.produto);
+    } else {
+      alert('preencha o formulario!');
+    }
+
   }
 
   addPromocao() {
-    this.produtoService.postPromocoes(this.formAddProduto.value);
-    console.log('promoção adicionada');
+    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
+      this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
+      this.produtoService.postPromocoes(this.promocao);
+      console.log('promoção adicionada');
+    } else {
+      alert('preencha o formulario!');
+    }
+
   }
 
   atualizarPromocao() {

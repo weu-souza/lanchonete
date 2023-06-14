@@ -18,6 +18,7 @@ import {AuthService} from './paths/service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NaoLogadoComponent} from './paths/nao-logado/nao-logado.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProdutossComponent } from './paths/produtos/produtoss.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {HttpClientModule} from '@angular/common/http';
     AdicionarIngredienteComponent,
     NaoEncontradaComponent,
     ComprarComponent,
-    NaoLogadoComponent
+    NaoLogadoComponent,
+    ProdutossComponent
   ],
   imports: [
     BrowserModule,

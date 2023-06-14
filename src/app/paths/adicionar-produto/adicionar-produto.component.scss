@@ -66,6 +66,9 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
   .img-label{
     font-family: $font-roboto;
     width: 400px;
+    @media (max-width: 600px) {
+      width: 300px;
+    }
     aspect-ratio: 16/9;
     background: #ddd;
     display: flex;

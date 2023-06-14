@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../service/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Usuario} from '../classe/usuario';
+import {Usuario} from '../models/usuario';
 
 @Component({
   selector: 'app-registro',
@@ -18,9 +18,9 @@ export class RegistroComponent implements OnInit {
 
   createForm() {
     this.formRegistro = this.fb.group({
-      email: [this.usuario.email, [Validators.email, Validators.required]],
-      senha: [this.usuario.senha, [Validators.required]],
-      nome: [this.usuario.nome, [Validators.minLength(4), Validators.required]]
+      email: ['', [Validators.email, Validators.required]],
+      senha: ['', [Validators.required]],
+      nome: ['', [Validators.minLength(4), Validators.required]]
     });
   }
 
@@ -29,10 +29,21 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar() {
-    console.log('registrar usuario', this.formRegistro.value);
+    if (this.formRegistro.dirty && this.formRegistro.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.formRegistro.value);
+      console.log('registrar usuario', this.usuario);
+      return;
+    }
+    alert('preencha o formulario!');
+
   }
 
   registrarAdm() {
-    console.log('registrarAdm', this.formRegistro.value);
+    if (this.formRegistro.dirty && this.formRegistro.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.formRegistro.value);
+      console.log('registrarAdm', this.usuario);
+      return;
+    }
+    alert('preencha o formulario!');
   }
 }

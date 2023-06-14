@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import {ProdutoService} from '../service/produto.service';
-import {Ingrediente, Promocao,} from '../classe/produto';
+import {Ingrediente, Promocao,} from '../models/produto';
 
 @Component({
   selector: 'app-promocoes',

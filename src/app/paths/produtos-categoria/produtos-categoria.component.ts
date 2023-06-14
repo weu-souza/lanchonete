@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../service/auth.service';
-import {Ingrediente, Produto} from '../classe/produto';
+import {Ingrediente, Produto} from '../models/produto';
 import {ProdutoService} from '../service/produto.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-produtos-categoria',
@@ -14,7 +14,7 @@ export class ProdutosCategoriaComponent implements OnInit {
   produto: Produto = new Produto();
   produtos: Produto[];
 
-  constructor(private authService: AuthService, private produtoService: ProdutoService, private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private produtoService: ProdutoService, private route: Router) {
   }
 
   ngOnInit(): void {
@@ -28,5 +28,9 @@ export class ProdutosCategoriaComponent implements OnInit {
 
   atualizar() {
 
+  }
+
+  irParaProdutos(id: number) {
+    this.route.navigateByUrl(`produtos-categorias/produtos/${id}`);
   }
 }

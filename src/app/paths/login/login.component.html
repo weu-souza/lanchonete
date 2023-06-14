@@ -6,6 +6,8 @@
     <!--    email -->
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <input type="email" class="form-control" id="staticEmail"
+           [ngClass]="{'is-invalid': formLogin.controls['email'].invalid &&
+           (formLogin.controls['email'].touched || formLogin.controls['email'].dirty), 'is-valid':formLogin.controls['email'].valid} "
            placeholder="email@email.com"
            formControlName="email"
            [class.valid]="formLogin.controls['email'].valid"
@@ -25,6 +27,8 @@
     <label for="inputPassword" class="col-sm-2 col-form-label">Senha</label>
     <input type="password" class="form-control" id="inputPassword"
            placeholder="digite sua senha"
+           [ngClass]="{'is-invalid': formLogin.controls['senha'].invalid &&
+           (formLogin.controls['senha'].touched || formLogin.controls['senha'].dirty), 'is-valid':formLogin.controls['senha'].valid} "
            formControlName="senha" [class.valid]="formLogin.controls['senha'].valid"
            [class.invalid]="formLogin.controls['senha'].invalid &&
 (formLogin.controls['email'].touched || formLogin.controls['senha'].dirty)">
@@ -32,7 +36,7 @@
 
   <div class="d-flex mx-auto my-5">
     <div class="col-auto ">
-      <input type="submit" class="btn  mb-3 botao" [disabled]="formLogin.invalid" value="login">
+      <input type="submit" class="btn  mb-3 botao" value="login">
     </div>
     <div class="col-auto ms-3">
       <button type="submit" class="btn  mb-3" (click)="registrar()">registrar</button>

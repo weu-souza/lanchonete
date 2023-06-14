@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Ingrediente, Produto, Produtos, ProdutosLista, Promocao, Promocoes} from '../classe/produto';
+import {Ingrediente, Produto, Produtos, ProdutosLista, Promocao, Promocoes} from '../models/produto';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -46,7 +46,7 @@ export class ProdutoService {
     return of(this.promocoes);
   }
 
-  obtemIngrediente(): Observable<Ingrediente[]> {
+  obtemIngrediente() {
     return of(this.ingredientes);
   }
 

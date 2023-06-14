@@ -9,6 +9,8 @@
     <div class="mb-3 div-input mx-auto">
       <label for="exampleFormControlInput1" class="form-label">Email </label>
       <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+             [ngClass]="{'is-invalid': formRegistro.controls['email'].invalid &&
+           (formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty), 'is-valid':formRegistro.controls['email'].valid} "
 
              formControlName="email"
              [class.valid]="formRegistro.controls['email'].valid"
@@ -33,6 +35,9 @@
       <div class="col-auto">
         <label for="inputPassword6" class="col-form-label">Senha</label>
         <input type="password" id="inputPassword6" class="form-control" formControlName="senha" placeholder="insira sua senha..."
+               [ngClass]="{'is-invalid': formRegistro.controls['senha'].invalid &&
+           (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty), 'is-valid':formRegistro.controls['senha'].valid} "
+
                [class.valid]="formRegistro.controls['senha'].valid"
                [class.invalid]="formRegistro.controls['senha'].invalid &&
 (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
@@ -53,6 +58,8 @@
       <div class="col-auto">
         <label for="nome" class="col-form-label">nome</label>
         <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="insira seu nome..."
+               [ngClass]="{'is-invalid': formRegistro.controls['nome'].invalid &&
+           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty), 'is-valid':formRegistro.controls['nome'].valid} "
                [class.valid]="formRegistro.controls['nome'].valid"
                [class.invalid]="formRegistro.controls['nome'].invalid &&
            (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
@@ -74,10 +81,10 @@
   </form>
   <div class="d-flex my-5">
     <div class="col-auto mx-auto">
-      <button type="submit" class="btn  mb-3 me-4" routerLink="/login">Voltar ao login</button>
-      <button type="submit" class="btn  mb-3" (click)="registrar()" *ngIf="mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
-      <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
-      <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn" [disabled]="formRegistro.invalid">registrar</button>
+      <button type="submit" class="btn  mb-3 me-4" routerLink="/login" *ngIf="mostrarBtn">Voltar ao login</button>
+      <button type="submit" class="btn  mb-3" (click)="registrar()" *ngIf="mostrarBtn" >registrar</button>
+      <button type="submit" class="btn  mb-3" (click)="registrarAdm()" *ngIf="!mostrarBtn">registrar</button>
+
 
     </div>
   </div>

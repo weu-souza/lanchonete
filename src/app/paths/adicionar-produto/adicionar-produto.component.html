@@ -6,7 +6,9 @@
   <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <!--    nome do produto -->
     <label for="email" class="form-label">nome do produto</label>
-    <input type="text" class="form-control  border-0 " id="email" placeholder="Digite um nome..." formControlName="nome"
+    <input type="text" class="form-control" id="email" placeholder="Digite um nome..." formControlName="nome"
+           [ngClass]="{'is-invalid': formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty), 'is-valid':formAddProduto.controls['nome'].valid} "
            [class.valid]="formAddProduto.controls['nome'].valid"
            [class.invalid]="formAddProduto.controls['nome'].invalid &&
            (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">
@@ -21,8 +23,7 @@
 
   <!--imagem-->
   <div class="mb-3 mx-auto">
-    <label for="formFile" class="form-label"><span class="p-2 rounded img-label" id="span_imagem"
-                                                   [innerHtml]="texto()"></span></label>
+    <label for="formFile" class="form-label"><img [src]="fotoSrc" alt="escolha uma imagem" class="img-label img" id="span_imagem"></label>
     <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)"
            formControlName="imagem"
            [class.valid]="formAddProduto.controls['imagem'].valid"
@@ -32,12 +33,10 @@
   </div>
   <!--botão de enviar-->
   <div class="col-auto mx-auto">
-    <button type="submit" class="btn  mb-3" [disabled]="formAddProduto.invalid" (click)="enviar()">Enviar</button>
-    <button type="submit" class="btn  mb-3 ms-4" [disabled]="formAddProduto.invalid" (click)="atualizar()">Atualizar
+    <button type="submit" class="btn  mb-3" (click)="enviar()">Enviar</button>
+    <button type="submit" class="btn  mb-3 ms-4"  (click)="atualizar()">Atualizar
     </button>
   </div>
-  <p>{{produto.nome}}</p>
-  <img [src]="produto.imagem">
 
 </form>
 

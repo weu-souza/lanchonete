@@ -13,7 +13,7 @@ export class Carrinho implements Ingrediente {
 
 }
 
-export interface Ingrediente {
+export class Ingrediente {
   id: number;
   nome: string;
   imagem: string;
