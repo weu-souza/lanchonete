@@ -1,0 +1,41 @@
+<form class="contato-bg p-5 rounded d-grid" [formGroup]="formAddProduto">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">Adicionar Lista de produtos</h1>
+  </div>
+
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <!--    nome do produto -->
+    <label for="email" class="form-label">nome do produto</label>
+    <input type="text" class="form-control" id="email" placeholder="Digite um nome..." formControlName="nome"
+           [ngClass]="{'is-invalid': formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty), 'is-valid':formAddProduto.controls['nome'].valid} "
+           [class.valid]="formAddProduto.controls['nome'].valid"
+           [class.invalid]="formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">
+    <div *ngIf="formAddProduto.controls['nome'].invalid &&
+           (formAddProduto.controls['nome'].touched || formAddProduto.controls['nome'].dirty)">
+      <small class="error-message" *ngIf="formAddProduto.controls['nome'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+
+    </div>
+  </div>
+
+  <!--imagem-->
+  <div class="mb-3 mx-auto">
+    <label for="formFile" id="span_imagem" class="form-label img-label"><span *ngIf="mostrarTexto">escolha uma imagem</span> <img
+      [src]="fotoSrc" class=" img" ></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)"
+           formControlName="imagem"
+           [class.valid]="formAddProduto.controls['imagem'].valid"
+           [class.invalid]="formAddProduto.controls['imagem'].invalid &&
+           (formAddProduto.controls['imagem'].touched || formAddProduto.controls['imagem'].dirty)">
+
+  </div>
+  <!--botão de enviar-->
+  <div class="col-auto mx-auto">
+    <button type="submit" class="btn  mb-3" (click)="enviar()">Enviar</button>
+  </div>
+
+</form>
+

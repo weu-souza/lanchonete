@@ -1,0 +1,111 @@
+$color-bg: #EDE9D5;
+$color-button:#E7AB9A;
+$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$color-3:#617143;
+
+$font-roboto:'roboto', serif;
+$font-babe:'Rajdhani', sans-serif;
+$font-700:  700 ;
+@mixin botao() {
+
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+
+}
+.card-container{
+  width: 18rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  background: $color-bg;
+  color: $color-3;
+  font-family: $font-roboto;
+  .btn-card{
+    @include botao
+  }
+  .btn-card:hover{
+    background: $color-hover;
+  }
+  .remove-button{
+    @include botao
+  }
+  .remove-button:hover{
+    background: $color-hover;
+  }
+
+}
+
+
+.card_ {
+  position: relative;
+  -webkit-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+  background-color: #FFF;
+  border-radius: 6px;
+  height: 400px;
+  overflow: hidden;
+  width: 250px;
+  margin: 40px 20px;
+
+  .shimmerBG {
+    animation-duration: 2.2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: shimmer;
+    animation-timing-function: linear;
+    background: #ddd;
+    background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+    background-size: 1200px 100%;
+  }
+
+
+  @-webkit-keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1200px 0;
+    }
+    100% {
+      background-position: 1200px 0;
+    }
+  }
+
+  .media {
+    height: 200px;
+  }
+
+  .p-32 {
+    padding: 32px;
+  }
+
+  .title-line {
+    height: 24px;
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 20px;
+  }
+
+  .content-line {
+    height: 8px;
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 8px;
+  }
+
+  .end {
+    width: 40%;
+  }
+
+}
+
+
+.m-t-24 {
+  margin-top: 24px;
+}

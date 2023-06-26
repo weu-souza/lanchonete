@@ -1,0 +1,103 @@
+$color-button: #E7AB9A;
+$color-bg: #EDE9D5;
+$color-2: #DF7857;
+$color-3: #617143;
+$font-roboto: 'roboto', serif;
+$font-babe: 'Rajdhani', sans-serif;
+$font-700: 700;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+
+@mixin botao() {
+
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+  font-family: $font-roboto;
+}
+
+
+.contato-bg {
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 50%;
+
+    .h1-registro {
+      color: $color-2;
+      font-family: $font-roboto;
+
+    }
+  }
+
+  .div-input {
+    width: 25%;
+    @media (max-width: 500px) {
+      width: 50%;
+    }
+  }
+
+  //background: $color-bg;
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  button {
+    @include botao
+  }
+
+  .error-message {
+    color: red;
+  }
+
+  button:hover {
+    background: $color-hover;
+  }
+
+  input::placeholder {
+    font-family: $font-roboto;
+
+  }
+
+  input[type=file] {
+    display: none;
+  }
+
+  textarea::placeholder {
+    font-family: $font-roboto;
+
+  }
+
+  label {
+    font-family: $font-roboto;
+    color: $color-2;
+  }
+
+  .img-label {
+    font-family: $font-roboto;
+    width: 400px;
+    @media (max-width: 600px) {
+      width: 300px;
+    }
+    aspect-ratio: 16/9;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentColor;
+    cursor: pointer;
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+
+    .img {
+      max-width: 100%;
+
+    }
+
+  }
+
+  .img-label:hover {
+    color: #999;
+    background: #ccc;
+  }
+
+}

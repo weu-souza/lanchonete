@@ -1,0 +1,141 @@
+$color-bg: #EDE9D5;
+$color-button: #E7AB9A;
+$color-2: #DF7857;
+$color-3: #617143;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$font-roboto: 'roboto', serif;
+$font-babe: 'Rajdhani', sans-serif;
+$font-700: 700;
+@mixin botao() {
+  color: #fff;
+  background: $color-button;
+  font-weight: $font-700;
+}
+
+section {
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+
+    .h1-registro {
+      color: $color-2;
+      font-family: $font-roboto;
+
+    }
+  }
+  .div-carrinho{
+    margin-left: 20%;
+    margin-right:20% ;
+  }
+  .cart-title {
+    font-size: 44px;
+    color: #000;
+    font-weight: $font-700;
+    padding: 8px 0;
+    font-family: $font-roboto;
+  }
+
+  li {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px 0;
+    height: 100px;
+    font-family: $font-babe;
+    font-size: 18px;
+    color: $color-3;
+
+    background: $color-bg;
+
+    img {
+      width: 100px;
+      height: 100px;
+      display: block;
+    }
+
+    .remove-button {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 20px;
+      height: 100%;
+      transition: .2s all;
+    }
+
+    .remove-button:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  .cart-total {
+    font-size: 24px;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 0;
+    font-family: $font-roboto;
+  }
+
+
+  .buy-button {
+    @include botao;
+
+  }
+
+  .buy-button:hover {
+    background: $color-hover;
+
+  }
+}
+
+.title {
+  width: 40%;
+}
+.link {
+  width: 60%;
+}
+.description {
+  width: 70%;
+}
+.shimmer {
+  padding: 5px;
+  width: 95%;
+  height: 120px;
+  margin: 10px auto;
+  background: #ffffff;
+}
+.shimmer .image-card {
+  height: 90px;
+  width: 90px;
+  float: right;
+  border-radius: 8px;
+}
+.stroke {
+  height: 15px;
+  background: #777;
+  margin-top: 20px;
+}
+
+.wrapper {
+  width: 0px;
+  animation: fullView 0.5s forwards linear;
+}
+
+@keyframes fullView {
+  100% {
+    width: 100%;
+  }
+}
+.animate {
+  animation: shimmer 3s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -1000px 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}

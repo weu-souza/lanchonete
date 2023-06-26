@@ -1,0 +1,66 @@
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4 w-100">
+  <!--inserir as variaveis aqui-->
+  <ng-container *ngIf="produtos$ | async as produtos; else loading" >
+  <div class="card card-container p-2 ms-5 " *ngFor="let produto of produtos">
+    <img [src]="produto.imageName" class="card-img-top img-fluid" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{produto?.name}}</h5>
+      <p class="card-text">{{produto?.ingredients}}</p>
+      <p class="card-text">{{produto?.price | currency: 'BRL'}}</p>
+      <div class="d-flex justify-content-between">
+        <a class="btn btn-card" (click)="comprar()">Comprar</a>
+        <button class="btn remove-button" (click)="remover(produto.id)" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i></button>
+        <button class="btn remove-button" (click)="atualizar()" *ngIf="eAdm"><i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </ng-container>
+</div>
+
+
+<ng-template #loading >
+  <div class="card_ p-2 ms-5">
+    <div class="shimmerBG media"></div>
+    <div class="p-32">
+      <div class="shimmerBG title-line"></div>
+      <div class="shimmerBG title-line end"></div>
+
+      <div class="shimmerBG content-line m-t-24"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line end"></div>
+    </div>
+  </div>
+
+  <div class="card_ p-2 ms-5">
+    <div class="shimmerBG media"></div>
+    <div class="p-32">
+      <div class="shimmerBG title-line"></div>
+      <div class="shimmerBG title-line end"></div>
+
+      <div class="shimmerBG content-line m-t-24"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line end"></div>
+    </div>
+  </div>
+
+  <div class="card_ p-2 ms-5">
+    <div class="shimmerBG media"></div>
+    <div class="p-32">
+      <div class="shimmerBG title-line"></div>
+      <div class="shimmerBG title-line end"></div>
+
+      <div class="shimmerBG content-line m-t-24"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line"></div>
+      <div class="shimmerBG content-line end"></div>
+    </div>
+  </div>
+</ng-template>

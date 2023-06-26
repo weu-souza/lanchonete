@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg nav-bg">
+  <div class="container-fluid">
+    <button (click)="aparecerMenu()" class="navbar-toggler botao " type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation" id="btn-mobile">
+      <i class="fa-solid fa-bars p-1"></i>
+    </button>
+
+
+    <!--    menu   -->
+    <div class="collapse navbar-collapse nav_menu-principal" id="navbarSupportedContent" (click)="sumirMenu()">
+      <img src="/assets/img/logo.png" alt="foto de hamburgue gostoso" width="100" height="100">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="produtos-categorias">Produtos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="promocoes">Promoções</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="comprar">Carrinho</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="adicionar-produto" *ngIf="eAdm">Adicionar produto</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="adicionar-ingredientes" *ngIf="eAdm">Adicionar ingrediente</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
+        </li>
+
+      </ul>
+
+
+    </div>
+    <div class="align-content-between d-flex">
+      <p class="mx-4 my-auto">Bem vindo {{nome()}}</p>
+      <button class="btn botao " (click)="sair()">Sair<i class="fa-solid fa-arrow-right-from-bracket ms-2"></i>
+      </button>
+
+    </div>
+
+
+  </div>
+</nav>
+
+<div class="d-flex flex-column nav-bg nav-mobile" *ngIf="mudar" (click)="sumirMenu()">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+    <li class="nav-item ">
+      <a class="nav-link mx-2 nav-first" routerLink="produtos-categorias">Produtos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" routerLink="promocoes">Promoções</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="comprar">Carrinho</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" routerLink="adicionar-produto" *ngIf="eAdm">Adicionar produto</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" routerLink="adicionar-ingredientes" *ngIf="eAdm">Adicionar ingrediente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link mx-2" routerLink="historico-vendas" *ngIf="eAdm">Historico de vendas</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="registrar" *ngIf="eAdm">Registro</a>
+    </li>
+  </ul>
+
+</div>
+
+
+

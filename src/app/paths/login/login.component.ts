@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../service/auth.service';
+import {AuthService} from '../service/service_login/auth.service';
 import {Usuario} from '../models/usuario';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {catchError, tap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,24 +25,39 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.formLogin = this.fb.group({
-      email: ['', [Validators.email, Validators.required]],
-      senha: ['', [Validators.required]]
+      login: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 
   logar() {
-    // apos fazer o http vou mudar
     if (this.formLogin.dirty && this.formLogin.valid) {
       this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
-      if (this.authService.login(this.usuario) ) {
+      if (this.authService.login(this.usuario)) {
         this.route.navigate(['/']);
         return;
       }
     }
 
-    alert('usuario incorreto!');
-    this.usuario.email = '';
-    this.usuario.senha = '';
+    if (this.formLogin.dirty && this.formLogin.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
+      console.log(this.usuario);
+      this.authService.logar(this.usuario)
+        .pipe(
+          tap(user => {
+            console.log('user', user, this.usuario);
+          }),
+          catchError((err) => {
+            console.log('erro', err.usuario);
+            return throwError(err);
+          })
+        )
+        .subscribe(res => {
+          console.log('resposta', res, this.usuario);
+        });
+    } else {
+      alert('preencha o formulario!');
+    }
   }
 
   registrar() {

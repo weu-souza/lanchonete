@@ -1,14 +1,14 @@
 <ng-template #naologado class="d-grid"><app-nao-logado></app-nao-logado></ng-template>
-<section class="bg-container ">
-  <app-header *ngIf="mostrarMenu else naologado "></app-header>
+<section class="bg-container">
+  <app-header *ngIf="mostrarMenu else naologado " class=""></app-header>
 
 
   <div
-    class="container-app  my-5 justify-content-around me-lg-auto ms-lg-5 me-md-auto ms-md-2 me-sm-auto me-sm-2 ">
+    class="container-app  py-5 justify-content-around me-lg-auto ms-lg-5 me-md-auto ms-md-2 me-sm-auto me-sm-2 ">
     <router-outlet></router-outlet>
   </div>
 
-  <div  class="footer-container">
+  <div  class=" footer-container">
     <app-footer></app-footer>
   </div>
 </section>
