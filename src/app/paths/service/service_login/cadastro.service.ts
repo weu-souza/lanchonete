@@ -17,7 +17,7 @@ export class CadastroService {
 
   getLogin() {
     const url = `${this.baseUrl}/user/info`;
-    return this.http.get<Usuario[]>(url);
+    return this.http.get<Usuario>(url);
   }
 
   postLogin(usuario: Usuario) {

@@ -4,6 +4,8 @@ import {AuthService} from '../../service/service_login/auth.service';
 
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Usuario} from '../../models/usuario';
+import {CadastroService} from '../../service/service_login/cadastro.service';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -28,15 +30,8 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // mudar apos o http
-  nome() {
-    if (this.eAdm) {
-      return 'Adm';
-    }
-    return 'weu';
-  }
 
-  constructor(private route: Router, private authService: AuthService, private fb: FormBuilder) {
+  constructor(private route: Router, private authService: AuthService, private fb: FormBuilder, private cadastroService: CadastroService) {
   }
 
   ngOnInit(): void {
@@ -44,6 +39,14 @@ export class HeaderComponent implements OnInit {
       mostrar => this.eAdm = mostrar
     );
     this.createForm();
+    this.nome();
+  }
+
+// mudar apos o http
+  nome() {
+    this.cadastroService.getLogin().subscribe(res => {
+      this.usuario = res;
+    });
   }
 
   createForm() {
