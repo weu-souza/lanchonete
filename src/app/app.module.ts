@@ -16,10 +16,12 @@ import {ComprarComponent} from './paths/Main/carrinho/comprar.component';
 import {AuthService} from './paths/service/service_login/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NaoLogadoComponent} from './paths/login/nao-logado/nao-logado.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProdutossComponent} from './paths/Main/produtos/produtoss.component';
-import { AlterarProdutoComponent } from './paths/Main/alterar-produto/alterar-produto.component';
-import { AlterarIngredienteComponent } from './paths/Main/alterar-ingrediente/alterar-ingrediente.component';
+import {AlterarProdutoComponent} from './paths/Main/alterar-produto/alterar-produto.component';
+import {AlterarIngredienteComponent} from './paths/Main/alterar-ingrediente/alterar-ingrediente.component';
+import {TokenInterceptor} from './paths/login/interceptors/token.interceptor';
+import { AdicionarPromocaoComponent } from './paths/Main/adicionar-promocao/adicionar-promocao.component';
 
 
 @NgModule({
@@ -39,6 +41,7 @@ import { AlterarIngredienteComponent } from './paths/Main/alterar-ingrediente/al
     ProdutossComponent,
     AlterarProdutoComponent,
     AlterarIngredienteComponent,
+    AdicionarPromocaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,14 @@ import { AlterarIngredienteComponent } from './paths/Main/alterar-ingrediente/al
 
 
   ],
-  providers: [AuthService],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  },
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -17,9 +17,9 @@
 
   <div class="mb-3 d-grid mx-auto mb-4 div-input">
     <!--   password -->
-    <label for="inputPassword" class="col-sm-2 col-form-label">password</label>
+    <label for="inputPassword" class="col-sm-2 col-form-label">senha</label>
     <input type="password" class="form-control" id="inputPassword"
-           placeholder="digite sua password"
+           placeholder="senha"
            [ngClass]="{'is-invalid': formLogin.controls['password'].invalid &&
            (formLogin.controls['password'].touched || formLogin.controls['password'].dirty), 'is-valid':formLogin.controls['password'].valid} "
            formControlName="password" [class.valid]="formLogin.controls['password'].valid"

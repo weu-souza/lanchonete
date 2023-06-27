@@ -5,9 +5,9 @@
 <div class="d-flex row div-carrinho ">
 
 
-  <ng-container *ngIf="itensCarrinho.length >0 else semProduto">
+  <ng-container *ngIf="produtos$ | async as produtos; else semProduto">
     <ul>
-      <li class="justify-content-between align-items-center d-flex" *ngFor="let carrinho of itensCarrinho">
+      <li class="justify-content-between align-items-center d-flex" *ngFor="let carrinho of produtos">
 
         <img [src]="carrinho.imageName">
         <p>{{carrinho.name}}</p>

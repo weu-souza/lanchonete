@@ -13,7 +13,8 @@ import {catchError} from 'rxjs/operators';
   styleUrls: ['./produtoss.component.scss']
 })
 export class ProdutossComponent implements OnInit {
-  eAdm = this.authService.estaAutenticadoAdm();
+  eAdm = this.authService.estaAutenticado();
+  produtos: Ingrediente;
   produtos$: Observable<Ingrediente>;
   // produtos: Ingrediente[] = [];
   id = 1;
@@ -41,7 +42,10 @@ export class ProdutossComponent implements OnInit {
   }
 
   comprar() {
-    // vou mudar pra buscar pelo id quando for fazer o http
+    this.carrinhoS.adicionarAoCarrinho(this.produtos).subscribe(res => {
+      this.route.navigate(['carrinho']);
+      alert('enviado com sucesso!');
+    });
   }
 
   remover(id: number) {

@@ -5,6 +5,7 @@ import {ProdutoService} from '../../service/service_produto/produto.service';
 import {Promocao} from '../../models/produto';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
 
 @Component({
   selector: 'app-promocoes',
@@ -12,11 +13,12 @@ import {catchError} from 'rxjs/operators';
   styleUrls: ['./promocoes.component.scss']
 })
 export class PromocoesComponent implements OnInit {
-  eAdm = this.authService.estaAutenticadoAdm();
+  eAdm = this.authService.estaAutenticado();
   produtos$: Observable<Promocao[]>;
   produto: Promocao = new Promocao();
 
-  constructor(private route: Router, private authService: AuthService, private produtoService: ProdutoService) {
+  constructor(private route: Router, private authService: AuthService, private produtoService: ProdutoService,
+              private carrinhoS: CarrinhoService) {
   }
 
   ngOnInit(): void {
@@ -32,8 +34,10 @@ export class PromocoesComponent implements OnInit {
   }
 
   comprar() {
-    // vou mudar pra buscar pelo id quando for fazer o http
-    this.route.navigate(['comprar']);
+    this.carrinhoS.adicionarAoCarrinhoP(this.produto).subscribe(res => {
+      this.route.navigate(['carrinho']);
+      alert('enviado com sucesso!');
+    });
   }
 
   remover(id: number) {

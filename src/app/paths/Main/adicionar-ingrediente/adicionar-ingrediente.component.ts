@@ -12,9 +12,7 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   span: HTMLElement;
   formAddProduto: FormGroup;
-  produto: Ingrediente = new Ingrediente();
-  promocao: Promocao;
-  produtos: Produto[];
+  produto: Ingrediente;
   fotoSrc = '';
   mostrarTexto = true;
 
@@ -28,10 +26,10 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: ['', [Validators.required]],
-      imagem: ['', [Validators.required]],
-      preco: ['', [Validators.required, Validators.min(1)]],
-      ingredientes: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      imageName: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      ingredients: ['', [Validators.required]]
     });
   }
 
@@ -45,7 +43,7 @@ export class AdicionarIngredienteComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        this.formAddProduto.value.imagem = String(readerTarget.result);
+        // this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.mostrarTexto = false;
@@ -57,7 +55,6 @@ export class AdicionarIngredienteComponent implements OnInit {
 
   }
 
-
   addProduto() {
     if (this.formAddProduto.dirty && this.formAddProduto.valid) {
       this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
@@ -65,19 +62,6 @@ export class AdicionarIngredienteComponent implements OnInit {
         alert('enviado com sucesso!');
       });
       console.log('produto adicionada', this.produto);
-    } else {
-      alert('preencha o formulario!');
-    }
-
-  }
-
-  addPromocao() {
-    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
-      this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
-      this.produtoService.postPromocoes(this.promocao).subscribe(res => {
-        alert('enviado com sucesso!');
-      });
-      console.log('promoção adicionada');
     } else {
       alert('preencha o formulario!');
     }

@@ -12,7 +12,7 @@ import {catchError} from 'rxjs/operators';
   styleUrls: ['./produtos-categoria.component.scss']
 })
 export class ProdutosCategoriaComponent implements OnInit {
-  eAdm = this.authService.estaAutenticadoAdm();
+  eAdm = this.authService.estaAutenticado();
 
   produto: Produto;
   produtos$: Observable<Produto[]>;
@@ -25,17 +25,13 @@ export class ProdutosCategoriaComponent implements OnInit {
   }
 
   getProdutos() {
+    console.log(this.produtos$);
     this.produtos$ = this.produtoService.getProdutosLista()
       .pipe(
         catchError(error => {
-          // this.route.navigateByUrl('/error');
-          // alert('Problemas no server tente novamente mais tarde.');
           return throwError(error.message);
         })
       );
-    //   .subscribe(res => {
-    //   this.produtos = res;
-    // });
   }
 
   remover(id: number) {

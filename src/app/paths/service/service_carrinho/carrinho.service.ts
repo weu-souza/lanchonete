@@ -1,32 +1,39 @@
 import {Injectable} from '@angular/core';
-import {Ingrediente} from '../../models/produto';
-import {Subscription} from 'rxjs';
+import {Ingrediente, Produto, Promocao} from '../../models/produto';
+import {Observable, Subscription} from 'rxjs';
+import {environment} from '../../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrinhoService {
-  carrinho: Ingrediente[] = [];
+  baseUrl: string = environment.baseUrl;
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-  obtemCarrinho() {
-    this.carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
-    return this.carrinho;
+  obtemCarrinho(): Observable<Ingrediente[]> {
+    const url = `${this.baseUrl}/chart`;
+    return this.http.get<Ingrediente[]>(url);
   }
 
   adicionarAoCarrinho(carrinho: Ingrediente) {
-    this.carrinho.push(carrinho);
-    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
+    const url = `${this.baseUrl}/chart`;
+    return this.http.post<Ingrediente>(url, carrinho);
+  }
+  adicionarAoCarrinhoP(carrinho: Promocao) {
+    const url = `${this.baseUrl}/chart`;
+    return this.http.post<Promocao>(url, carrinho);
   }
 
+
   removerCarrinho(id: number) {
-    this.carrinho = this.carrinho.filter(item => item.id !== id);
+    const url = `${this.baseUrl}/chart${id}`;
+    return this.http.delete<void>(url);
   }
 
   limparCarrinho() {
-    this.carrinho = [];
-    localStorage.clear();
+
   }
 }

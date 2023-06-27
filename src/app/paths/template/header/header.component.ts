@@ -13,7 +13,7 @@ import {Usuario} from '../../models/usuario';
 })
 export class HeaderComponent implements OnInit {
   mudar = false;
-  eAdm = this.authService.estaAutenticadoAdm();
+  eAdm = this.authService.eadm();
   formBuscarProduto: FormGroup;
   usuario: Usuario;
 

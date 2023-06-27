@@ -24,8 +24,8 @@ export class AdicionarProdutoComponent implements OnInit {
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: ['', [Validators.required]],
-      imagem: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      imageName: ['', [Validators.required]]
     });
   }
 
@@ -39,7 +39,7 @@ export class AdicionarProdutoComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        this.formAddProduto.value.imagem = String(readerTarget.result);
+        // this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.mostrarTexto = false;

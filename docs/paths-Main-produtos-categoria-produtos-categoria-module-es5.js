@@ -368,7 +368,7 @@
             this.authService = authService;
             this.produtoService = produtoService;
             this.route = route;
-            this.eAdm = this.authService.estaAutenticadoAdm();
+            this.eAdm = this.authService.estaAutenticado();
           }
 
           _createClass(ProdutosCategoriaComponent, [{
@@ -379,13 +379,10 @@
           }, {
             key: "getProdutos",
             value: function getProdutos() {
+              console.log(this.produtos$);
               this.produtos$ = this.produtoService.getProdutosLista().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (error) {
-                // this.route.navigateByUrl('/error');
-                // alert('Problemas no server tente novamente mais tarde.');
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(error.message);
-              })); //   .subscribe(res => {
-              //   this.produtos = res;
-              // });
+              }));
             }
           }, {
             key: "remover",

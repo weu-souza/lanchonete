@@ -3,8 +3,8 @@ import {Router} from '@angular/router';
 import {AuthService} from '../service/service_login/auth.service';
 import {Usuario} from '../models/usuario';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {catchError, tap} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {CookieService} from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import {throwError} from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
-  usuario: Usuario = new Usuario();
+  usuario: Usuario;
 
 
   constructor(private route: Router, public authService: AuthService, private fb: FormBuilder) {
@@ -21,6 +21,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+
+    setTimeout(() => {
+      console.log('tempo de login expirado');
+      this.authService.logout();
+      this.route.navigate(['login']);
+
+    }, 1000 * 1800);
   }
 
   createForm() {
@@ -31,30 +38,20 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    if (this.formLogin.dirty && this.formLogin.valid) {
-      this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
-      if (this.authService.login(this.usuario)) {
-        this.route.navigate(['/']);
-        return;
-      }
-    }
+    // if (this.formLogin.dirty && this.formLogin.valid) {
+    //   this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
+    //   if (this.authService.login(this.usuario)) {
+    //     this.route.navigate(['/']);
+    //     return;
+    //   }
+    // }
 
     if (this.formLogin.dirty && this.formLogin.valid) {
       this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
-      console.log(this.usuario);
-      this.authService.logar(this.usuario)
-        .pipe(
-          tap(user => {
-            console.log('user', user, this.usuario);
-          }),
-          catchError((err) => {
-            console.log('erro', err.usuario);
-            return throwError(err);
-          })
-        )
-        .subscribe(res => {
-          console.log('resposta', res, this.usuario);
-        });
+      // console.log(this.usuario);
+      this.authService.logar(this.usuario);
+      this.route.navigate(['/']);
+
     } else {
       alert('preencha o formulario!');
     }

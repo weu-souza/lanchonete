@@ -3,6 +3,7 @@ import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
+import {Usuario} from '../../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -48,17 +49,17 @@ export class ProdutoService {
   }
 
   getProdutosLista(): Observable<Produto[]> {
-    const url = `${this.baseUrl}/categories`;
+    const url = `${this.baseUrl}/categories/`;
     return this.http.get<Produto[]>(url);
   }
 
   getPromocoes(): Observable<Promocao[]> {
-    const url = `${this.baseUrl}/offers`;
+    const url = `${this.baseUrl}/offers/`;
     return this.http.get<Promocao[]>(url);
   }
 
   getIngrediente(id: number): Observable<Ingrediente> {
-    const url = `${this.baseUrl}/ingredients/${id}`;
+    const url = `${this.baseUrl}/ingredients/`;
     return this.http.get<Ingrediente>(url);
   }
 

@@ -9,10 +9,11 @@ import {ComprarComponent} from './paths/Main/carrinho/comprar.component';
 import {LoginComponent} from './paths/login/login.component';
 import {RegistroComponent} from './paths/login/registro/registro.component';
 import {AuthGuard} from './paths/login/guard/auth.guard';
-import {GuardAdmGuard} from './paths/login/guard/guard-adm.guard';
+import {GuardAdmGuard} from './paths/login/guard/admGuard/guard-adm.guard';
 import {ProdutossComponent} from './paths/Main/produtos/produtoss.component';
 import {AlterarProdutoComponent} from './paths/Main/alterar-produto/alterar-produto.component';
 import {AlterarIngredienteComponent} from './paths/Main/alterar-ingrediente/alterar-ingrediente.component';
+import {AdicionarPromocaoComponent} from './paths/Main/adicionar-promocao/adicionar-promocao.component';
 
 
 const routes: Routes = [{
@@ -34,6 +35,7 @@ const routes: Routes = [{
   {path: 'registrar', component: RegistroComponent},
   {path: 'alterar_produto', component: AlterarProdutoComponent},
   {path: 'alterar_ingrediente', component: AlterarIngredienteComponent},
+  {path: 'adicionar-promocao', component: AdicionarPromocaoComponent},
   {path: '**', component: NaoEncontradaComponent}
 
 

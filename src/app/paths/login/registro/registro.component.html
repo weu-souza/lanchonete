@@ -5,23 +5,20 @@
     <div class="mx-auto d-grid mb-5 h1-bg">
       <h1 class="h1-registro mb-3 mx-auto"> Registro </h1>
     </div>
-    <!--  email-->
+    <!--  login-->
     <div class="mb-3 div-input mx-auto">
-      <label for="exampleFormControlInput1" class="form-label">Email </label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
-             [ngClass]="{'is-invalid': formRegistro.controls['email'].invalid &&
-           (formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty), 'is-valid':formRegistro.controls['email'].valid} "
+      <label for="exampleFormControlInput1" class="form-label">login </label>
+      <input type="login" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+             [ngClass]="{'is-invalid': formRegistro.controls['login'].invalid &&
+           (formRegistro.controls['login'].touched || formRegistro.controls['login'].dirty), 'is-valid':formRegistro.controls['login'].valid} "
 
-             formControlName="email"
-             [class.valid]="formRegistro.controls['email'].valid"
-             [class.invalid]="formRegistro.controls['email'].invalid &&
-(formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty)">
+             formControlName="login"
+             [class.valid]="formRegistro.controls['login'].valid"
+             [class.invalid]="formRegistro.controls['login'].invalid &&
+(formRegistro.controls['login'].touched || formRegistro.controls['login'].dirty)">
       <div
-        *ngIf="formRegistro.controls['email'].invalid && (formRegistro.controls['email'].touched || formRegistro.controls['email'].dirty)">
-        <small class="error-message" *ngIf="formRegistro.controls['email'].hasError('email')">
-          Email invalido!
-        </small>
-        <small class="error-message" *ngIf="formRegistro.controls['email'].hasError('required')">
+        *ngIf="formRegistro.controls['login'].invalid && (formRegistro.controls['login'].touched || formRegistro.controls['login'].dirty)">
+        <small class="error-message" *ngIf="formRegistro.controls['login'].hasError('required')">
           Esse campo precisa ser preenchido.
         </small>
 
@@ -33,17 +30,17 @@
 
       </div>
       <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label">Senha</label>
-        <input type="password" id="inputPassword6" class="form-control" formControlName="senha" placeholder="insira sua senha..."
-               [ngClass]="{'is-invalid': formRegistro.controls['senha'].invalid &&
-           (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty), 'is-valid':formRegistro.controls['senha'].valid} "
+        <label for="inputPassword6" class="col-form-label">password</label>
+        <input type="password" id="inputPassword6" class="form-control" formControlName="password" placeholder="insira sua senha..."
+               [ngClass]="{'is-invalid': formRegistro.controls['password'].invalid &&
+           (formRegistro.controls['password'].touched || formRegistro.controls['password'].dirty), 'is-valid':formRegistro.controls['password'].valid} "
 
-               [class.valid]="formRegistro.controls['senha'].valid"
-               [class.invalid]="formRegistro.controls['senha'].invalid &&
-(formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
-        <div *ngIf="formRegistro.controls['senha'].invalid &&
-           (formRegistro.controls['senha'].touched || formRegistro.controls['senha'].dirty)">
-          <small class="error-message" *ngIf="formRegistro.controls['senha'].hasError('required')">
+               [class.valid]="formRegistro.controls['password'].valid"
+               [class.invalid]="formRegistro.controls['password'].invalid &&
+(formRegistro.controls['password'].touched || formRegistro.controls['password'].dirty)">
+        <div *ngIf="formRegistro.controls['password'].invalid &&
+           (formRegistro.controls['password'].touched || formRegistro.controls['password'].dirty)">
+          <small class="error-message" *ngIf="formRegistro.controls['password'].hasError('required')">
             Esse campo precisa ser preenchido.
           </small>
 
@@ -57,18 +54,18 @@
       </div>
       <div class="col-auto">
         <label for="nome" class="col-form-label">nome</label>
-        <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="insira seu nome..."
-               [ngClass]="{'is-invalid': formRegistro.controls['nome'].invalid &&
-           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty), 'is-valid':formRegistro.controls['nome'].valid} "
-               [class.valid]="formRegistro.controls['nome'].valid"
-               [class.invalid]="formRegistro.controls['nome'].invalid &&
-           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
-        <div *ngIf="formRegistro.controls['nome'].invalid &&
-           (formRegistro.controls['nome'].touched || formRegistro.controls['nome'].dirty)">
-          <small class="error-message" *ngIf="formRegistro.controls['nome'].hasError('minlength')">
+        <input type="text" id="nome" class="form-control" formControlName="name" placeholder="insira seu nome..."
+               [ngClass]="{'is-invalid': formRegistro.controls['name'].invalid &&
+           (formRegistro.controls['name'].touched || formRegistro.controls['name'].dirty), 'is-valid':formRegistro.controls['name'].valid} "
+               [class.valid]="formRegistro.controls['name'].valid"
+               [class.invalid]="formRegistro.controls['name'].invalid &&
+           (formRegistro.controls['name'].touched || formRegistro.controls['name'].dirty)">
+        <div *ngIf="formRegistro.controls['name'].invalid &&
+           (formRegistro.controls['name'].touched || formRegistro.controls['name'].dirty)">
+          <small class="error-message" *ngIf="formRegistro.controls['name'].hasError('minlength')">
             Esse campo precisa de no minimo 4 caracteres.
           </small>
-          <small class="error-message" *ngIf="formRegistro.controls['nome'].hasError('required')">
+          <small class="error-message" *ngIf="formRegistro.controls['name'].hasError('required')">
             Esse campo precisa ser preenchido.
           </small>
 
