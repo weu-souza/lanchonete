@@ -26,12 +26,11 @@ export class ProdutossComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getIngredientes(this.id);
   }
 
-  getIngredientes(id: number) {
+  getIngredientes(name: string) {
     this.produtos$ =
-      this.produtoService.getIngrediente(id).pipe(
+      this.produtoService.getIngrediente(name).pipe(
         catchError(error => {
           // this.route.navigateByUrl('/error');
           // alert('Problemas no server tente novamente mais tarde.');
@@ -48,11 +47,11 @@ export class ProdutossComponent implements OnInit {
   }
 
   remover(id: number) {
-
+    this.route.navigateByUrl(`/delete-ingrediente/${id}`);
 
   }
 
-  atualizar() {
-    this.route.navigate(['alterar_ingrediente']);
+  atualizar(id: number) {
+    this.route.navigateByUrl(`/delete-ingrediente/${id}`);
   }
 }

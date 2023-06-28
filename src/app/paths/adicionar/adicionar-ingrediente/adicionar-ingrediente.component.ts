@@ -1,24 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Produto} from '../../models/produto';
+import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
 
-
-
 @Component({
-  selector: 'app-contato',
-  templateUrl: './adicionar-produto.component.html',
-  styleUrls: ['./adicionar-produto.component.scss']
+  selector: 'app-adicionar-ingrediente',
+  templateUrl: './adicionar-ingrediente.component.html',
+  styleUrls: ['./adicionar-ingrediente.component.scss']
 })
-export class AdicionarProdutoComponent implements OnInit {
+export class AdicionarIngredienteComponent implements OnInit {
+
   span: HTMLElement;
   formAddProduto: FormGroup;
-  produto: Produto = new Produto();
+  produto: Ingrediente;
+  produtos: Produto;
   fotoSrc = '';
   mostrarTexto = true;
 
-
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+
   }
 
   ngOnInit(): void {
@@ -29,6 +29,8 @@ export class AdicionarProdutoComponent implements OnInit {
     this.formAddProduto = this.fb.group({
       name: ['', [Validators.required]],
       imageName: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      ingredients: ['', [Validators.required]]
     });
   }
 
@@ -42,32 +44,29 @@ export class AdicionarProdutoComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
+        // this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
         this.formAddProduto.value.imageName = String(readerTarget.result);
+
       });
       reader.readAsDataURL(file);
     }
 
   }
 
-  enviar() {
+  addProduto() {
     if (this.formAddProduto.dirty && this.formAddProduto.valid) {
       this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
-
-      this.produtoService.postProdutoLista(this.produto).subscribe(res => {
+      this.produtoService.postProduto(this.produto, this.produtos.name).subscribe(res => {
         alert('enviado com sucesso!');
       });
+      console.log('produto adicionada', this.produto);
     } else {
       alert('preencha o formulario!');
     }
 
-
-  }
-
-  atualizar() {
-    console.log('atualizar', this.formAddProduto.value);
   }
 }

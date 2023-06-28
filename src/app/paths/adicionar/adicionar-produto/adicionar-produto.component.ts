@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Produto} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
 
+
 @Component({
-  selector: 'app-alterar-produto',
-  templateUrl: './alterar-produto.component.html',
-  styleUrls: ['./alterar-produto.component.scss']
+  selector: 'app-contato',
+  templateUrl: './adicionar-produto.component.html',
+  styleUrls: ['./adicionar-produto.component.scss']
 })
-export class AlterarProdutoComponent implements OnInit {
+export class AdicionarProdutoComponent implements OnInit {
   span: HTMLElement;
   formAddProduto: FormGroup;
   produto: Produto = new Produto();
   fotoSrc = '';
   mostrarTexto = true;
+
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
   }
@@ -24,8 +26,8 @@ export class AlterarProdutoComponent implements OnInit {
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: ['', [Validators.required]],
-      imagem: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      imageName: ['', [Validators.required]],
     });
   }
 
@@ -39,17 +41,33 @@ export class AlterarProdutoComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
-
+        this.formAddProduto.value.imageName = String(readerTarget.result);
       });
       reader.readAsDataURL(file);
     }
 
   }
+
+  enviar() {
+    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
+      this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+
+      this.produtoService.postProdutoLista(this.produto).subscribe(res => {
+        alert('enviado com sucesso!');
+      }, error => {
+        alert('ocorreu algum erro no envio');
+      });
+    } else {
+      alert('preencha o formulario!');
+    }
+
+
+  }
+
   atualizar() {
     console.log('atualizar', this.formAddProduto.value);
   }

@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/service_login/auth.service';
-import {Ingrediente, Produto} from '../../models/produto';
+import {Produto} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
-import {ActivatedRoute, Route, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {async} from '@angular/core/testing';
 
 @Component({
   selector: 'app-produtos-categoria',
@@ -35,19 +34,24 @@ export class ProdutosCategoriaComponent implements OnInit {
       );
   }
 
-  remover() {
-    this.produtoService.deleteProdutoLista(this.produto.id).subscribe(res => {
-      alert('deletado com sucesso');
-    }, err => {
-      console.log(err.message);
-    });
+  adicionar(name: string) {
+    this.route.navigateByUrl(`/adicionar-ingredientes/${name}`);
   }
 
-  atualizar() {
-    this.route.navigate(['alterar_produto']);
+  remover(id: number) {
+    this.route.navigateByUrl(`/delete-produto/${id}`);
+     // this.produtoService.deleteProdutoLista(this.produto.id).subscribe(res => {
+     //   alert('deletado com sucesso');
+     // }, err => {
+     //   console.log(err.message);
+     // });
   }
 
-  irParaProdutos(id: number) {
-    this.route.navigateByUrl(`produtos-categorias/produtos/${id}`);
+  atualizar(id: number) {
+    this.route.navigateByUrl(`/alterar_produto/${id}`);
+  }
+
+  irParaProdutos(name: string) {
+    this.route.navigateByUrl(`produtos-categorias/produtos/${name}`);
   }
 }

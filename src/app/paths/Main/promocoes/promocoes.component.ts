@@ -41,11 +41,10 @@ export class PromocoesComponent implements OnInit {
   }
 
   remover(id: number) {
-    // this.produtos = this.produtos.filter(produtos => produtos.id !== id);
-    this.produtoService.deletePromocoes(this.produto.id);
+    this.route.navigateByUrl(`/delete-promocao/${id}`);
   }
 
-  atualizar() {
-    this.route.navigate(['alterar_ingrediente']);
+  atualizar(id: number) {
+    this.route.navigateByUrl(`/alterar_promocao/${id}`);
   }
 }

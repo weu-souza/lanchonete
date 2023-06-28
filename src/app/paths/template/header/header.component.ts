@@ -5,7 +5,6 @@ import {AuthService} from '../../service/service_login/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Usuario} from '../../models/usuario';
 import {CadastroService} from '../../service/service_login/cadastro.service';
-import {Observable} from 'rxjs';
 
 
 @Component({
