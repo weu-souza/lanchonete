@@ -4,7 +4,7 @@
   <!--inserir as variaveis aqui-->
   <ng-container *ngIf="produtos$ | async as produtos; else loading" >
   <div class="card card-container p-2 ms-5 " *ngFor="let produto of produtos">
-    <img [src]="produto.imageName" class="card-img-top img-fluid" alt="...">
+    <img [src]="produto?.imageName" class="card-img-top img-fluid" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{produto?.name}}</h5>
       <p class="card-text">{{produto?.ingredients}}</p>

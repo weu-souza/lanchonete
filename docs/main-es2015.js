@@ -432,6 +432,7 @@ let AdicionarIngredienteComponent = /** @class */ (() => {
                     this.span.style.background = 'none';
                     this.mostrarTexto = false;
                     this.fotoSrc = String(readerTarget.result);
+                    this.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
             }
@@ -592,7 +593,7 @@ let AdicionarProdutoComponent = /** @class */ (() => {
         createForm() {
             this.formAddProduto = this.fb.group({
                 name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-                imageName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+                imageName: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             });
         }
         imagem(event) {
@@ -603,11 +604,11 @@ let AdicionarProdutoComponent = /** @class */ (() => {
                 const reader = new FileReader();
                 reader.addEventListener('load', (e) => {
                     const readerTarget = e.target;
-                    // this.formAddProduto.value.imagem = String(readerTarget.result);
                     this.span.style.border = 'none';
                     this.span.style.background = 'none';
                     this.mostrarTexto = false;
                     this.fotoSrc = String(readerTarget.result);
+                    this.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
             }
@@ -615,7 +616,6 @@ let AdicionarProdutoComponent = /** @class */ (() => {
         enviar() {
             if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
-                console.log(this.produto);
                 this.produtoService.postProdutoLista(this.produto).subscribe(res => {
                     alert('enviado com sucesso!');
                 });
@@ -796,6 +796,7 @@ let AdicionarPromocaoComponent = /** @class */ (() => {
                     this.span.style.background = 'none';
                     this.mostrarTexto = false;
                     this.fotoSrc = String(readerTarget.result);
+                    this.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
             }
@@ -1572,7 +1573,7 @@ function ProdutossComponent_ng_container_1_div_1_Template(rf, ctx) { if (rf & 1)
     const produto_r5 = ctx.$implicit;
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5 == null ? null : produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5 == null ? null : produto_r5.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -1639,7 +1640,6 @@ let ProdutossComponent = /** @class */ (() => {
             this.produtoService = produtoService;
             this.carrinhoS = carrinhoS;
             this.eAdm = this.authService.estaAutenticado();
-            // produtos: Ingrediente[] = [];
             this.id = 1;
         }
         ngOnInit() {
@@ -1778,13 +1778,13 @@ function PromocoesComponent_ng_container_1_div_1_Template(rf, ctx) { if (rf & 1)
     const produto_r5 = ctx.$implicit;
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5.imagem, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5 == null ? null : produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5.nome);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5 == null ? null : produto_r5.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5.detalhe);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5 == null ? null : produto_r5.details);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](13, 6, produto_r5.preco, "BRL"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](13, 6, produto_r5 == null ? null : produto_r5.price, "BRL"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r4.eAdm);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -2758,6 +2758,10 @@ let ProdutoService = /** @class */ (() => {
             const url = `${this.baseUrl}/categories`;
             return this.http.post(url, produtos);
         }
+        postProdutoImg(produtos, id) {
+            const url = `${this.baseUrl}/ /image/${produtos}/${id}`;
+            return this.http.post(url, produtos);
+        }
         postPromocoes(produtos) {
             const url = `${this.baseUrl}/offers`;
             return this.http.post(url, produtos);
@@ -2775,7 +2779,7 @@ let ProdutoService = /** @class */ (() => {
             return this.http.get(url);
         }
         getProdutosLista() {
-            const url = `${this.baseUrl}/categories/`;
+            const url = `${this.baseUrl}/categories`;
             return this.http.get(url);
         }
         getPromocoes() {

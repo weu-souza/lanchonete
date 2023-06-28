@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
@@ -48,6 +48,7 @@ export class AdicionarPromocaoComponent implements OnInit {
         this.span.style.background = 'none';
         this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
+        this.formAddProduto.value.imageName = String(readerTarget.result);
 
       });
       reader.readAsDataURL(file);

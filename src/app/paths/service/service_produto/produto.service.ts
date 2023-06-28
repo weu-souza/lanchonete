@@ -28,6 +28,11 @@ export class ProdutoService {
     return this.http.post<Produto>(url, produtos);
   }
 
+  postProdutoImg(produtos: Produto, id: number) {
+    const url = `${this.baseUrl}/ /image/${produtos}/${id}`;
+    return this.http.post<Produto>(url, produtos);
+  }
+
   postPromocoes(produtos: Promocao) {
     const url = `${this.baseUrl}/offers`;
     return this.http.post<Promocao>(url, produtos);
@@ -49,7 +54,7 @@ export class ProdutoService {
   }
 
   getProdutosLista(): Observable<Produto[]> {
-    const url = `${this.baseUrl}/categories/`;
+    const url = `${this.baseUrl}/categories`;
     return this.http.get<Produto[]>(url);
   }
 
@@ -58,9 +63,9 @@ export class ProdutoService {
     return this.http.get<Promocao[]>(url);
   }
 
-  getIngrediente(id: number): Observable<Ingrediente> {
+  getIngrediente(id: number): Observable<Ingrediente[]> {
     const url = `${this.baseUrl}/ingredients/`;
-    return this.http.get<Ingrediente>(url);
+    return this.http.get<Ingrediente[]>(url);
   }
 
   deleteProdutoLista(id: number) {

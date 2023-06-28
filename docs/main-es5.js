@@ -844,6 +844,7 @@
                   _this2.span.style.background = 'none';
                   _this2.mostrarTexto = false;
                   _this2.fotoSrc = String(readerTarget.result);
+                  _this2.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -1181,12 +1182,12 @@
               if (file) {
                 var reader = new FileReader();
                 reader.addEventListener('load', function (e) {
-                  var readerTarget = e.target; // this.formAddProduto.value.imagem = String(readerTarget.result);
-
+                  var readerTarget = e.target;
                   _this3.span.style.border = 'none';
                   _this3.span.style.background = 'none';
                   _this3.mostrarTexto = false;
                   _this3.fotoSrc = String(readerTarget.result);
+                  _this3.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -1196,7 +1197,6 @@
             value: function enviar() {
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
-                console.log(this.produto);
                 this.produtoService.postProdutoLista(this.produto).subscribe(function (res) {
                   alert('enviado com sucesso!');
                 });
@@ -1550,6 +1550,7 @@
                   _this4.span.style.background = 'none';
                   _this4.mostrarTexto = false;
                   _this4.fotoSrc = String(readerTarget.result);
+                  _this4.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -3154,7 +3155,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5 == null ? null : produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
@@ -3283,8 +3284,7 @@
             this.authService = authService;
             this.produtoService = produtoService;
             this.carrinhoS = carrinhoS;
-            this.eAdm = this.authService.estaAutenticado(); // produtos: Ingrediente[] = [];
-
+            this.eAdm = this.authService.estaAutenticado();
             this.id = 1;
           }
 
@@ -3598,19 +3598,19 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5.imagem, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", produto_r5 == null ? null : produto_r5.imageName, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5.nome);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5 == null ? null : produto_r5.name);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5.detalhe);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](produto_r5 == null ? null : produto_r5.details);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](13, 6, produto_r5.preco, "BRL"));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](13, 6, produto_r5 == null ? null : produto_r5.price, "BRL"));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
@@ -5567,6 +5567,12 @@
               return this.http.post(url, produtos);
             }
           }, {
+            key: "postProdutoImg",
+            value: function postProdutoImg(produtos, id) {
+              var url = "".concat(this.baseUrl, "/ /image/").concat(produtos, "/").concat(id);
+              return this.http.post(url, produtos);
+            }
+          }, {
             key: "postPromocoes",
             value: function postPromocoes(produtos) {
               var url = "".concat(this.baseUrl, "/offers");
@@ -5593,7 +5599,7 @@
           }, {
             key: "getProdutosLista",
             value: function getProdutosLista() {
-              var url = "".concat(this.baseUrl, "/categories/");
+              var url = "".concat(this.baseUrl, "/categories");
               return this.http.get(url);
             }
           }, {

@@ -3,19 +3,19 @@
    <ng-container *ngIf="produtos$ | async as produtos; else loading" >
     <div class="d-flex flex-column  card card-container p-2 ms-5 " *ngFor="let produto of produtos">
       <div >
-        <img [src]="produto.imagem" class="card-img-top img-fluid w-100" alt="..." width="400" height="300">
+        <img [src]="produto?.imageName" class="card-img-top img-fluid w-100" alt="..." width="400" height="300">
       </div>
 
       <div class="card-body ">
         <div>
-          <h5 class="card-title ">{{produto.nome}}</h5>
+          <h5 class="card-title ">{{produto?.name}}</h5>
         </div>
        <div>
-         <p class="card-text">{{produto.detalhe}}</p>
+         <p class="card-text">{{produto?.details}}</p>
        </div>
 
         <div>
-          <p class="card-text">{{produto.preco | currency: "BRL"}}</p>
+          <p class="card-text">{{produto?.price | currency: "BRL"}}</p>
         </div>
       </div>
       <div class="d-flex justify-content-between">

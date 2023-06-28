@@ -48,6 +48,7 @@ export class AdicionarIngredienteComponent implements OnInit {
         this.span.style.background = 'none';
         this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
+        this.formAddProduto.value.imageName = String(readerTarget.result);
 
       });
       reader.readAsDataURL(file);

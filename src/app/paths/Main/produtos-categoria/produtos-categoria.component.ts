@@ -5,6 +5,7 @@ import {ProdutoService} from '../../service/service_produto/produto.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {async} from '@angular/core/testing';
 
 @Component({
   selector: 'app-produtos-categoria',
@@ -16,6 +17,7 @@ export class ProdutosCategoriaComponent implements OnInit {
 
   produto: Produto;
   produtos$: Observable<Produto[]>;
+  produtos: Produto[];
 
   constructor(private authService: AuthService, private produtoService: ProdutoService, private route: Router) {
   }
@@ -25,7 +27,6 @@ export class ProdutosCategoriaComponent implements OnInit {
   }
 
   getProdutos() {
-    console.log(this.produtos$);
     this.produtos$ = this.produtoService.getProdutosLista()
       .pipe(
         catchError(error => {
@@ -34,7 +35,7 @@ export class ProdutosCategoriaComponent implements OnInit {
       );
   }
 
-  remover(id: number) {
+  remover() {
     this.produtoService.deleteProdutoLista(this.produto.id).subscribe(res => {
       alert('deletado com sucesso');
     }, err => {
@@ -43,7 +44,7 @@ export class ProdutosCategoriaComponent implements OnInit {
   }
 
   atualizar() {
-  this.route.navigate(['alterar_produto']);
+    this.route.navigate(['alterar_produto']);
   }
 
   irParaProdutos(id: number) {

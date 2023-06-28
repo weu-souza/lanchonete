@@ -15,8 +15,7 @@ import {catchError} from 'rxjs/operators';
 export class ProdutossComponent implements OnInit {
   eAdm = this.authService.estaAutenticado();
   produtos: Ingrediente;
-  produtos$: Observable<Ingrediente>;
-  // produtos: Ingrediente[] = [];
+  produtos$: Observable<Ingrediente[]>;
   id = 1;
 
   constructor(
