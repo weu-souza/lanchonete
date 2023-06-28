@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Produto} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-alterar-produto',
@@ -11,26 +12,29 @@ import {ProdutoService} from '../../service/service_produto/produto.service';
 export class AlterarProdutoComponent implements OnInit {
   span: HTMLElement;
   formAddProduto: FormGroup;
-  produto: Produto = new Produto();
+  produto: Produto = {
+    id: undefined,
+    name: '',
+    imageName: ''
+  };
   fotoSrc = '';
-  mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
     this.createForm();
+    this.findById();
   }
 
   createForm() {
     this.formAddProduto = this.fb.group({
-      nome: ['', [Validators.required]],
-      imagem: ['', [Validators.required]]
+      name: ['', [Validators.required]],
+      imagemName: ['', [Validators.required]]
     });
   }
 
   imagem(event) {
-    this.span = document.getElementById('span_imagem');
     const inputTarget = event.target;
     const file = inputTarget.files[0];
 
@@ -39,11 +43,8 @@ export class AlterarProdutoComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        this.formAddProduto.value.imagem = String(readerTarget.result);
-        this.span.style.border = 'none';
-        this.span.style.background = 'none';
-        this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
+        this.formAddProduto.value.imageName = String(readerTarget.result);
 
       });
       reader.readAsDataURL(file);
@@ -52,10 +53,29 @@ export class AlterarProdutoComponent implements OnInit {
   }
 
   findById() {
-
+    this.produto.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.produtoService.getProdutoById(this.produto.id).subscribe(res => {
+      this.formAddProduto = this.fb.group({
+        name: [res.name],
+        imageName: [res.imageName]
+      });
+      this.fotoSrc = res.imageName;
+    });
   }
 
   atualizar() {
-    console.log('atualizar', this.formAddProduto.value);
+    if (this.formAddProduto.dirty && this.formAddProduto.valid) {
+      this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+      this.produtoService.putProdutosLista(this.produto).subscribe(res => {
+        alert('atualizado com sucesso');
+        this.router.navigate(['produtos-categorias']);
+
+      }, error => {
+        alert('erro no back end');
+      });
+    } else {
+      alert('altere o valor');
+    }
+
   }
 }
