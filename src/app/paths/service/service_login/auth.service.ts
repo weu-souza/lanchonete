@@ -35,7 +35,7 @@ export class AuthService {
       tap(token => {
         this.token = JSON.parse(JSON.stringify(token));
         const decode = jwt_decode(this.token) as UserToken;
-        // console.log(this.token);
+        console.log(this.token);
         this.cookieService.set('access-token', `${token}`, decode.exp);
         this.router.navigate(['/']);
         if (decode.role === 'admin') {

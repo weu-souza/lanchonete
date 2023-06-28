@@ -29,7 +29,7 @@ export class CarrinhoService {
 
 
   removerCarrinho(id: number) {
-    const url = `${this.baseUrl}/chart${id}`;
+    const url = `${this.baseUrl}/chart/${id}`;
     return this.http.delete<void>(url);
   }
 

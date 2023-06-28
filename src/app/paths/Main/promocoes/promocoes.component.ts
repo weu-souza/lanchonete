@@ -33,13 +33,6 @@ export class PromocoesComponent implements OnInit {
     );
   }
 
-  comprar() {
-    this.carrinhoS.adicionarAoCarrinhoP(this.produto).subscribe(res => {
-      this.route.navigate(['carrinho']);
-      alert('enviado com sucesso!');
-    });
-  }
-
   remover(id: number) {
     this.route.navigateByUrl(`/delete-promocao/${id}`);
   }

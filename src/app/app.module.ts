@@ -26,6 +26,8 @@ import { DeleteProdutoComponent } from './paths/deletar/delete-produto/delete-pr
 import { AlterarPromocaoComponent } from './paths/alterar/alterar-promocao/alterar-promocao.component';
 import { DeleteIngredienteComponent } from './paths/deletar/delete-ingrediente/delete-ingrediente.component';
 import { DeletePromocaoComponent } from './paths/deletar/delete-promocao/delete-promocao.component';
+import { AdicionarCarrinhProdutoComponent } from './paths/adicionar/adicionar-carrinh-produto/adicionar-carrinh-produto.component';
+import { AdicionarCarrinhPrmocaoComponent } from './paths/adicionar/adicionar-carrinh-prmocao/adicionar-carrinh-prmocao.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { DeletePromocaoComponent } from './paths/deletar/delete-promocao/delete-
     AlterarPromocaoComponent,
     DeleteIngredienteComponent,
     DeletePromocaoComponent,
+    AdicionarCarrinhProdutoComponent,
+    AdicionarCarrinhPrmocaoComponent,
   ],
   imports: [
     BrowserModule,

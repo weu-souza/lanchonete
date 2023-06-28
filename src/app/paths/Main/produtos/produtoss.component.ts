@@ -41,7 +41,8 @@ export class ProdutossComponent implements OnInit {
 
   comprar() {
     this.carrinhoS.adicionarAoCarrinho(this.produtos).subscribe(res => {
-      this.route.navigate(['carrinho']);
+      console.log(res);
+      // this.route.navigate(['carrinho']);
       alert('enviado com sucesso!');
     });
   }

@@ -18,6 +18,9 @@ import {DeleteProdutoComponent} from './paths/deletar/delete-produto/delete-prod
 import {DeleteIngredienteComponent} from './paths/deletar/delete-ingrediente/delete-ingrediente.component';
 import {DeletePromocaoComponent} from './paths/deletar/delete-promocao/delete-promocao.component';
 import {AlterarPromocaoComponent} from './paths/alterar/alterar-promocao/alterar-promocao.component';
+import {AdicionarCarrinhProdutoComponent} from './paths/adicionar/adicionar-carrinh-produto/adicionar-carrinh-produto.component';
+import {AdicionarCarrinhPrmocaoComponent} from './paths/adicionar/adicionar-carrinh-prmocao/adicionar-carrinh-prmocao.component';
+
 
 
 const routes: Routes = [{
@@ -33,6 +36,8 @@ const routes: Routes = [{
   {path: 'promocoes', component: PromocoesComponent, canActivate: [AuthGuard]},
   {path: 'adicionar-produto', component: AdicionarProdutoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
   {path: 'adicionar-promocao', component: AdicionarPromocaoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
+  {path: 'adicionar-carrinho_produto/:id', component: AdicionarCarrinhProdutoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
+  {path: 'adicionar-carrinho_promocao/:id', component: AdicionarCarrinhPrmocaoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
   {path: 'historico-vendas', component: HistoricoVendasComponent, canActivate: [GuardAdmGuard, AuthGuard]},
   {path: 'adicionar-ingredientes/:name', component: AdicionarIngredienteComponent, canActivate: [GuardAdmGuard, AuthGuard]},
   {path: 'delete-produto/:id', component: DeleteProdutoComponent, canActivate: [GuardAdmGuard, AuthGuard]},
