@@ -69,4 +69,5 @@ export class AdicionarIngredienteComponent implements OnInit {
     }
 
   }
+
 }

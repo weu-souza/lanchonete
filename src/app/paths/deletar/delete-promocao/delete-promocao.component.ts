@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Promocao} from '../../models/produto';
+import {ProdutoService} from '../../service/service_produto/produto.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-delete-promocao',
@@ -6,10 +10,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-promocao.component.scss']
 })
 export class DeletePromocaoComponent implements OnInit {
+  formAddProduto: FormGroup;
+  produto: Promocao = {
+    id: undefined,
+    name: '',
+    price: undefined,
+    details: '',
+    imageName: ''
+  };
+  fotoSrc = '';
+  name: string;
+  price: number;
+  details: string;
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) {
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+    this.produto.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.findById();
+  }
+
+  findById() {
+    this.produtoService.getPromocaoById(this.produto.id).subscribe(res => {
+      this.produto = res;
+      this.name = this.produto.name;
+      this.price = this.produto.price;
+      this.details = this.produto.details;
+      this.fotoSrc = this.produto.imageName;
+    });
+  }
+
+  deletar() {
+    this.produtoService.deletePromocoes(this.produto.id).subscribe(res => {
+      alert('deletado');
+      this.router.navigate(['promocoes']);
+    }, error => {
+      alert('houve um erro no servidor');
+    });
+  }
 }

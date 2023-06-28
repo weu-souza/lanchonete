@@ -71,7 +71,7 @@ export class AlterarProdutoComponent implements OnInit {
         this.router.navigate(['produtos-categorias']);
 
       }, error => {
-        alert('erro no back end');
+        alert('erro no servidor');
       });
     } else {
       alert('altere o valor');

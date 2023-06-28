@@ -51,7 +51,7 @@ export class ProdutoService {
 
   // get by id pra tabela de promocoes
   getPromocaoById(id: number) {
-    const url = `${this.baseUrl}/offers${id}`;
+    const url = `${this.baseUrl}/offers/${id}`;
     return this.http.get<Promocao>(url);
   }
 
@@ -83,13 +83,13 @@ export class ProdutoService {
 
   // delete de produtos
   deleteIngredientes(id: number) {
-    const url = `${this.baseUrl}/offers/${id}`;
+    const url = `${this.baseUrl}/products/${id}`;
     return this.http.delete<void>(url);
   }
 
   // delete de promocoes
   deletePromocoes(id: number) {
-    const url = `${this.baseUrl}/products/${id}`;
+    const url = `${this.baseUrl}/offers/${id}`;
     return this.http.delete<void>(url);
   }
 
@@ -101,13 +101,13 @@ export class ProdutoService {
   }
 
   // put de produtos
-  putProdutos(produtos: Produto) {
+  putProdutos(produtos: Ingrediente) {
     const url = `${this.baseUrl}/products/${produtos.id}`;
     return this.http.put<void>(url, produtos);
   }
 
   // put de promocoes
-  putPromocoes(produtos: Produto) {
+  putPromocoes(produtos: Promocao) {
     const url = `${this.baseUrl}/offers/${produtos.id}`;
     return this.http.put<void>(url, produtos);
   }
