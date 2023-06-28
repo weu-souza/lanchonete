@@ -16,9 +16,17 @@
     <input type="file" accept="image/*" class="form-control" id="formFile"
            [(ngModel)]="imageName" disabled>
   </div>
-  <!--botão de enviar-->
-  <div class="col-auto mx-auto">
-    <button type="submit" class="btn  mb-3" (click)="deletar()">Deletar</button>
+  <div class="d-lg-flex flex-row flex-wrap mx-auto">
+    <!--botão de enviar-->
+    <div class="col-auto mx-auto">
+      <button type="submit" class="btn  mb-3 ms-4" (click)="deletar()" >deletar
+      </button>
+    </div>
+    <!--botão de voltar-->
+    <div class="col-auto mx-auto">
+      <button type="submit" class="btn  mb-3 ms-4" routerLink="/produtos-categorias" >cancelar
+      </button>
+    </div>
   </div>
 
 </div>

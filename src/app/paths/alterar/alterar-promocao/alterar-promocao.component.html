@@ -1,1 +1,91 @@
-<p>alterar-promocao works!</p>
+<form class="contato-bg p-5 rounded d-grid" [formGroup]="formAddProduto">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">atualizar promoção</h1>
+  </div>
+  <!--    nome do produto -->
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <label for="produto" class="form-label">nome do produto</label>
+    <input type="text" class="form-control " id="produto" placeholder="nome do produto" formControlName="name"
+           [ngClass]="{'is-invalid': formAddProduto.controls['name'].invalid &&
+           (formAddProduto.controls['name'].touched || formAddProduto.controls['name'].dirty), 'is-valid':formAddProduto.controls['name'].valid} "
+
+           [class.valid]="formAddProduto.controls['name'].valid"
+           [class.invalid]="formAddProduto.controls['name'].invalid &&
+           (formAddProduto.controls['name'].touched || formAddProduto.controls['name'].dirty)">
+    <div *ngIf="formAddProduto.controls['name'].invalid &&
+           (formAddProduto.controls['name'].touched || formAddProduto.controls['name'].dirty)">
+      <small class="error-message" *ngIf="formAddProduto.controls['name'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+
+    </div>
+  </div>
+
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <!--    preço do produto -->
+    <label for="preco" class="form-label">preço </label>
+    <input type="number" class="form-control" id="preco" placeholder="R$ 00,00" formControlName="price"
+           [ngClass]="{'is-invalid': formAddProduto.controls['price'].invalid &&
+           (formAddProduto.controls['price'].touched || formAddProduto.controls['price'].dirty), 'is-valid':formAddProduto.controls['price'].valid} "
+           [class.valid]="formAddProduto.controls['price'].valid"
+           [class.invalid]="formAddProduto.controls['price'].invalid &&
+           (formAddProduto.controls['price'].touched || formAddProduto.controls['price'].dirty)">
+
+    <div *ngIf="formAddProduto.controls['price'].invalid &&
+           (formAddProduto.controls['price'].touched || formAddProduto.controls['price'].dirty)">
+
+      <small class="error-message" *ngIf="formAddProduto.controls['price'].hasError('required')">
+        Esse campo precisa ser preenchido com números.
+      </small>
+      <small class="error-message" *ngIf="formAddProduto.controls['price'].hasError('min')">
+        Esse campo precisa ser maior que 00,00.
+      </small>
+    </div>
+  </div>
+
+  <!--ingredientes do produto-->
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <label for="texto" class="form-label ">detalhes</label>
+    <textarea class="form-control " id="texto" placeholder="digite o detalhe..." formControlName="details"
+              [ngClass]="{'is-invalid': formAddProduto.controls['details'].invalid &&
+           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty), 'is-valid':formAddProduto.controls['details'].valid}"
+              [class.valid]="formAddProduto.controls['details'].valid"
+              [class.invalid]="formAddProduto.controls['details'].invalid &&
+           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty)"></textarea>
+
+    <div *ngIf="formAddProduto.controls['details'].invalid &&
+           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty)">
+      <small class="error-message" *ngIf="formAddProduto.controls['name'].hasError('required')">
+        Esse campo precisa ser preenchido.
+      </small>
+
+    </div>
+  </div>
+  <!--imagem-->
+  <div class="mb-3 mx-auto">
+    <label for="formFile" id="span_imagem" class="form-label img-label"><img
+      [src]="fotoSrc" class=" img"></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" (change)="imagem($event)"
+           formControlName="ImageName"
+           [class.valid]="formAddProduto.controls['imageName'].valid"
+           [class.invalid]="formAddProduto.controls['imageName'].invalid &&
+           (formAddProduto.controls['imageName'].touched || formAddProduto.controls['imageName'].dirty)">
+
+  </div>
+  <!--botão de enviar-->
+  <div class="d-lg-flex flex-row flex-wrap mx-auto">
+    <div class="col-auto   ms-lg-3">
+      <button type="submit" class="btn  mb-3" (click)="atualizar()">atualizar
+      </button>
+
+    </div>
+    <!--botão de voltar-->
+    <div class="col-auto mx-auto">
+      <button type="submit" class="btn  mb-3 ms-4" routerLink="/promocoes" >cancelar
+      </button>
+    </div>
+  </div>
+</form>
+
+
+

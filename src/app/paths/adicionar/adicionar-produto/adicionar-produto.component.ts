@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Produto} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AdicionarProdutoComponent implements OnInit {
   mostrarTexto = true;
 
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -58,8 +59,9 @@ export class AdicionarProdutoComponent implements OnInit {
 
       this.produtoService.postProdutoLista(this.produto).subscribe(res => {
         alert('enviado com sucesso!');
+        this.router.navigate(['produtos-categorias']);
       }, error => {
-        alert('ocorreu algum erro no envio');
+        alert('só e possivel enviar um nome e uma foto em categoria');
       });
     } else {
       alert('preencha o formulario!');

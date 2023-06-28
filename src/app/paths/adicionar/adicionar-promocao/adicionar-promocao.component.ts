@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adicionar-promocao',
@@ -16,7 +17,7 @@ export class AdicionarPromocaoComponent implements OnInit {
   fotoSrc = '';
   mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private router: Router) {
 
   }
 
@@ -61,6 +62,7 @@ export class AdicionarPromocaoComponent implements OnInit {
       this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
       this.produtoService.postPromocoes(this.promocao).subscribe(res => {
         alert('enviado com sucesso!');
+        this.router.navigate(['promocoes']);
       });
       console.log('promoção adicionada');
     } else {

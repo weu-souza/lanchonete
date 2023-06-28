@@ -66,6 +66,7 @@ export class AuthService {
         id: decode.id,
         login: decode.name,
         role: decode.role,
+        exp: decode.exp
       } as Usuario;
     } catch (Error) {
       return null;
@@ -76,5 +77,15 @@ export class AuthService {
     this.cookieService.delete('access-token');
     this.cookieService.delete('eadm');
     this.mostrarMenu.emit(false);
+  }
+
+  timeOut() {
+    const decode = jwt_decode(this.token) as UserToken;
+    setTimeout(() => {
+      console.log('tempo de login expirado');
+      this.logout();
+      this.router.navigate(['login']);
+
+    }, decode.exp);
   }
 }
