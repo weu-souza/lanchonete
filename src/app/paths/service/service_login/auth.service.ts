@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {environment} from '../../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {catchError, tap} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {Observable, of, throwError} from 'rxjs';
 import jwt_decode from 'jwt-decode';
 import {CookieService} from 'ngx-cookie-service';
 import {UserToken} from '../../models/user-token';
@@ -29,23 +29,33 @@ export class AuthService {
     return !!this.cookieService.get('eadm');
   }
 
+  public verificaToken(): Observable<UserToken> {
+    // const apiUrl = `${this.baseUrl}/verifica-token`;
+    // return this.http.get<UserToken>(apiUrl);
+    try {
+      return of(jwt_decode(this.getToken()) as UserToken);
+    } catch (error) {
+      this.router.navigate(['login']);
+    }
+  }
+
   logar(usuario: Usuario) {
     const url = `${this.baseUrl}/login`;
     return this.http.post<Usuario>(url, usuario).pipe(
       tap(token => {
         this.token = JSON.parse(JSON.stringify(token));
         const decode = jwt_decode(this.token) as UserToken;
-        console.log(this.token);
+        // console.log(this.token);
         this.cookieService.set('access-token', `${token}`, decode.exp);
-        this.router.navigate(['/']);
-        if (decode.role === 'admin') {
+        if (decode.role.includes('admin')) {
           this.mostrarMenu.emit(this.estaAutenticado());
-          this.cookieService.set('eadm', decode.role);
+          this.cookieService.set('eadm', decode.role.find(role => role === 'admin'));
         }
-        if (decode.role === 'user') {
+        if (decode.role.includes('user')) {
           this.mostrarMenu.emit(this.estaAutenticado());
+          this.cookieService.set('eadm', decode.role.find(role => role === 'admin'));
         }
-
+        this.router.navigate(['produtos-categorias']);
       }),
       catchError((err) => {
         return throwError(err);
@@ -77,15 +87,6 @@ export class AuthService {
     this.cookieService.delete('access-token');
     this.cookieService.delete('eadm');
     this.mostrarMenu.emit(false);
-  }
-
-  timeOut() {
-    const decode = jwt_decode(this.token) as UserToken;
-    setTimeout(() => {
-      console.log('tempo de login expirado');
-      this.logout();
-      this.router.navigate(['login']);
-
-    }, decode.exp);
+    this.router.navigate(['login']);
   }
 }

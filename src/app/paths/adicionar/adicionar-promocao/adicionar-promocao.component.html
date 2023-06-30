@@ -24,7 +24,7 @@
   <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <!--    preço do produto -->
     <label for="preco" class="form-label">preço </label>
-    <input type="number" class="form-control" id="preco" placeholder="R$ 00,00" formControlName="price"
+    <input type="text" class="form-control" id="preco" placeholder="R$ 00,00" formControlName="price"
            [ngClass]="{'is-invalid': formAddProduto.controls['price'].invalid &&
            (formAddProduto.controls['price'].touched || formAddProduto.controls['price'].dirty), 'is-valid':formAddProduto.controls['price'].valid} "
            [class.valid]="formAddProduto.controls['price'].valid"

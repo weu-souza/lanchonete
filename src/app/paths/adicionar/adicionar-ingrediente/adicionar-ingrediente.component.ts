@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {CurrencyPipe} from '@angular/common';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-adicionar-ingrediente',
@@ -13,16 +15,39 @@ export class AdicionarIngredienteComponent implements OnInit {
   span: HTMLElement;
   formAddProduto: FormGroup;
   produto: Ingrediente;
-  produtos: Produto;
+  produtos: Produto = {
+    name: '',
+    imageName: '',
+    id: undefined
+  };
   fotoSrc = '';
   mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private currency: CurrencyPipe,
+              private router: Router, private route: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
-    this.createForm();
+    // this.createForm();
+    this.produtos.name = this.route.snapshot.paramMap.get('name');
+    this.formAddProduto = this.fb.group({
+      name: ['', [Validators.required]],
+      imageName: ['', [Validators.required]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      ingredients: ['', [Validators.required]]
+    });
+    this.formatPrice();
+  }
+
+  formatPrice() {
+    this.formAddProduto.valueChanges.subscribe(form => {
+      if (form.price) {
+        this.formAddProduto.patchValue({
+          price: this.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+        }, {emitEvent: false});
+      }
+    });
   }
 
   createForm() {
@@ -60,7 +85,10 @@ export class AdicionarIngredienteComponent implements OnInit {
   addProduto() {
     if (this.formAddProduto.dirty && this.formAddProduto.valid) {
       this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+      this.produto.price = Number(this.formAddProduto.value.price.replace(/[^0-9]/g, ''));
+      console.log(this.produtos.name);
       this.produtoService.postProduto(this.produto, this.produtos.name).subscribe(res => {
+        this.router.navigate(['/']);
         alert('enviado com sucesso!');
       });
       console.log('produto adicionada', this.produto);

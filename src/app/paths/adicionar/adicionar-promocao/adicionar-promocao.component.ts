@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Ingrediente, Produto, Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
 import {Router} from '@angular/router';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-adicionar-promocao',
@@ -17,22 +18,38 @@ export class AdicionarPromocaoComponent implements OnInit {
   fotoSrc = '';
   mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private router: Router) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private router: Router, private currency: CurrencyPipe) {
 
   }
 
   ngOnInit(): void {
-    this.createForm();
-  }
-
-  createForm() {
     this.formAddProduto = this.fb.group({
       name: ['', [Validators.required]],
       imageName: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1)]],
       details: ['', [Validators.required]]
     });
+    this.formatPrice();
   }
+
+  formatPrice() {
+    this.formAddProduto.valueChanges.subscribe(form => {
+      if (form.price) {
+        this.formAddProduto.patchValue({
+          price: this.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+        }, {emitEvent: false});
+      }
+    });
+  }
+
+  // createForm() {
+  //   this.formAddProduto = this.fb.group({
+  //     name: ['', [Validators.required]],
+  //     imageName: ['', [Validators.required]],
+  //     price: ['', [Validators.required, Validators.min(1)]],
+  //     details: ['', [Validators.required]]
+  //   });
+  // }
 
   imagem(event) {
     this.span = document.getElementById('span_imagem');
@@ -60,6 +77,8 @@ export class AdicionarPromocaoComponent implements OnInit {
   addPromocao() {
     if (this.formAddProduto.dirty && this.formAddProduto.valid) {
       this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
+      this.promocao.price = Number(this.formAddProduto.value.price.replace(/[^0-9]/g, ''));
+      console.log(this.promocao);
       this.produtoService.postPromocoes(this.promocao).subscribe(res => {
         alert('enviado com sucesso!');
         this.router.navigate(['promocoes']);

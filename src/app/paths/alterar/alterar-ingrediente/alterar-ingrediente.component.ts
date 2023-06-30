@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Ingrediente, Produto} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-alterar-ingrediente',
@@ -18,12 +19,19 @@ export class AlterarIngredienteComponent implements OnInit {
   fotoSrc = '';
   mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private currency: CurrencyPipe) {
 
   }
 
   ngOnInit(): void {
     this.createForm();
+    this.formAddProduto.valueChanges.subscribe(form => {
+      if (form.preco) {
+        this.formAddProduto.patchValue({
+          preco: this.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+        }, {emitEvent: false});
+      }
+    });
   }
 
   createForm() {

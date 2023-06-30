@@ -13,30 +13,30 @@ import {catchError} from 'rxjs/operators';
   styleUrls: ['./produtoss.component.scss']
 })
 export class ProdutossComponent implements OnInit {
-  eAdm = this.authService.estaAutenticado();
+  eAdm = this.authService.eadm();
   produtos: Ingrediente;
   produtos$: Observable<Ingrediente[]>;
-  id = 1;
+  produto: Produto = {
+    name: '',
+    id: undefined,
+    imageName: ''
+  };
 
   constructor(
-    private route: Router,
+    private router: Router,
     private authService: AuthService,
     private produtoService: ProdutoService,
-    private carrinhoS: CarrinhoService) {
+    private carrinhoS: CarrinhoService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.produto.name = this.route.snapshot.paramMap.get('name');
+    console.log(this.produtos$);
   }
 
   getIngredientes(name: string) {
     this.produtos$ =
-      this.produtoService.getIngrediente(name).pipe(
-        catchError(error => {
-          // this.route.navigateByUrl('/error');
-          // alert('Problemas no server tente novamente mais tarde.');
-          return throwError(error);
-        })
-      );
+      this.produtoService.getIngredientesByCategory(this.produto.name);
   }
 
   comprar() {
@@ -48,11 +48,11 @@ export class ProdutossComponent implements OnInit {
   }
 
   remover(id: number) {
-    this.route.navigateByUrl(`/delete-ingrediente/${id}`);
+    this.router.navigateByUrl(`/delete-ingrediente/${id}`);
 
   }
 
   atualizar(id: number) {
-    this.route.navigateByUrl(`/delete-ingrediente/${id}`);
+    this.router.navigateByUrl(`/delete-ingrediente/${id}`);
   }
 }

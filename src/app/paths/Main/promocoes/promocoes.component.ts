@@ -13,7 +13,7 @@ import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
   styleUrls: ['./promocoes.component.scss']
 })
 export class PromocoesComponent implements OnInit {
-  eAdm = this.authService.estaAutenticado();
+  eAdm = this.authService.eadm();
   produtos$: Observable<Promocao[]>;
   produto: Promocao = new Promocao();
 
@@ -38,6 +38,6 @@ export class PromocoesComponent implements OnInit {
   }
 
   atualizar(id: number) {
-    this.route.navigateByUrl(`/alterar_promocao/${id}`);
+    this.route.navigateByUrl(`/alterar/promocao/${id}`);
   }
 }

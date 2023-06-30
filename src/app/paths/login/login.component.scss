@@ -3,9 +3,9 @@ $color-bg: #EDE9D5;
 $color-2: #DF7857;
 $color-3: #617143;
 $font-roboto: 'roboto', serif;
-$font-babe: 'Rajdhani', sans-serif ;
-$font-700:  700 ;
-$color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+$font-babe: 'Rajdhani', sans-serif;
+$font-700: 700;
+$color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 
 @mixin botao() {
 
@@ -15,50 +15,61 @@ $color-hover:  linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
   font-family: $font-roboto;
 }
 
-.login-bg{
+svg {
+  color: #fff;
+  fill: $color-button;
+}
+.card-width{
+  max-width: 40rem!important;
+}
+.login-bg {
 
 
-    .h1-bg {
-      border-bottom: 1px solid #ccc;
-      width: 50%;
+  .h1-bg {
+    border-bottom: 1px solid #ccc;
+    width: 50%;
 
-      .h1-login {
-        color: $color-2;
-        font-family: $font-roboto;
+    .h1-login {
+      color: $color-2;
+      font-family: $font-roboto;
 
 
     }
   }
 
-  button,.botao{
+  button, .botao {
     @include botao
   }
-  button:hover, .botao:hover{
+
+  button:hover, .botao:hover {
     background: $color-hover;
   }
 
-  input:focus{
+  input:focus {
     outline: none;
     box-shadow: none;
   }
+
   .error-message {
     color: red;
   }
-  input::placeholder{
+
+  input::placeholder {
     font-family: $font-roboto;
 
   }
 
-  textarea::placeholder{
+  textarea::placeholder {
     font-family: $font-roboto;
 
   }
+
   label {
     font-family: $font-roboto;
     color: $color-2;
   }
 
-  .div-input{
+  .div-input {
     width: 25%;
     @media (max-width: 500px) {
       width: 50%;

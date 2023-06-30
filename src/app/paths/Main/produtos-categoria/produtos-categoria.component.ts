@@ -12,7 +12,7 @@ import {catchError} from 'rxjs/operators';
   styleUrls: ['./produtos-categoria.component.scss']
 })
 export class ProdutosCategoriaComponent implements OnInit {
-  eAdm = this.authService.estaAutenticado();
+  eAdm = this.authService.eadm();
 
   produto: Produto;
   produtos$: Observable<Produto[]>;
@@ -40,18 +40,13 @@ export class ProdutosCategoriaComponent implements OnInit {
 
   remover(id: number) {
     this.route.navigateByUrl(`/delete-produto/${id}`);
-     // this.produtoService.deleteProdutoLista(this.produto.id).subscribe(res => {
-     //   alert('deletado com sucesso');
-     // }, err => {
-     //   console.log(err.message);
-     // });
   }
 
   atualizar(id: number) {
-    this.route.navigateByUrl(`/alterar_produto/${id}`);
+    this.route.navigateByUrl(`/alterar/produto/${id}`);
   }
 
   irParaProdutos(name: string) {
-    this.route.navigateByUrl(`produtos-categorias/produtos/${name}`);
+    this.route.navigateByUrl(`produtos-categorias/${name}`);
   }
 }

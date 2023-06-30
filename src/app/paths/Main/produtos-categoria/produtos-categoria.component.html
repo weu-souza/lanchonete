@@ -2,7 +2,7 @@
   <!--inserir as variaveis aqui-->
   <ng-container *ngIf="produtos$ | async as produtos; else loading">
     <div class="card card-container p-2 me-lg-5 me-md-3" *ngFor="let produtos of produtos">
-      <div (click)="irParaProdutos(produtos.name)">
+      <div routerLink="{{produtos.name}}/produtos">
         <img [src]="produtos?.imageName" class="card-img-top img-fluid w-100" alt="..." width="400" height="300">
         <div class="card-body ">
           <h5 class="card-title">{{produtos?.name}}</h5>

@@ -1,6 +1,6 @@
 export interface UserToken {
   sub: string;
-  role: string;
+  role: string[];
   iss: string;
   name: string;
   id: string;

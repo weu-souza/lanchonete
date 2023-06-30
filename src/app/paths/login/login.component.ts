@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.authService.timeOut();
   }
 
   createForm() {
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
   logar() {
     if (this.formLogin.dirty && this.formLogin.valid) {
       this.usuario = Object.assign({}, this.usuario, this.formLogin.value);
-      // console.log(this.usuario);
       this.authService.logar(this.usuario);
       this.route.navigate(['/']);
 

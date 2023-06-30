@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {CurrencyPipe} from '@angular/common';
 
 @Component({
   selector: 'app-alterar-promocao',
@@ -24,13 +25,21 @@ export class AlterarPromocaoComponent implements OnInit {
   fotoSrc = '';
   mostrarTexto = true;
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, private produtoService: ProdutoService, private route: ActivatedRoute,
+              private router: Router, private currency: CurrencyPipe) {
 
   }
 
   ngOnInit(): void {
     this.findById();
     this.createForm();
+    this.formAddProduto.valueChanges.subscribe(form => {
+      if (form.price) {
+        this.formAddProduto.patchValue({
+          price: this.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+        }, {emitEvent: false});
+      }
+    });
   }
 
   createForm() {
