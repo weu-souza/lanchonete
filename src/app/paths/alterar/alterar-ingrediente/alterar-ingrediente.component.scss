@@ -84,10 +84,6 @@ $color-hover: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
-    border: 2px dashed currentColor;
-    cursor: pointer;
-    transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
 
     .img {
       max-width: 100%;

@@ -14,13 +14,9 @@ import {catchError} from 'rxjs/operators';
 })
 export class ProdutossComponent implements OnInit {
   eAdm = this.authService.eadm();
-  produtos: Ingrediente;
+  produtos: Ingrediente[] = [];
   produtos$: Observable<Ingrediente[]>;
-  produto: Produto = {
-    name: '',
-    id: undefined,
-    imageName: ''
-  };
+  name: string;
 
   constructor(
     private router: Router,
@@ -30,21 +26,21 @@ export class ProdutossComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.produto.name = this.route.snapshot.paramMap.get('name');
+    this.name = this.route.snapshot.paramMap.get('name');
+    this.getIngredientes();
     console.log(this.produtos$);
   }
 
-  getIngredientes(name: string) {
-    this.produtos$ =
-      this.produtoService.getIngredientesByCategory(this.produto.name);
+  getIngredientes() {
+    this.produtos$ = this.produtoService.getIngredientesByCategory(this.name);
   }
 
   comprar() {
-    this.carrinhoS.adicionarAoCarrinho(this.produtos).subscribe(res => {
-      console.log(res);
-      // this.route.navigate(['carrinho']);
-      alert('enviado com sucesso!');
-    });
+    //   this.carrinhoS.adicionarAoCarrinho(this.produtos).subscribe(res => {
+    //     console.log(res);
+    //     // this.route.navigate(['carrinho']);
+    //     alert('enviado com sucesso!');
+    //   });
   }
 
   remover(id: number) {
@@ -53,6 +49,6 @@ export class ProdutossComponent implements OnInit {
   }
 
   atualizar(id: number) {
-    this.router.navigateByUrl(`/delete-ingrediente/${id}`);
+    this.router.navigateByUrl(`/alterar/ingrediente/${id}`);
   }
 }

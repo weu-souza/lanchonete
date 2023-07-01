@@ -1,1 +1,45 @@
-<p>delete-ingrediente works!</p>
+<div class="contato-bg p-5 rounded d-grid">
+  <div class="mx-auto d-grid mb-5 h1-bg">
+    <h1 class="h1-registro mb-3 mx-auto">deletar promocao</h1>
+  </div>
+  <!--    nome do produto -->
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <label for="produto" class="form-label">nome do produto</label>
+    <input type="text" class="form-control " id="produto"  [(ngModel)]="name" disabled>
+  </div>
+
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <!--    preço do produto -->
+    <label for="preco" class="form-label">preço </label>
+    <input type="number" class="form-control" id="preco"  [(ngModel)]="price" disabled>
+  </div>
+
+  <!--detalhes do produto-->
+  <div class="mb-3 d-grid mx-auto mb-5 div-input">
+    <label for="texto" class="form-label ">ingredientes</label>
+    <textarea class="form-control " id="texto" [(ngModel)]="ingredients" disabled></textarea>
+  </div>
+  <!--imagem-->
+  <div class="mb-3 mx-auto">
+    <label for="formFile" id="span_imagem" class="form-label img-label"><img
+      [src]="fotoSrc" class=" img" ></label>
+    <input type="file" accept="image/*" class="form-control" id="formFile" disabled>
+
+  </div>
+  <!--botão de enviar-->
+  <div class="d-lg-flex  flex-wrap mx-auto">
+
+    <div class="col-auto ms-lg-3 ">
+      <button type="submit" class="btn  mb-3 " (click)="deletar()">deletar
+      </button>
+    </div>
+    <!--botão de voltar-->
+    <div class="col-auto mx-auto">
+      <button type="submit" class="btn  mb-3 ms-4" routerLink="/produtos-categorias" >cancelar
+      </button>
+    </div>
+  </div>
+
+</div>
+
+

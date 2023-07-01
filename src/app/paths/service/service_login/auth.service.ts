@@ -53,7 +53,6 @@ export class AuthService {
         }
         if (decode.role.includes('user')) {
           this.mostrarMenu.emit(this.estaAutenticado());
-          this.cookieService.set('eadm', decode.role.find(role => role === 'admin'));
         }
         this.router.navigate(['produtos-categorias']);
       }),

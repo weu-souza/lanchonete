@@ -11,8 +11,6 @@ import {CurrencyPipe} from '@angular/common';
   styleUrls: ['./alterar-promocao.component.scss']
 })
 export class AlterarPromocaoComponent implements OnInit {
-
-
   span: HTMLElement;
   formAddProduto: FormGroup;
   promocao: Promocao = {
@@ -83,6 +81,7 @@ export class AlterarPromocaoComponent implements OnInit {
         price: [res.price],
         details: [res.details]
       });
+      console.log(this.formAddProduto.value);
       this.fotoSrc = res.imageName;
     });
   }

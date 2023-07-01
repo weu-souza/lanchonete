@@ -20,7 +20,7 @@ export class ProdutoService {
   // metodo post
   // post pra tabela de produtos
   postProduto(produtos: Ingrediente, name: string) {
-    const url = `${this.baseUrl}/products/${name}`;
+    const url = `${this.baseUrl}/products/name/${name}`;
     return this.http.post<Ingrediente>(url, produtos);
   }
 
@@ -56,7 +56,7 @@ export class ProdutoService {
   }
 
   getIngredientesByCategory(name: string) {
-    const url = `${this.baseUrl}/products/${name}`;
+    const url = `${this.baseUrl}/products/name/${name}`;
     return this.http.get<Ingrediente[]>(url);
   }
 
@@ -71,12 +71,6 @@ export class ProdutoService {
   getPromocoes(): Observable<Promocao[]> {
     const url = `${this.baseUrl}/offers/`;
     return this.http.get<Promocao[]>(url);
-  }
-
-  // get all de ingredientes
-  getIngrediente(): Observable<Ingrediente[]> {
-    const url = `${this.baseUrl}/products`;
-    return this.http.get<Ingrediente[]>(url);
   }
 
   // metodo delete
