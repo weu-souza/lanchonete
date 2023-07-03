@@ -69,13 +69,11 @@ export class AdicionarIngredienteComponent implements OnInit {
 
       reader.addEventListener('load', (e) => {
         const readerTarget = e.target;
-        // this.formAddProduto.value.imagem = String(readerTarget.result);
         this.span.style.border = 'none';
         this.span.style.background = 'none';
         this.mostrarTexto = false;
         this.fotoSrc = String(readerTarget.result);
         this.formAddProduto.value.imageName = String(readerTarget.result);
-
       });
       reader.readAsDataURL(file);
     }

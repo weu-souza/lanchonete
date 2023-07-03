@@ -27,7 +27,7 @@ export class AdicionarPromocaoComponent implements OnInit {
       name: ['', [Validators.required]],
       imageName: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1)]],
-      details: ['', [Validators.required]]
+      ingredients: ['', [Validators.required]]
     });
     this.formatPrice();
   }
@@ -41,15 +41,6 @@ export class AdicionarPromocaoComponent implements OnInit {
       }
     });
   }
-
-  // createForm() {
-  //   this.formAddProduto = this.fb.group({
-  //     name: ['', [Validators.required]],
-  //     imageName: ['', [Validators.required]],
-  //     price: ['', [Validators.required, Validators.min(1)]],
-  //     details: ['', [Validators.required]]
-  //   });
-  // }
 
   imagem(event) {
     this.span = document.getElementById('span_imagem');

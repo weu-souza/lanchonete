@@ -56,6 +56,7 @@ export class AdicionarProdutoComponent implements OnInit {
   enviar() {
     if (this.formAddProduto.dirty && this.formAddProduto.valid) {
       this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
+      console.log(this.produto);
       this.produtoService.postProdutoLista(this.produto).subscribe(res => {
         alert('enviado com sucesso!');
         this.router.navigate(['produtos-categorias']);

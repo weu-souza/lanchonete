@@ -1,0 +1,18 @@
+$color-2: #DF7857;
+$font-roboto: 'roboto', serif;
+
+div {
+  .cart-h2{
+    color: $color-2;
+    font-family: $font-roboto;
+  }
+  .cart {
+    max-width: 100%;
+    width: 100px;
+    height: auto;
+
+  }
+  .cart-text{
+    font-family: $font-roboto;
+  }
+}

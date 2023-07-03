@@ -11,7 +11,7 @@
           <h5 class="card-title ">{{produto?.name}}</h5>
         </div>
         <div>
-          <p class="card-text">{{produto?.details}}</p>
+          <p class="card-text">{{produto?.ingredients}}</p>
         </div>
 
         <div>
@@ -20,7 +20,7 @@
       </div>
       <div class="d-flex justify-content-between">
         <div>
-          <button class="btn btn-card" routerLink="/adicionar-carrinho_promocao/{{produto.id}}">Comprar</button>
+          <button class="btn btn-card" routerLink="/adicionar-carrinho-promocao/{{produto.id}}">Comprar</button>
         </div>
         <div>
           <button class="btn remove-button" (click)="remover(produto.id)" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i>

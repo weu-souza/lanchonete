@@ -15,13 +15,13 @@ export class DeletePromocaoComponent implements OnInit {
     id: undefined,
     name: '',
     price: undefined,
-    details: '',
+    ingredients: '',
     imageName: ''
   };
   fotoSrc = '';
   name: string;
   price: number;
-  details: string;
+  ingredients: string;
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) {
 
@@ -37,7 +37,7 @@ export class DeletePromocaoComponent implements OnInit {
       this.produto = res;
       this.name = this.produto.name;
       this.price = this.produto.price;
-      this.details = this.produto.details;
+      this.ingredients = this.produto.ingredients;
       this.fotoSrc = this.produto.imageName;
     });
   }

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
 import {ProdutoService} from '../../service/service_produto/produto.service';
+import {Carrinho} from '../../models/carrinho';
 
 @Component({
   selector: 'app-adicionar-carrinh-produto',
@@ -11,8 +12,10 @@ import {ProdutoService} from '../../service/service_produto/produto.service';
   styleUrls: ['./adicionar-carrinh-produto.component.scss']
 })
 export class AdicionarCarrinhProdutoComponent implements OnInit {
-
-  produto: Ingrediente | null = {id: undefined, ingredients: '', price: undefined, imageName: '', name: ''};
+  carrinho: Carrinho;
+  produto: Ingrediente = {
+    id: undefined, imageName: '', name: '', price: undefined, ingredients: ''
+  };
   produto$: Observable<Ingrediente>;
 
   constructor(private route: ActivatedRoute, private carrinhoService: CarrinhoService,
@@ -22,10 +25,10 @@ export class AdicionarCarrinhProdutoComponent implements OnInit {
   ngOnInit(): void {
     this.produto.id = Number(this.route.snapshot.paramMap.get('id'));
     this.findById();
-
     this.produto$.subscribe(res => {
-      this.produto = res;
-    });
+        this.carrinho = res;
+      }
+    );
   }
 
   findById() {
@@ -33,14 +36,10 @@ export class AdicionarCarrinhProdutoComponent implements OnInit {
   }
 
   comprar() {
-    this.carrinhoService.adicionarAoCarrinho(this.produto).subscribe(res => {
-      this.router.navigate(['/produtos-categorias']);
+    this.carrinhoService.postCarrinho(this.carrinho, this.produto.id).subscribe(() => {
       alert('enviado com sucesso!');
-    }, error => {
-      alert('erro no servidor');
+      this.router.navigate(['comprar']);
     });
-
-
   }
 
 }

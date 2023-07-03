@@ -2,27 +2,33 @@
   <div class="mx-auto d-flex mb-5 h1-bg">
     <h1 class="h1-registro mb-3 mx-auto">Carrinho</h1>
   </div>
-<div class="d-flex row div-carrinho ">
+  <div class="d-flex row div-carrinho ">
 
 
-  <ng-container *ngIf="produtos$ | async as produtos; else semProduto">
-    <ul>
-      <li class="justify-content-between align-items-center d-flex" *ngFor="let carrinho of produtos">
+    <ng-container *ngIf="produtos$ | async as produtos; else semProduto">
+      <div *ngIf="produto.length >0 else zerado">
+        <div *ngFor="let carrinho of produtos">
+          <ul>
+            <li class="justify-content-between align-items-center d-flex">
 
-        <img [src]="carrinho.imageName">
-        <p>{{carrinho.name}}</p>
-        <p>{{carrinho.price|currency: "BRL"}}</p>
+              <img [src]="carrinho?.imageName">
+              <p>{{carrinho?.name}}</p>
+              <p>{{carrinho?.price|currency: "BRL"}}</p>
 
 
-        <button class="remove-button" (click)="removeProdutoCarrinho(carrinho.id)"><i class="fa-solid fa-xmark"></i>
-        </button>
-      </li>
+              <button class="remove-button" (click)="removeProdutoCarrinho(carrinho.id)"><i class="fa-solid fa-xmark"></i>
+              </button>
+            </li>
 
-    </ul>
-    <h2 class="cart-total ms-4">Total:{{total}}</h2>
-    <button class="buy-button btn w-auto " (click)="comprar()">Comprar</button>
-  </ng-container>
-</div>
+          </ul>
+        </div>
+        <h2 class="cart-total ms-4">Total: {{this.total |currency: "BRL"}}</h2>
+        <button class="buy-button btn w-auto " (click)="comprar()">Comprar</button>
+      </div>
+
+
+    </ng-container>
+  </div>
 
   <ng-template #semProduto>
     <div class="shimmer">
@@ -33,6 +39,9 @@
         <div class="stroke animate description"></div>
       </div>
     </div>
+  </ng-template>
+  <ng-template #zerado>
+    <app-carrinho-vazio></app-carrinho-vazio>
   </ng-template>
 
 

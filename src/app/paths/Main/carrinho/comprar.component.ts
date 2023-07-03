@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Ingrediente} from '../../models/produto';
 import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
-import {Observable, throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import {Observable, of, throwError} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
+import {Carrinho} from '../../models/carrinho';
 
 @Component({
   selector: 'app-comprar',
   templateUrl: './comprar.component.html',
-  styleUrls: ['./comprar.component.scss']
+  styleUrls: ['./comprar.component.scss'],
 })
 export class ComprarComponent implements OnInit {
-  produto: Ingrediente;
-  produtos$: Observable<Ingrediente[]>;
+  produto: Carrinho[] = [];
+  produtos$: Observable<Carrinho[]>;
   total = 0;
 
   constructor(private route: Router, private carrinhoService: CarrinhoService) {
@@ -23,28 +23,42 @@ export class ComprarComponent implements OnInit {
   }
 
   getCarrinho() {
-    console.log(this.produtos$);
-    this.produtos$ = this.carrinhoService.obtemCarrinho()
+    this.produtos$ = this.carrinhoService.getCarrinho()
       .pipe(
+        tap(produto => {
+          this.produto = produto;
+          this.calculaTotal();
+        }),
         catchError(error => {
           return throwError(error.message);
         })
       );
   }
 
-  // calculaTotal() {
-  //   this.total = this.itensCarrinho.reduce((prev, curr) => prev + (curr.price * this.itensCarrinho.length), 0);
-  // }
+  calculaTotal() {
+    this.total = this.produto.reduce((prev, curr) => prev + (curr.price), 0);
+    console.log('total', this.total);
+  }
 
   removeProdutoCarrinho(id: number) {
-    this.carrinhoService.removerCarrinho(id);
-    // this.calculaTotal();
+    this.carrinhoService.deleteCarrinho(id).pipe(
+      tap(
+        res => {
+          this.produto = this.produto.filter(produto => produto.id !== res);
+          this.produtos$ = of(this.produto);
+          alert('removido');
+          this.calculaTotal();
+        }
+      )
+    ).subscribe();
   }
 
   comprar() {
-    alert('parabéns, você finalizou a sua compra!');
-    this.carrinhoService.limparCarrinho();
-    this.route.navigate(['/']);
+    if (this.produto.length > 0) {
+      alert('parabéns, você finalizou a sua compra!');
+    } else {
+      alert('carrinho vazio');
+    }
   }
 
 }

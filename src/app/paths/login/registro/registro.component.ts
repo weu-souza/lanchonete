@@ -3,6 +3,9 @@ import {AuthService} from '../../service/service_login/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Usuario} from '../../models/usuario';
 import {CadastroService} from '../../service/service_login/cadastro.service';
+import {errorObject} from 'rxjs/internal-compatibility';
+import {throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Component({
   selector: 'app-registro',

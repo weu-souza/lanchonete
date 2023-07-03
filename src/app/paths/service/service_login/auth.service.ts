@@ -9,12 +9,14 @@ import jwt_decode from 'jwt-decode';
 import {CookieService} from 'ngx-cookie-service';
 import {UserToken} from '../../models/user-token';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   mostrarMenu = new EventEmitter<boolean>();
   token = '';
+
 
   constructor(private router: Router, private http: HttpClient, private cookieService: CookieService) {
   }
@@ -35,7 +37,7 @@ export class AuthService {
     try {
       return of(jwt_decode(this.getToken()) as UserToken);
     } catch (error) {
-      this.router.navigate(['login']);
+      this.logout();
     }
   }
 
@@ -46,7 +48,7 @@ export class AuthService {
         this.token = JSON.parse(JSON.stringify(token));
         const decode = jwt_decode(this.token) as UserToken;
         // console.log(this.token);
-        this.cookieService.set('access-token', `${token}`, decode.exp);
+        this.cookieService.set('access-token', `${token}`);
         if (decode.role.includes('admin')) {
           this.mostrarMenu.emit(this.estaAutenticado());
           this.cookieService.set('eadm', decode.role.find(role => role === 'admin'));

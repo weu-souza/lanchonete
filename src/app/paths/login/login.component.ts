@@ -5,7 +5,6 @@ import {Usuario} from '../models/usuario';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserToken} from '../models/user-token';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,13 +16,13 @@ export class LoginComponent implements OnInit {
   user: UserToken;
 
 
+
   constructor(private route: Router, public authService: AuthService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
     this.createForm();
   }
-
   createForm() {
     this.formLogin = this.fb.group({
       login: ['', [Validators.required]],

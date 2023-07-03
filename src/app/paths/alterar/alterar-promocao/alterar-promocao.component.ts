@@ -18,7 +18,7 @@ export class AlterarPromocaoComponent implements OnInit {
     name: '',
     price: undefined,
     imageName: '',
-    details: ''
+    ingredients: ''
   };
   fotoSrc = '';
   mostrarTexto = true;
@@ -45,7 +45,7 @@ export class AlterarPromocaoComponent implements OnInit {
       name: ['', [Validators.required]],
       imageName: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(1)]],
-      details: ['', [Validators.required]]
+      ingredients: ['', [Validators.required]]
     });
   }
 
@@ -79,7 +79,7 @@ export class AlterarPromocaoComponent implements OnInit {
         name: [res.name],
         imageName: [res.imageName],
         price: [res.price],
-        details: [res.details]
+        ingredients: [res.ingredients]
       });
       console.log(this.formAddProduto.value);
       this.fotoSrc = res.imageName;

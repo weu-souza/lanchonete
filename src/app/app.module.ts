@@ -9,7 +9,6 @@ import {LoginComponent} from './paths/login/login.component';
 import {RegistroComponent} from './paths/login/registro/registro.component';
 import {PromocoesComponent} from './paths/Main/promocoes/promocoes.component';
 import {AdicionarProdutoComponent} from './paths/adicionar/adicionar-produto/adicionar-produto.component';
-import {HistoricoVendasComponent} from './paths/Main/historico-vendas/historico-vendas.component';
 import {AdicionarIngredienteComponent} from './paths/adicionar/adicionar-ingrediente/adicionar-ingrediente.component';
 import {NaoEncontradaComponent} from './paths/shared/nao-encontrada/nao-encontrada.component';
 import {ComprarComponent} from './paths/Main/carrinho/comprar.component';
@@ -35,6 +34,7 @@ import {
 import {CurrencyPipe, registerLocaleData} from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { UnauthorizedPageComponent } from './paths/shared/unauthorized-page/unauthorized-page.component';
+import { CarrinhoVazioComponent } from './paths/shared/carrinho-vazio/carrinho-vazio.component';
 
 registerLocaleData(ptBr);
 
@@ -48,7 +48,6 @@ registerLocaleData(ptBr);
     RegistroComponent,
     PromocoesComponent,
     AdicionarProdutoComponent,
-    HistoricoVendasComponent,
     AdicionarIngredienteComponent,
     NaoEncontradaComponent,
     ComprarComponent,
@@ -64,6 +63,7 @@ registerLocaleData(ptBr);
     AdicionarCarrinhProdutoComponent,
     AdicionarCarrinhPrmocaoComponent,
     UnauthorizedPageComponent,
+    CarrinhoVazioComponent,
   ],
   imports: [
     BrowserModule,

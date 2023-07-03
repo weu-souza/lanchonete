@@ -4,6 +4,7 @@ import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
 import {Promocao} from '../../models/produto';
 import {ProdutoService} from '../../service/service_produto/produto.service';
 import {Observable} from 'rxjs';
+import {Carrinho} from '../../models/carrinho';
 
 @Component({
   selector: 'app-adicionar-carrinh-prmocao',
@@ -11,7 +12,8 @@ import {Observable} from 'rxjs';
   styleUrls: ['./adicionar-carrinh-prmocao.component.scss']
 })
 export class AdicionarCarrinhPrmocaoComponent implements OnInit {
-  promocao: Promocao | null = {id: undefined, details: '', price: undefined, imageName: '', name: ''};
+  promocao: Promocao | null = {id: undefined, ingredients: '', price: undefined, imageName: '', name: ''};
+  carrinho: Carrinho;
   promocao$: Observable<Promocao>;
 
   constructor(private route: ActivatedRoute, private carrinhoService: CarrinhoService,
@@ -22,7 +24,7 @@ export class AdicionarCarrinhPrmocaoComponent implements OnInit {
     this.promocao.id = Number(this.route.snapshot.paramMap.get('id'));
     this.findById();
     this.promocao$.subscribe(res => {
-      this.promocao = res;
+      this.carrinho = res;
     });
   }
 
@@ -31,11 +33,9 @@ export class AdicionarCarrinhPrmocaoComponent implements OnInit {
   }
 
   comprar() {
-    this.carrinhoService.adicionarAoCarrinhoP(this.promocao).subscribe(res => {
-      this.router.navigate(['/carrinho']);
+    this.carrinhoService.postCarrinhoP(this.carrinho, this.promocao.id).subscribe(() => {
       alert('enviado com sucesso!');
-    }, error => {
-      alert('erro no servidor');
+      this.router.navigate(['comprar']);
     });
   }
 }

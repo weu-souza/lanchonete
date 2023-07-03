@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {PromocoesComponent} from './paths/Main/promocoes/promocoes.component';
 import {AdicionarProdutoComponent} from './paths/adicionar/adicionar-produto/adicionar-produto.component';
-import {HistoricoVendasComponent} from './paths/Main/historico-vendas/historico-vendas.component';
 import {AdicionarIngredienteComponent} from './paths/adicionar/adicionar-ingrediente/adicionar-ingrediente.component';
 import {NaoEncontradaComponent} from './paths/shared/nao-encontrada/nao-encontrada.component';
 import {ComprarComponent} from './paths/Main/carrinho/comprar.component';
@@ -79,12 +78,6 @@ const routes: Routes = [{
       role: ['admin', 'user']
     }
 
-  },
-  {
-    path: 'historico-vendas', component: HistoricoVendasComponent, canActivate: [AuthGuard],
-    data: {
-      role: ['admin']
-    }
   },
   {
     path: 'adicionar-ingredientes/:name',

@@ -8,7 +8,7 @@
         <p class="card-text">{{produto?.ingredients}}</p>
         <p class="card-text">{{produto?.price | currency: 'BRL'}}</p>
         <div class="d-flex justify-content-between">
-          <a class="btn btn-card" routerLink="/adicionar-carrinho_produto/{{produto.id}}" >Comprar</a>
+          <a class="btn btn-card" routerLink="/adicionar-carrinho-produto/{{produto.id}}" >Comprar</a>
           <button class="btn remove-button" (click)="remover(produto.id)" *ngIf="eAdm"><i class="fa-solid fa-xmark"></i>
           </button>
           <button class="btn remove-button" (click)="atualizar(produto.id)" *ngIf="eAdm"><i

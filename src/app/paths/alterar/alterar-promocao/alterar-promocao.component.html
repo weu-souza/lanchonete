@@ -46,15 +46,15 @@
   <!--ingredientes do produto-->
   <div class="mb-3 d-grid mx-auto mb-5 div-input">
     <label for="texto" class="form-label ">detalhes</label>
-    <textarea class="form-control " id="texto" placeholder="digite o detalhe..." formControlName="details"
-              [ngClass]="{'is-invalid': formAddProduto.controls['details'].invalid &&
-           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty), 'is-valid':formAddProduto.controls['details'].valid}"
-              [class.valid]="formAddProduto.controls['details'].valid"
-              [class.invalid]="formAddProduto.controls['details'].invalid &&
-           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty)"></textarea>
+    <textarea class="form-control " id="texto" placeholder="digite o detalhe..." formControlName="ingredients"
+              [ngClass]="{'is-invalid': formAddProduto.controls['ingredients'].invalid &&
+           (formAddProduto.controls['ingredients'].touched || formAddProduto.controls['ingredients'].dirty), 'is-valid':formAddProduto.controls['ingredients'].valid}"
+              [class.valid]="formAddProduto.controls['ingredients'].valid"
+              [class.invalid]="formAddProduto.controls['ingredients'].invalid &&
+           (formAddProduto.controls['ingredients'].touched || formAddProduto.controls['ingredients'].dirty)"></textarea>
 
-    <div *ngIf="formAddProduto.controls['details'].invalid &&
-           (formAddProduto.controls['details'].touched || formAddProduto.controls['details'].dirty)">
+    <div *ngIf="formAddProduto.controls['ingredients'].invalid &&
+           (formAddProduto.controls['ingredients'].touched || formAddProduto.controls['ingredients'].dirty)">
       <small class="error-message" *ngIf="formAddProduto.controls['name'].hasError('required')">
         Esse campo precisa ser preenchido.
       </small>

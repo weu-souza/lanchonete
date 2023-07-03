@@ -17,7 +17,7 @@ export class Promocao {
   name: string;
   imageName: string;
   price: number;
-  details: string;
+  ingredients: string;
 }
 
 

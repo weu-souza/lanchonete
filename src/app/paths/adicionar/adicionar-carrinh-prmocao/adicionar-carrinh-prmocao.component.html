@@ -3,7 +3,7 @@
     <img [src]="produtos?.imageName" class="card-img-top" alt="...">
     <div class="card-body ">
       <h5 class="card-title">{{produtos?.name}}</h5>
-      <p class="card-text">{{produtos?.details}}</p>
+      <p class="card-text">{{produtos?.ingredients}}</p>
       <p class="card-text">{{produtos?.price|  currency: 'BRL'}}</p>
       <button (click)="comprar()" class="btn ">Adicionar ao carrinho</button>
     </div>
