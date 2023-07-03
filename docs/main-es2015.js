@@ -3843,7 +3843,7 @@ let CarrinhoVazioComponent = /** @class */ (() => {
         }
     }
     CarrinhoVazioComponent.ɵfac = function CarrinhoVazioComponent_Factory(t) { return new (t || CarrinhoVazioComponent)(); };
-    CarrinhoVazioComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CarrinhoVazioComponent, selectors: [["app-carrinho-vazio"]], decls: 9, vars: 0, consts: [[1, "d-flex", "flex-column"], [1, "mx-auto", "mb-5", "cart-h2"], [1, "d-flex", "mx-auto", "mb-5"], ["src", "assets/img/cart.svg", 1, "cart"], [1, "mx-auto", "cart-text"]], template: function CarrinhoVazioComponent_Template(rf, ctx) { if (rf & 1) {
+    CarrinhoVazioComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CarrinhoVazioComponent, selectors: [["app-carrinho-vazio"]], decls: 14, vars: 0, consts: [[1, "d-flex", "flex-column"], [1, "mx-auto", "mb-5", "cart-h2"], [1, "d-flex", "mx-auto", "mb-5"], ["version", "1.0", "xmlns", "http://www.w3.org/2000/svg", "width", "1280.000000pt", "height", "883.000000pt", "viewBox", "0 0 1280.000000 883.000000", "preserveAspectRatio", "xMidYMid meet", 1, "cart"], ["transform", "translate(0.000000,883.000000) scale(0.100000,-0.100000)", "fill", "#DF7857", "stroke", "none"], ["d", "M3835 8819 c-209 -30 -357 -133 -440 -304 -43 -89 -56 -149 -56 -253\n0 -96 5 -130 33 -227 20 -72 36 -114 203 -555 90 -237 155 -409 435 -1150 59\n-157 167 -442 240 -635 73 -192 181 -478 240 -635 308 -817 374 -989 434\n-1150 97 -256 168 -378 303 -521 154 -163 344 -275 578 -341 l80 -23 2130 -3\nc1513 -2 2153 0 2210 8 360 50 702 295 879 630 25 48 88 199 140 336 52 137\n140 371 196 519 56 149 140 370 186 493 196 519 259 684 340 900 47 125 130\n344 184 487 54 143 155 411 225 595 438 1159 412 1085 422 1224 12 170 -48\n338 -160 448 -62 62 -159 115 -262 145 -57 17 -278 18 -4270 19 -2343 1 -4237\n-2 -4270 -7z"], ["d", "M650 7260 c-192 -5 -221 -8 -272 -29 -164 -65 -298 -205 -354 -371\n-29 -84 -26 -263 4 -352 50 -145 160 -271 296 -337 45 -22 108 -45 140 -50 39\n-7 371 -11 967 -11 l907 0 422 -987 c589 -1377 992 -2317 1172 -2730 l153\n-352 60 -47 c33 -26 112 -81 175 -122 63 -41 144 -96 180 -121 l65 -46 410 3\n410 4 -65 -42 c-72 -47 -180 -152 -227 -221 -52 -75 -110 -199 -139 -294 -25\n-81 -28 -105 -28 -250 -1 -162 4 -198 45 -313 28 -79 55 -128 119 -217 97\n-135 195 -216 343 -285 350 -163 783 -93 1043 167 272 271 344 644 195 1006\n-21 51 -55 118 -75 151 -53 81 -177 208 -250 256 l-61 40 1645 0 1645 0 -50\n-29 c-27 -16 -80 -56 -117 -90 -263 -242 -369 -641 -258 -974 45 -131 107\n-233 214 -346 277 -291 759 -354 1126 -148 87 49 246 201 305 291 50 77 101\n204 121 302 22 106 15 316 -15 429 -26 101 -95 240 -159 326 -58 75 -156 168\n-222 207 l-45 27 120 6 c182 10 273 37 383 116 110 78 195 213 222 351 17 84\n8 221 -20 301 -47 141 -165 273 -295 332 -139 63 67 59 -3053 59 l-2839 0\n-253 593 c-139 325 -394 921 -566 1322 -171 402 -445 1043 -609 1425 -163 382\n-308 710 -323 729 -26 35 -371 267 -452 305 -45 21 -53 21 -985 22 -517 0\n-1037 -2 -1155 -6z"], [1, "mx-auto", "cart-text"]], template: function CarrinhoVazioComponent_Template(rf, ctx) { if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h2");
@@ -3851,11 +3851,21 @@ let CarrinhoVazioComponent = /** @class */ (() => {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "img", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "svg", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "metadata");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "\nCreated by potrace 1.15, written by Peter Selinger 2001-2017\n");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p");
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "voc\u00EA ainda n\u00E3o adicionou produtos ao carrinho");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "g", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "path", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "path", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceHTML"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "p");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "voc\u00EA ainda n\u00E3o adicionou produtos ao carrinho");
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
