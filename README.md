@@ -32,6 +32,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 # Lanchonete
+O projeto lanchonete e um projeto que desenvolvi do zero todas as funcionalidades fiz ele para a matéria de programação web do instituto federal do goiás como e um para acessar ele como um administrador entre com o seguinte login.
+Login: admin
+senha:123
+Fiz esse projeto com angular, scss para as cores e algumas funcionalidades e bootstrap, essas tecnologias foram usadas para o aprendizado das mesmas.
+
+The cafeteria project is a project that I developed from scratch all the functionalities I made it for the web programming subject of the federal institute of goiás how and one to access it as an administrator enter with the following login.
+Login: admin
+password:123
+I made this project with angular, scss for the colors and some features and bootstrap, these technologies were used to learn them.
+
 
 ## Login
 
