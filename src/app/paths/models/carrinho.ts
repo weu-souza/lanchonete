@@ -7,7 +7,7 @@ export class Carrinho {
   price: number;
   imageName: string;
   ingredients: string;
-  userID: Usuario;
+  // userID: Usuario;
 }
 
 export class Tabela {

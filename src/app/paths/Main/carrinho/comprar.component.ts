@@ -58,10 +58,9 @@ export class ComprarComponent implements OnInit {
   }
 
   comprar() {
-    if (this.produto.length > 0) {
+    this.carrinhoService.comprarCarrinho().subscribe(res => {
       alert('parabéns, você finalizou a sua compra!');
-      this.carrinhoService.comprarCarrinho();
-      this.calculaTotal();
-    }
+      this.getCarrinho();
+    });
   }
 }
