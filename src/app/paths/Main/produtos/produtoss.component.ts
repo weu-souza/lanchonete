@@ -28,7 +28,6 @@ export class ProdutossComponent implements OnInit {
   ngOnInit(): void {
     this.name = this.route.snapshot.paramMap.get('name');
     this.getIngredientes();
-    console.log(this.produtos$);
   }
 
   getIngredientes() {

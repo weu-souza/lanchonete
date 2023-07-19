@@ -69,6 +69,9 @@ export class AuthService {
   public getToken(): string {
     return this.cookieService.get('access-token');
   }
+  public getUserId(){
+    return this.decodePayloadJWT(this.getToken());
+  }
 
   public decodePayloadJWT(token: string): Usuario {
     try {

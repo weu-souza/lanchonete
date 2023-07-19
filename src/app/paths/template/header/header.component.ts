@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   mudar = false;
   eAdm = this.authService.eadm();
   formBuscarProduto: FormGroup;
-  usuario: Usuario;
+  name: string;
 
   aparecerMenu() {
     const btn: HTMLElement = document.getElementById('btn-mobile') as HTMLElement;
@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
 // mudar apos o http
   nome() {
     this.cadastroService.getLogin().subscribe(res => {
-      this.usuario = res;
+      this.name = res.name;
     });
   }
 

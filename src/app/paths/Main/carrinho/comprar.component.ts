@@ -4,6 +4,9 @@ import {CarrinhoService} from '../../service/service_carrinho/carrinho.service';
 import {Observable, of, throwError} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
 import {Carrinho} from '../../models/carrinho';
+import {CadastroService} from '../../service/service_login/cadastro.service';
+import {Usuario} from '../../models/usuario';
+import {AuthService} from '../../service/service_login/auth.service';
 
 @Component({
   selector: 'app-comprar',
@@ -14,12 +17,14 @@ export class ComprarComponent implements OnInit {
   produto: Carrinho[] = [];
   produtos$: Observable<Carrinho[]>;
   total = 0;
+  id: number;
 
-  constructor(private route: Router, private carrinhoService: CarrinhoService) {
+  constructor(private route: Router, private carrinhoService: CarrinhoService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.getCarrinho();
+    this.id = Number(this.authService.getUserId().id);
   }
 
   getCarrinho() {
@@ -37,7 +42,6 @@ export class ComprarComponent implements OnInit {
 
   calculaTotal() {
     this.total = this.produto.reduce((prev, curr) => prev + (curr.price), 0);
-    console.log('total', this.total);
   }
 
   removeProdutoCarrinho(id: number) {
@@ -56,9 +60,8 @@ export class ComprarComponent implements OnInit {
   comprar() {
     if (this.produto.length > 0) {
       alert('parabéns, você finalizou a sua compra!');
-    } else {
-      alert('carrinho vazio');
+      this.carrinhoService.comprarCarrinho();
+      this.calculaTotal();
     }
   }
-
 }

@@ -45,8 +45,8 @@ export class CarrinhoService {
     return this.http.delete<number>(url);
   }
 
-  // comprarCarrinho() {
-  //   const url = `${this.baseUrl}/chart/checkout`;
-  //   this.http.get<Carrinho>(url);
-  // }
+  comprarCarrinho() {
+    const url = `${this.baseUrl}/chart/delet`;
+    return this.http.delete<void>(url);
+  }
 }

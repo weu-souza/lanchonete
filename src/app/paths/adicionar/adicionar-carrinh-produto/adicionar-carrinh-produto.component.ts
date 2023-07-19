@@ -12,10 +12,10 @@ import {Carrinho} from '../../models/carrinho';
   styleUrls: ['./adicionar-carrinh-produto.component.scss']
 })
 export class AdicionarCarrinhProdutoComponent implements OnInit {
-  carrinho: Carrinho;
   produto: Ingrediente = {
     id: undefined, imageName: '', name: '', price: undefined, ingredients: ''
   };
+  carrinho: Carrinho;
   produto$: Observable<Ingrediente>;
 
   constructor(private route: ActivatedRoute, private carrinhoService: CarrinhoService,

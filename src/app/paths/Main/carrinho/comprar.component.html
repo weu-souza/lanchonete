@@ -6,7 +6,7 @@
 
 
     <ng-container *ngIf="produtos$ | async as produtos; else semProduto">
-      <div *ngIf="produto.length >0 else zerado">
+      <div *ngIf="produto.length > 0 else zerado">
         <div *ngFor="let carrinho of produtos">
           <ul>
             <li class="justify-content-between align-items-center d-flex">
