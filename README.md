@@ -36,11 +36,13 @@ O projeto lanchonete e um projeto que desenvolvi do zero todas as funcionalidade
 Login: admin
 senha:123
 Fiz esse projeto com angular, scss para as cores e algumas funcionalidades e bootstrap, essas tecnologias foram usadas para o aprendizado das mesmas.
+todas as funcionalidades deste projeto foram construidas por mim mesmo.
 
 The cafeteria project is a project that I developed from scratch all the functionalities I made it for the web programming subject of the federal institute of goiás how and one to access it as an administrator enter with the following login.
 Login: admin
 password:123
-I made this project with angular, scss for the colors and some features and bootstrap, these technologies were used to learn them.
+I made this project with angular, scss for the colors and some features and bootstrap, these technologies were used to learn them
+any features of this project were built by myself..
 
 
 ## Login
