@@ -864,13 +864,19 @@
       /* harmony import */
 
 
-      var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var _service_service_login_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! ../../service/service_login/auth.service */
+      "./src/app/paths/service/service_login/auth.service.ts");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/common */
       "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
       /* harmony import */
 
 
-      var _shared_carrinho_vazio_carrinho_vazio_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _shared_carrinho_vazio_carrinho_vazio_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! ../../shared/carrinho-vazio/carrinho-vazio.component */
       "./src/app/paths/shared/carrinho-vazio/carrinho-vazio.component.ts");
 
@@ -1038,11 +1044,12 @@
       /** @class */
       function () {
         var ComprarComponent = /*#__PURE__*/function () {
-          function ComprarComponent(route, carrinhoService) {
+          function ComprarComponent(route, carrinhoService, authService) {
             _classCallCheck(this, ComprarComponent);
 
             this.route = route;
             this.carrinhoService = carrinhoService;
+            this.authService = authService;
             this.produto = [];
             this.total = 0;
           }
@@ -1051,6 +1058,7 @@
             key: "ngOnInit",
             value: function ngOnInit() {
               this.getCarrinho();
+              this.id = Number(this.authService.getUserId().id);
             }
           }, {
             key: "getCarrinho",
@@ -1071,7 +1079,6 @@
               this.total = this.produto.reduce(function (prev, curr) {
                 return prev + curr.price;
               }, 0);
-              console.log('total', this.total);
             }
           }, {
             key: "removeProdutoCarrinho",
@@ -1091,11 +1098,13 @@
           }, {
             key: "comprar",
             value: function comprar() {
-              if (this.produto.length > 0) {
+              var _this4 = this;
+
+              this.carrinhoService.comprarCarrinho().subscribe(function (res) {
                 alert('parabéns, você finalizou a sua compra!');
-              } else {
-                alert('carrinho vazio');
-              }
+
+                _this4.getCarrinho();
+              });
             }
           }]);
 
@@ -1103,7 +1112,7 @@
         }();
 
         ComprarComponent.ɵfac = function ComprarComponent_Factory(t) {
-          return new (t || ComprarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_service_carrinho_carrinho_service__WEBPACK_IMPORTED_MODULE_4__["CarrinhoService"]));
+          return new (t || ComprarComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_service_carrinho_carrinho_service__WEBPACK_IMPORTED_MODULE_4__["CarrinhoService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_service_login_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]));
         };
 
         ComprarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1149,8 +1158,8 @@
               _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 2, ctx.produtos$))("ngIfElse", _r1);
             }
           },
-          directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _shared_carrinho_vazio_carrinho_vazio_component__WEBPACK_IMPORTED_MODULE_6__["CarrinhoVazioComponent"]],
-          pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["CurrencyPipe"]],
+          directives: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _shared_carrinho_vazio_carrinho_vazio_component__WEBPACK_IMPORTED_MODULE_7__["CarrinhoVazioComponent"]],
+          pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_6__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["CurrencyPipe"]],
           styles: ["section[_ngcontent-%COMP%]   .h1-bg[_ngcontent-%COMP%] {\n  border-bottom: 1px solid #ccc;\n  width: 80%;\n}\nsection[_ngcontent-%COMP%]   .h1-bg[_ngcontent-%COMP%]   .h1-registro[_ngcontent-%COMP%] {\n  color: #DF7857;\n  font-family: \"roboto\", serif;\n}\nsection[_ngcontent-%COMP%]   .div-carrinho[_ngcontent-%COMP%] {\n  margin-left: 20%;\n  margin-right: 20%;\n}\nsection[_ngcontent-%COMP%]   .cart-title[_ngcontent-%COMP%] {\n  font-size: 44px;\n  color: #000;\n  font-weight: 700;\n  padding: 8px 0;\n  font-family: \"roboto\", serif;\n}\nsection[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;\n  border-radius: 8px;\n  overflow: hidden;\n  margin: 10px 0;\n  height: 100px;\n  font-family: \"Rajdhani\", sans-serif;\n  font-size: 18px;\n  color: #617143;\n  background: #EDE9D5;\n}\nsection[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  width: 100px;\n  height: 100px;\n  display: block;\n}\nsection[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .remove-button[_ngcontent-%COMP%] {\n  background-color: red;\n  border: none;\n  color: white;\n  padding: 20px;\n  height: 100%;\n  transition: 0.2s all;\n}\nsection[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .remove-button[_ngcontent-%COMP%]:hover {\n  filter: brightness(0.9);\n}\nsection[_ngcontent-%COMP%]   .cart-total[_ngcontent-%COMP%] {\n  font-size: 24px;\n  color: #000;\n  font-weight: 700;\n  padding: 8px 0;\n  font-family: \"roboto\", serif;\n}\nsection[_ngcontent-%COMP%]   .buy-button[_ngcontent-%COMP%] {\n  color: #fff;\n  background: #E7AB9A;\n  font-weight: 700;\n}\nsection[_ngcontent-%COMP%]   .buy-button[_ngcontent-%COMP%]:hover {\n  background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);\n}\n.title[_ngcontent-%COMP%] {\n  width: 40%;\n}\n.link[_ngcontent-%COMP%] {\n  width: 60%;\n}\n.description[_ngcontent-%COMP%] {\n  width: 70%;\n}\n.shimmer[_ngcontent-%COMP%] {\n  padding: 5px;\n  width: 95%;\n  height: 120px;\n  margin: 10px auto;\n  background: #ffffff;\n}\n.shimmer[_ngcontent-%COMP%]   .image-card[_ngcontent-%COMP%] {\n  height: 90px;\n  width: 90px;\n  float: right;\n  border-radius: 8px;\n}\n.stroke[_ngcontent-%COMP%] {\n  height: 15px;\n  background: #777;\n  margin-top: 20px;\n}\n.wrapper[_ngcontent-%COMP%] {\n  width: 0px;\n  animation: fullView 0.5s forwards linear;\n}\n@keyframes fullView {\n  100% {\n    width: 100%;\n  }\n}\n.animate[_ngcontent-%COMP%] {\n  animation: shimmer 3s;\n  animation-iteration-count: infinite;\n  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);\n  background-size: 1000px 100%;\n}\n@keyframes shimmer {\n  from {\n    background-position: -1000px 0;\n  }\n  to {\n    background-position: 1000px 0;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGF0aHMvTWFpbi9jYXJyaW5oby9jb21wcmFyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWVFO0VBQ0UsNkJBQUE7RUFDQSxVQUFBO0FBZEo7QUFnQkk7RUFDRSxjQWxCSTtFQW1CSiw0QkFoQlE7QUFFZDtBQWtCRTtFQUNFLGdCQUFBO0VBQ0EsaUJBQUE7QUFoQko7QUFrQkU7RUFDRSxlQUFBO0VBQ0EsV0FBQTtFQUNBLGdCQXpCTztFQTBCUCxjQUFBO0VBQ0EsNEJBN0JVO0FBYWQ7QUFtQkU7RUFDRSxxREFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0VBQ0EsYUFBQTtFQUNBLG1DQXJDUTtFQXNDUixlQUFBO0VBQ0EsY0ExQ007RUE0Q04sbUJBL0NPO0FBNkJYO0FBb0JJO0VBQ0UsWUFBQTtFQUNBLGFBQUE7RUFDQSxjQUFBO0FBbEJOO0FBcUJJO0VBQ0UscUJBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0Esb0JBQUE7QUFuQk47QUFzQkk7RUFDRSx1QkFBQTtBQXBCTjtBQXdCRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0VBQ0EsNEJBckVVO0FBK0NkO0FBMEJFO0VBckVBLFdBQUE7RUFDQSxtQkFUYTtFQVViLGdCQUpTO0FBa0RYO0FBMEJFO0VBQ0UsK0RBaEZVO0FBd0RkO0FBNkJBO0VBQ0UsVUFBQTtBQTFCRjtBQTRCQTtFQUNFLFVBQUE7QUF6QkY7QUEyQkE7RUFDRSxVQUFBO0FBeEJGO0FBMEJBO0VBQ0UsWUFBQTtFQUNBLFVBQUE7RUFDQSxhQUFBO0VBQ0EsaUJBQUE7RUFDQSxtQkFBQTtBQXZCRjtBQXlCQTtFQUNFLFlBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FBdEJGO0FBd0JBO0VBQ0UsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUFyQkY7QUF3QkE7RUFDRSxVQUFBO0VBQ0Esd0NBQUE7QUFyQkY7QUF3QkE7RUFDRTtJQUNFLFdBQUE7RUFyQkY7QUFDRjtBQXVCQTtFQUNFLHFCQUFBO0VBQ0EsbUNBQUE7RUFDQSwyRUFBQTtFQUNBLDRCQUFBO0FBckJGO0FBdUJBO0VBQ0U7SUFDRSw4QkFBQTtFQXBCRjtFQXNCQTtJQUNFLDZCQUFBO0VBcEJGO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9wYXRocy9NYWluL2NhcnJpbmhvL2NvbXByYXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIkY29sb3ItYmc6ICNFREU5RDU7XHJcbiRjb2xvci1idXR0b246ICNFN0FCOUE7XHJcbiRjb2xvci0yOiAjREY3ODU3O1xyXG4kY29sb3ItMzogIzYxNzE0MztcclxuJGNvbG9yLWhvdmVyOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICNmZmVjZDIgMCUsICNmY2I2OWYgMTAwJSk7XHJcbiRmb250LXJvYm90bzogJ3JvYm90bycsIHNlcmlmO1xyXG4kZm9udC1iYWJlOiAnUmFqZGhhbmknLCBzYW5zLXNlcmlmO1xyXG4kZm9udC03MDA6IDcwMDtcclxuQG1peGluIGJvdGFvKCkge1xyXG4gIGNvbG9yOiAjZmZmO1xyXG4gIGJhY2tncm91bmQ6ICRjb2xvci1idXR0b247XHJcbiAgZm9udC13ZWlnaHQ6ICRmb250LTcwMDtcclxufVxyXG5cclxuc2VjdGlvbiB7XHJcbiAgLmgxLWJnIHtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjO1xyXG4gICAgd2lkdGg6IDgwJTtcclxuXHJcbiAgICAuaDEtcmVnaXN0cm8ge1xyXG4gICAgICBjb2xvcjogJGNvbG9yLTI7XHJcbiAgICAgIGZvbnQtZmFtaWx5OiAkZm9udC1yb2JvdG87XHJcblxyXG4gICAgfVxyXG4gIH1cclxuICAuZGl2LWNhcnJpbmhve1xyXG4gICAgbWFyZ2luLWxlZnQ6IDIwJTtcclxuICAgIG1hcmdpbi1yaWdodDoyMCUgO1xyXG4gIH1cclxuICAuY2FydC10aXRsZSB7XHJcbiAgICBmb250LXNpemU6IDQ0cHg7XHJcbiAgICBjb2xvcjogIzAwMDtcclxuICAgIGZvbnQtd2VpZ2h0OiAkZm9udC03MDA7XHJcbiAgICBwYWRkaW5nOiA4cHggMDtcclxuICAgIGZvbnQtZmFtaWx5OiAkZm9udC1yb2JvdG87XHJcbiAgfVxyXG5cclxuICBsaSB7XHJcbiAgICBib3gtc2hhZG93OiByZ2JhKDEwMCwgMTAwLCAxMTEsIDAuMikgMHB4IDdweCAyOXB4IDBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDhweDtcclxuICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICBtYXJnaW46IDEwcHggMDtcclxuICAgIGhlaWdodDogMTAwcHg7XHJcbiAgICBmb250LWZhbWlseTogJGZvbnQtYmFiZTtcclxuICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgIGNvbG9yOiAkY29sb3ItMztcclxuXHJcbiAgICBiYWNrZ3JvdW5kOiAkY29sb3ItYmc7XHJcblxyXG4gICAgaW1nIHtcclxuICAgICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgICBoZWlnaHQ6IDEwMHB4O1xyXG4gICAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIH1cclxuXHJcbiAgICAucmVtb3ZlLWJ1dHRvbiB7XHJcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICAgICAgYm9yZGVyOiBub25lO1xyXG4gICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICAgIGhlaWdodDogMTAwJTtcclxuICAgICAgdHJhbnNpdGlvbjogLjJzIGFsbDtcclxuICAgIH1cclxuXHJcbiAgICAucmVtb3ZlLWJ1dHRvbjpob3ZlciB7XHJcbiAgICAgIGZpbHRlcjogYnJpZ2h0bmVzcygwLjkpO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLmNhcnQtdG90YWwge1xyXG4gICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbiAgICBmb250LXdlaWdodDogNzAwO1xyXG4gICAgcGFkZGluZzogOHB4IDA7XHJcbiAgICBmb250LWZhbWlseTogJGZvbnQtcm9ib3RvO1xyXG4gIH1cclxuXHJcblxyXG4gIC5idXktYnV0dG9uIHtcclxuICAgIEBpbmNsdWRlIGJvdGFvO1xyXG5cclxuICB9XHJcblxyXG4gIC5idXktYnV0dG9uOmhvdmVyIHtcclxuICAgIGJhY2tncm91bmQ6ICRjb2xvci1ob3ZlcjtcclxuXHJcbiAgfVxyXG59XHJcblxyXG4udGl0bGUge1xyXG4gIHdpZHRoOiA0MCU7XHJcbn1cclxuLmxpbmsge1xyXG4gIHdpZHRoOiA2MCU7XHJcbn1cclxuLmRlc2NyaXB0aW9uIHtcclxuICB3aWR0aDogNzAlO1xyXG59XHJcbi5zaGltbWVyIHtcclxuICBwYWRkaW5nOiA1cHg7XHJcbiAgd2lkdGg6IDk1JTtcclxuICBoZWlnaHQ6IDEyMHB4O1xyXG4gIG1hcmdpbjogMTBweCBhdXRvO1xyXG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbn1cclxuLnNoaW1tZXIgLmltYWdlLWNhcmQge1xyXG4gIGhlaWdodDogOTBweDtcclxuICB3aWR0aDogOTBweDtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgYm9yZGVyLXJhZGl1czogOHB4O1xyXG59XHJcbi5zdHJva2Uge1xyXG4gIGhlaWdodDogMTVweDtcclxuICBiYWNrZ3JvdW5kOiAjNzc3O1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbn1cclxuXHJcbi53cmFwcGVyIHtcclxuICB3aWR0aDogMHB4O1xyXG4gIGFuaW1hdGlvbjogZnVsbFZpZXcgMC41cyBmb3J3YXJkcyBsaW5lYXI7XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgZnVsbFZpZXcge1xyXG4gIDEwMCUge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgfVxyXG59XHJcbi5hbmltYXRlIHtcclxuICBhbmltYXRpb246IHNoaW1tZXIgM3M7XHJcbiAgYW5pbWF0aW9uLWl0ZXJhdGlvbi1jb3VudDogaW5maW5pdGU7XHJcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjZTZlNmU2IDUlLCAjY2NjY2NjIDI1JSwgI2U2ZTZlNiAzNSUpO1xyXG4gIGJhY2tncm91bmQtc2l6ZTogMTAwMHB4IDEwMCU7XHJcbn1cclxuQGtleWZyYW1lcyBzaGltbWVyIHtcclxuICBmcm9tIHtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IC0xMDAwcHggMDtcclxuICB9XHJcbiAgdG8ge1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTAwMHB4IDA7XHJcbiAgfVxyXG59XHJcbiJdfQ== */"]
         });
         return ComprarComponent;
@@ -1171,6 +1180,8 @@
             type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
           }, {
             type: _service_service_carrinho_carrinho_service__WEBPACK_IMPORTED_MODULE_4__["CarrinhoService"]
+          }, {
+            type: _service_service_login_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"]
           }];
         }, null);
       })();
@@ -1475,7 +1486,6 @@
             value: function ngOnInit() {
               this.name = this.route.snapshot.paramMap.get('name');
               this.getIngredientes();
-              console.log(this.produtos$);
             }
           }, {
             key: "getIngredientes",
@@ -2222,12 +2232,12 @@
           _createClass(AdicionarCarrinhPrmocaoComponent, [{
             key: "ngOnInit",
             value: function ngOnInit() {
-              var _this4 = this;
+              var _this5 = this;
 
               this.promocao.id = Number(this.route.snapshot.paramMap.get('id'));
               this.findById();
               this.promocao$.subscribe(function (res) {
-                _this4.carrinho = res;
+                _this5.carrinho = res;
               });
             }
           }, {
@@ -2238,12 +2248,12 @@
           }, {
             key: "comprar",
             value: function comprar() {
-              var _this5 = this;
+              var _this6 = this;
 
               this.carrinhoService.postCarrinhoP(this.carrinho, this.promocao.id).subscribe(function () {
                 alert('enviado com sucesso!');
 
-                _this5.router.navigate(['comprar']);
+                _this6.router.navigate(['comprar']);
               });
             }
           }]);
@@ -2532,12 +2542,12 @@
           _createClass(AdicionarCarrinhProdutoComponent, [{
             key: "ngOnInit",
             value: function ngOnInit() {
-              var _this6 = this;
+              var _this7 = this;
 
               this.produto.id = Number(this.route.snapshot.paramMap.get('id'));
               this.findById();
               this.produto$.subscribe(function (res) {
-                _this6.carrinho = res;
+                _this7.carrinho = res;
               });
             }
           }, {
@@ -2548,12 +2558,12 @@
           }, {
             key: "comprar",
             value: function comprar() {
-              var _this7 = this;
+              var _this8 = this;
 
               this.carrinhoService.postCarrinho(this.carrinho, this.produto.id).subscribe(function () {
                 alert('enviado com sucesso!');
 
-                _this7.router.navigate(['comprar']);
+                _this8.router.navigate(['comprar']);
               });
             }
           }]);
@@ -2823,12 +2833,12 @@
           }, {
             key: "formatPrice",
             value: function formatPrice() {
-              var _this8 = this;
+              var _this9 = this;
 
               this.formAddProduto.valueChanges.subscribe(function (form) {
                 if (form.price) {
-                  _this8.formAddProduto.patchValue({
-                    price: _this8.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+                  _this9.formAddProduto.patchValue({
+                    price: _this9.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
                   }, {
                     emitEvent: false
                   });
@@ -2848,7 +2858,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this9 = this;
+              var _this10 = this;
 
               this.span = document.getElementById('span_imagem');
               var inputTarget = event.target;
@@ -2858,11 +2868,11 @@
                 var reader = new FileReader();
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target;
-                  _this9.span.style.border = 'none';
-                  _this9.span.style.background = 'none';
-                  _this9.mostrarTexto = false;
-                  _this9.fotoSrc = String(readerTarget.result);
-                  _this9.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this10.span.style.border = 'none';
+                  _this10.span.style.background = 'none';
+                  _this10.mostrarTexto = false;
+                  _this10.fotoSrc = String(readerTarget.result);
+                  _this10.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -2870,14 +2880,14 @@
           }, {
             key: "addProduto",
             value: function addProduto() {
-              var _this10 = this;
+              var _this11 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
                 this.produto.price = Number(this.formAddProduto.value.price.replace(/[^0-9]/g, ''));
                 console.log(this.produtos.name);
                 this.produtoService.postProduto(this.produto, this.produtos.name).subscribe(function (res) {
-                  _this10.router.navigate(['/']);
+                  _this11.router.navigate(['/']);
 
                   alert('enviado com sucesso!');
                 });
@@ -3210,7 +3220,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this11 = this;
+              var _this12 = this;
 
               this.span = document.getElementById('span_imagem');
               var inputTarget = event.target;
@@ -3220,11 +3230,11 @@
                 var reader = new FileReader();
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target;
-                  _this11.span.style.border = 'none';
-                  _this11.span.style.background = 'none';
-                  _this11.mostrarTexto = false;
-                  _this11.fotoSrc = String(readerTarget.result);
-                  _this11.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this12.span.style.border = 'none';
+                  _this12.span.style.background = 'none';
+                  _this12.mostrarTexto = false;
+                  _this12.fotoSrc = String(readerTarget.result);
+                  _this12.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -3232,7 +3242,7 @@
           }, {
             key: "enviar",
             value: function enviar() {
-              var _this12 = this;
+              var _this13 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
@@ -3240,7 +3250,7 @@
                 this.produtoService.postProdutoLista(this.produto).subscribe(function (res) {
                   alert('enviado com sucesso!');
 
-                  _this12.router.navigate(['produtos-categorias']);
+                  _this13.router.navigate(['produtos-categorias']);
                 }, function (error) {
                   alert('só e possivel enviar um nome e uma foto em categoria');
                 });
@@ -3585,12 +3595,12 @@
           }, {
             key: "formatPrice",
             value: function formatPrice() {
-              var _this13 = this;
+              var _this14 = this;
 
               this.formAddProduto.valueChanges.subscribe(function (form) {
                 if (form.price) {
-                  _this13.formAddProduto.patchValue({
-                    price: _this13.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+                  _this14.formAddProduto.patchValue({
+                    price: _this14.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
                   }, {
                     emitEvent: false
                   });
@@ -3600,7 +3610,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this14 = this;
+              var _this15 = this;
 
               this.span = document.getElementById('span_imagem');
               var inputTarget = event.target;
@@ -3611,11 +3621,11 @@
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target; // this.formAddProduto.value.imagem = String(readerTarget.result);
 
-                  _this14.span.style.border = 'none';
-                  _this14.span.style.background = 'none';
-                  _this14.mostrarTexto = false;
-                  _this14.fotoSrc = String(readerTarget.result);
-                  _this14.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this15.span.style.border = 'none';
+                  _this15.span.style.background = 'none';
+                  _this15.mostrarTexto = false;
+                  _this15.fotoSrc = String(readerTarget.result);
+                  _this15.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -3623,7 +3633,7 @@
           }, {
             key: "addPromocao",
             value: function addPromocao() {
-              var _this15 = this;
+              var _this16 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
@@ -3632,7 +3642,7 @@
                 this.produtoService.postPromocoes(this.promocao).subscribe(function (res) {
                   alert('enviado com sucesso!');
 
-                  _this15.router.navigate(['promocoes']);
+                  _this16.router.navigate(['promocoes']);
                 });
                 console.log('promoção adicionada');
               } else {
@@ -4017,14 +4027,14 @@
           _createClass(AlterarIngredienteComponent, [{
             key: "ngOnInit",
             value: function ngOnInit() {
-              var _this16 = this;
+              var _this17 = this;
 
               this.findById();
               this.createForm();
               this.formAddProduto.valueChanges.subscribe(function (form) {
                 if (form.price) {
-                  _this16.formAddProduto.patchValue({
-                    price: _this16.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+                  _this17.formAddProduto.patchValue({
+                    price: _this17.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
                   }, {
                     emitEvent: false
                   });
@@ -4044,7 +4054,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this17 = this;
+              var _this18 = this;
 
               var inputTarget = event.target;
               var file = inputTarget.files[0];
@@ -4053,9 +4063,9 @@
                 var reader = new FileReader();
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target;
-                  _this17.mostrarTexto = false;
-                  _this17.fotoSrc = String(readerTarget.result);
-                  _this17.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this18.mostrarTexto = false;
+                  _this18.fotoSrc = String(readerTarget.result);
+                  _this18.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -4063,31 +4073,31 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this18 = this;
+              var _this19 = this;
 
               this.produtos.id = Number(this.route.snapshot.paramMap.get('id'));
               this.prodName.name = this.route.snapshot.paramMap.get('name');
               this.produtoService.getIngredienteById(this.produtos.id).subscribe(function (res) {
-                _this18.formAddProduto = _this18.fb.group({
+                _this19.formAddProduto = _this19.fb.group({
                   name: [res.name],
                   imageName: [res.imageName],
                   price: [res.price],
                   ingredients: [res.ingredients]
                 });
-                _this18.fotoSrc = res.imageName;
+                _this19.fotoSrc = res.imageName;
               });
             }
           }, {
             key: "atualizar",
             value: function atualizar() {
-              var _this19 = this;
+              var _this20 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produtos = Object.assign({}, this.produtos, this.formAddProduto.value);
                 this.produtoService.putProdutos(this.produtos).subscribe(function (res) {
                   alert('atualizado com sucesso');
 
-                  _this19.router.navigate(['produtos-categorias']);
+                  _this20.router.navigate(['produtos-categorias']);
                 }, function (error) {
                   alert('erro no servidor');
                 });
@@ -4412,7 +4422,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this20 = this;
+              var _this21 = this;
 
               var inputTarget = event.target;
               var file = inputTarget.files[0];
@@ -4421,8 +4431,8 @@
                 var reader = new FileReader();
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target;
-                  _this20.fotoSrc = String(readerTarget.result);
-                  _this20.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this21.fotoSrc = String(readerTarget.result);
+                  _this21.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -4430,28 +4440,28 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this21 = this;
+              var _this22 = this;
 
               this.produto.id = Number(this.route.snapshot.paramMap.get('id'));
               this.produtoService.getProdutoById(this.produto.id).subscribe(function (res) {
-                _this21.formAddProduto = _this21.fb.group({
+                _this22.formAddProduto = _this22.fb.group({
                   name: [res.name],
                   imageName: [res.imageName]
                 });
-                _this21.fotoSrc = res.imageName;
+                _this22.fotoSrc = res.imageName;
               });
             }
           }, {
             key: "atualizar",
             value: function atualizar() {
-              var _this22 = this;
+              var _this23 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.produto = Object.assign({}, this.produto, this.formAddProduto.value);
                 this.produtoService.putProdutosLista(this.produto).subscribe(function (res) {
                   alert('atualizado com sucesso');
 
-                  _this22.router.navigate(['produtos-categorias']);
+                  _this23.router.navigate(['produtos-categorias']);
                 }, function (error) {
                   alert('erro no servidor');
                 });
@@ -4788,14 +4798,14 @@
           _createClass(AlterarPromocaoComponent, [{
             key: "ngOnInit",
             value: function ngOnInit() {
-              var _this23 = this;
+              var _this24 = this;
 
               this.findById();
               this.createForm();
               this.formAddProduto.valueChanges.subscribe(function (form) {
                 if (form.price) {
-                  _this23.formAddProduto.patchValue({
-                    price: _this23.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
+                  _this24.formAddProduto.patchValue({
+                    price: _this24.currency.transform(form.price.toString().replace(/\D/g, '').replace(/^0/, ''), 'BRL', 'symbol', '1.0-0')
                   }, {
                     emitEvent: false
                   });
@@ -4815,7 +4825,7 @@
           }, {
             key: "imagem",
             value: function imagem(event) {
-              var _this24 = this;
+              var _this25 = this;
 
               this.span = document.getElementById('span_imagem');
               var inputTarget = event.target;
@@ -4826,11 +4836,11 @@
                 reader.addEventListener('load', function (e) {
                   var readerTarget = e.target; // this.formAddProduto.value.imagem = String(readerTarget.result);
 
-                  _this24.span.style.border = 'none';
-                  _this24.span.style.background = 'none';
-                  _this24.mostrarTexto = false;
-                  _this24.fotoSrc = String(readerTarget.result);
-                  _this24.formAddProduto.value.imageName = String(readerTarget.result);
+                  _this25.span.style.border = 'none';
+                  _this25.span.style.background = 'none';
+                  _this25.mostrarTexto = false;
+                  _this25.fotoSrc = String(readerTarget.result);
+                  _this25.formAddProduto.value.imageName = String(readerTarget.result);
                 });
                 reader.readAsDataURL(file);
               }
@@ -4838,31 +4848,31 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this25 = this;
+              var _this26 = this;
 
               this.promocao.id = Number(this.route.snapshot.paramMap.get('id'));
               this.produtoService.getPromocaoById(this.promocao.id).subscribe(function (res) {
-                _this25.formAddProduto = _this25.fb.group({
+                _this26.formAddProduto = _this26.fb.group({
                   name: [res.name],
                   imageName: [res.imageName],
                   price: [res.price],
                   ingredients: [res.ingredients]
                 });
-                console.log(_this25.formAddProduto.value);
-                _this25.fotoSrc = res.imageName;
+                console.log(_this26.formAddProduto.value);
+                _this26.fotoSrc = res.imageName;
               });
             }
           }, {
             key: "atualizar",
             value: function atualizar() {
-              var _this26 = this;
+              var _this27 = this;
 
               if (this.formAddProduto.dirty && this.formAddProduto.valid) {
                 this.promocao = Object.assign({}, this.promocao, this.formAddProduto.value);
                 this.produtoService.putPromocoes(this.promocao).subscribe(function (res) {
                   alert('atualizado com sucesso');
 
-                  _this26.router.navigate(['promocoes']);
+                  _this27.router.navigate(['promocoes']);
                 }, function (error) {
                   alert('erro no servidor');
                 });
@@ -5140,26 +5150,26 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this27 = this;
+              var _this28 = this;
 
               this.produtoService.getIngredienteById(this.produto.id).subscribe(function (res) {
-                _this27.produto = res;
-                console.log(_this27.produto);
-                _this27.name = _this27.produto.name;
-                _this27.price = _this27.produto.price;
-                _this27.ingredients = _this27.produto.ingredients;
-                _this27.fotoSrc = _this27.produto.imageName;
+                _this28.produto = res;
+                console.log(_this28.produto);
+                _this28.name = _this28.produto.name;
+                _this28.price = _this28.produto.price;
+                _this28.ingredients = _this28.produto.ingredients;
+                _this28.fotoSrc = _this28.produto.imageName;
               });
             }
           }, {
             key: "deletar",
             value: function deletar() {
-              var _this28 = this;
+              var _this29 = this;
 
               this.produtoService.deleteIngredientes(this.produto.id).subscribe(function (res) {
                 alert('deletado com sucesso');
 
-                _this28.router.navigate(['produtos-categorias']);
+                _this29.router.navigate(['produtos-categorias']);
               });
             }
           }]);
@@ -5411,23 +5421,23 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this29 = this;
+              var _this30 = this;
 
               this.produtoService.getProdutoById(this.produto.id).subscribe(function (res) {
-                _this29.produto = res;
-                _this29.fotoSrc = _this29.produto.imageName;
-                _this29.name = _this29.produto.name;
+                _this30.produto = res;
+                _this30.fotoSrc = _this30.produto.imageName;
+                _this30.name = _this30.produto.name;
               });
             }
           }, {
             key: "deletar",
             value: function deletar() {
-              var _this30 = this;
+              var _this31 = this;
 
               this.produtoService.deleteProdutoLista(this.produto.id).subscribe(function (res) {
                 alert('deletado com sucesso');
 
-                _this30.router.navigate(['produtos-categorias']);
+                _this31.router.navigate(['produtos-categorias']);
               }, function (error) {
                 alert('não deletado');
               });
@@ -5648,25 +5658,25 @@
           }, {
             key: "findById",
             value: function findById() {
-              var _this31 = this;
+              var _this32 = this;
 
               this.produtoService.getPromocaoById(this.produto.id).subscribe(function (res) {
-                _this31.produto = res;
-                _this31.name = _this31.produto.name;
-                _this31.price = _this31.produto.price;
-                _this31.ingredients = _this31.produto.ingredients;
-                _this31.fotoSrc = _this31.produto.imageName;
+                _this32.produto = res;
+                _this32.name = _this32.produto.name;
+                _this32.price = _this32.produto.price;
+                _this32.ingredients = _this32.produto.ingredients;
+                _this32.fotoSrc = _this32.produto.imageName;
               });
             }
           }, {
             key: "deletar",
             value: function deletar() {
-              var _this32 = this;
+              var _this33 = this;
 
               this.produtoService.deletePromocoes(this.produto.id).subscribe(function (res) {
                 alert('deletado');
 
-                _this32.router.navigate(['promocoes']);
+                _this33.router.navigate(['promocoes']);
               }, function (error) {
                 alert('houve um erro no servidor');
               });
@@ -5911,7 +5921,7 @@
           _createClass(TokenInterceptor, [{
             key: "intercept",
             value: function intercept(request, next) {
-              var _this33 = this;
+              var _this34 = this;
 
               var token = this.authService.getToken();
 
@@ -5929,7 +5939,7 @@
                 if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpErrorResponse"]) {
                   switch (err.status) {
                     case 403:
-                      _this33.authService.logout();
+                      _this34.authService.logout();
 
                   }
                 }
@@ -6947,6 +6957,12 @@
               var url = "".concat(this.baseUrl, "/chart/").concat(id);
               return this.http["delete"](url);
             }
+          }, {
+            key: "comprarCarrinho",
+            value: function comprarCarrinho() {
+              var url = "".concat(this.baseUrl, "/chart");
+              return this.http["delete"](url);
+            }
           }]);
 
           return CarrinhoService;
@@ -7089,28 +7105,28 @@
           }, {
             key: "logar",
             value: function logar(usuario) {
-              var _this34 = this;
+              var _this35 = this;
 
               var url = "".concat(this.baseUrl, "/login");
               return this.http.post(url, usuario).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (token) {
-                _this34.token = JSON.parse(JSON.stringify(token));
-                var decode = Object(jwt_decode__WEBPACK_IMPORTED_MODULE_4__["default"])(_this34.token); // console.log(this.token);
+                _this35.token = JSON.parse(JSON.stringify(token));
+                var decode = Object(jwt_decode__WEBPACK_IMPORTED_MODULE_4__["default"])(_this35.token); // console.log(this.token);
 
-                _this34.cookieService.set('access-token', "".concat(token));
+                _this35.cookieService.set('access-token', "".concat(token));
 
                 if (decode.role.includes('admin')) {
-                  _this34.mostrarMenu.emit(_this34.estaAutenticado());
+                  _this35.mostrarMenu.emit(_this35.estaAutenticado());
 
-                  _this34.cookieService.set('eadm', decode.role.find(function (role) {
+                  _this35.cookieService.set('eadm', decode.role.find(function (role) {
                     return role === 'admin';
                   }));
                 }
 
                 if (decode.role.includes('user')) {
-                  _this34.mostrarMenu.emit(_this34.estaAutenticado());
+                  _this35.mostrarMenu.emit(_this35.estaAutenticado());
                 }
 
-                _this34.router.navigate(['produtos-categorias']);
+                _this35.router.navigate(['produtos-categorias']);
               }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(function (err) {
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(err);
               })).subscribe();
@@ -7119,6 +7135,11 @@
             key: "getToken",
             value: function getToken() {
               return this.cookieService.get('access-token');
+            }
+          }, {
+            key: "getUserId",
+            value: function getUserId() {
+              return this.decodePayloadJWT(this.getToken());
             }
           }, {
             key: "decodePayloadJWT",
@@ -7684,14 +7705,14 @@
           _createClass(AuthGuard, [{
             key: "canActivate",
             value: function canActivate(route, state) {
-              var _this35 = this;
+              var _this36 = this;
 
               return this._authMe().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
                 if (res instanceof Object) {
                   var hasRole = res.role.some(function (role) {
                     return route.data.role.includes(role);
                   });
-                  return hasRole ? true : _this35.route.createUrlTree(['/unauthorized/']);
+                  return hasRole ? true : _this36.route.createUrlTree(['/unauthorized/']);
                 }
 
                 return false;
@@ -8292,10 +8313,10 @@
           }, {
             key: "ngOnInit",
             value: function ngOnInit() {
-              var _this36 = this;
+              var _this37 = this;
 
               this.authService.mostrarMenu.subscribe(function (mostrar) {
-                return _this36.eAdm = mostrar;
+                return _this37.eAdm = mostrar;
               });
               this.createForm();
               this.nome();
@@ -8304,10 +8325,10 @@
           }, {
             key: "nome",
             value: function nome() {
-              var _this37 = this;
+              var _this38 = this;
 
               this.cadastroService.getLogin().subscribe(function (res) {
-                _this37.usuario = res;
+                _this38.name = res.name;
               });
             }
           }, {
@@ -8477,7 +8498,7 @@
 
               _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-              _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Bem vindo ", ctx.usuario.name, "");
+              _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Bem vindo ", ctx.name, "");
 
               _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
